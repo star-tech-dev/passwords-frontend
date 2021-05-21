@@ -1,0 +1,13 @@
+@import "variables/font";
+@import "mixins";
+
+@include font-face('SF Pro Text', normal, $font-weight-regular, '../assets/fonts/sf-pro-text/SFProText-Regular', 'SFProText-Regular')
+
+@include font-face('Gilroy', normal, $font-weight-semibold, '../assets/fonts/gilroy/gilroy-semibold', 'Gilroy-SemiBold')
+
+h1, .h1 {
+  font-family: $font-family-secondary;
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+  font-weight: $font-weight-semibold;
+}

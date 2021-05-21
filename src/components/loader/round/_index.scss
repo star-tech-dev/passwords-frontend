@@ -1,0 +1,14 @@
+.component.-loader-round {
+  img {
+    animation: loader-round-rotate 1s infinite linear;
+  }
+}
+
+@keyframes loader-round-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

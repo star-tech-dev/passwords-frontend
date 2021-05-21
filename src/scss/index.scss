@@ -1,0 +1,24 @@
+@import "reset";
+@import 'typography';
+@import 'utils';
+@import 'variables/index';
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-default;
+  font-size: $font-size-regular;
+  line-height: $line-height-regular;
+  background: $color-page-bg;
+  color: $color-text-regular;
+}
+
+.container {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+nav a[aria-current] {
+  font-weight: bold;
+}
