@@ -11,3 +11,5 @@ export const $app = AppDomain.store<AppState>(initialState)
     state.mounted = value
     return state
   })
+
+export default $app

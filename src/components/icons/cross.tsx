@@ -2,7 +2,7 @@ import React from 'react'
 
 function CrossIcon () {
   return (
-    <div className="CrossIcon">
+    <div className="icon -cross">
       <div>x</div>
     </div>
   )

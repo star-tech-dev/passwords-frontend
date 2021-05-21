@@ -52,3 +52,5 @@ export const $auth = AuthDomain.store<AuthState>(initialState)
     closeModal('set_security_code')
     return state
   })
+
+export default $auth

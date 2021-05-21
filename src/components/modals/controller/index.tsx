@@ -7,7 +7,7 @@ import LockerModal from '../locker'
 import './_index.scss'
 
 function ModalController () {
-  const [show, setShow] = useState()
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     const unwatch = $modals.watch(modals => {

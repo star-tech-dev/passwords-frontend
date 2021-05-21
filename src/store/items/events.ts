@@ -2,7 +2,7 @@ import { ItemsDomain } from './domain'
 import { sendRequest } from '../../api'
 import { ItemId, Item, ItemPayload } from './types'
 
-export const getItems = ItemsDomain.createEffect<null, Array<Item>>().use(() => {
+export const getItems = ItemsDomain.createEffect<void, Array<Item>>().use(() => {
   return sendRequest({
     url: '/items'
   }).catch(() => [])

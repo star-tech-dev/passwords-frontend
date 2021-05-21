@@ -1,13 +1,16 @@
 import React from 'react'
 import { useRouter } from 'react-router5'
-import PropTypes from 'prop-types'
+import { Item as ItemInterface } from '../../store/items/types'
 
-function Item ({ data }) {
+interface ItemProps {
+  data: ItemInterface
+}
+
+function Item ({ data }: ItemProps) {
   const title = `${data.name} (${data._id})` || data.url || `Item ${data._id}`
   const router = useRouter()
 
   const onClick = () => {
-    // console.log('click')
     router.navigate('item', { id: data._id })
   }
 
@@ -16,10 +19,6 @@ function Item ({ data }) {
       <div>{title}</div>
     </div>
   )
-}
-
-Item.propTypes = {
-  data: PropTypes.object
 }
 
 export default Item

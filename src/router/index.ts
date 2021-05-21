@@ -14,8 +14,6 @@ export function configureRouter () {
     defaultRoute: 'home'
   })
 
-  // router.setDependency('accessor', accessor)
-
   router.usePlugin(loggerPlugin)
   router.usePlugin(browserPlugin())
 

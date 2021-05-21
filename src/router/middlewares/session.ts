@@ -1,22 +1,22 @@
 import transitionPath from 'router5-transition-path'
 import { $auth } from '../../store/auth/store'
 import { checkAuth } from '../../store/auth/events'
+import { State } from 'router5/dist/types/base'
+import { Router } from 'router5/dist/types/router'
 
-async function _checkAuth (data) {
+async function _checkAuth (data: any) {
   const user = $auth.getState().user
-  // console.log('** _checkAuth', user)
   if (!user) {
     await checkAuth()
-    // console.log('** got user', user)
   }
   return data
 }
 
-export const sessionMiddleware = routes => router => (toState, fromState) => {
+export const sessionMiddleware = (routes: any) => (router: Router) => (toState: State, fromState: State) => {
   const { toActivate } = transitionPath(toState, fromState)
   const onActivateHandlers =
     toActivate
-      .map(segment => routes.find(r => r.name === segment).onActivate)
+      .map(segment => routes.find((r: State) => r.name === segment).onActivate)
       .filter(Boolean)
 
   return Promise
@@ -26,7 +26,7 @@ export const sessionMiddleware = routes => router => (toState, fromState) => {
       return _checkAuth(data)
     })
     .then(data => {
-      const routeData = data.reduce((accData, rData) => Object.assign(accData, rData), {})
+      const routeData = data.reduce((accData: any, rData: any) => Object.assign(accData, rData), {})
       return { ...toState, data: routeData }
     })
 }

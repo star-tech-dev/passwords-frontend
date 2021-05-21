@@ -15,3 +15,5 @@ export const $items = createStore(initialState)
     }
     return state
   })
+
+export default $items

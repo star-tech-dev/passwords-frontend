@@ -14,14 +14,11 @@ function Items () {
   })
 
   function goToAdd () {
-    // console.log('router', router)
     router.navigate('add')
   }
 
   const onMounted = async () => {
-    // console.log('++ onComponentDidMount')
     await getItems()
-    // console.log('items', items)
   }
 
   useEffect(() => {

@@ -33,3 +33,5 @@ export const $locker = createStore(initialState)
     checkIsAppLocked()
     return state
   })
+
+export default $locker

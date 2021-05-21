@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
 import { checkUserSecurityCode, login as sendLoginRequest } from '../../store/auth/events'
-import nextTick from '../../helpers/nextTick'
+import { nextTick } from '../../helpers/nextTick'
 
 function LoginForm () {
   const [loginUsername, setLoginUsername] = useState('')

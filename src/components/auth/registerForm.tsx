@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
 import { checkUserSecurityCode, register as sendRegisterRequest } from '../../store/auth/events'
-import nextTick from '../../helpers/nextTick'
+import { nextTick } from '../../helpers/nextTick'
 
 function RegisterForm () {
   const [registerUsername, setRegisterUsername] = useState('')

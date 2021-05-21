@@ -19,3 +19,5 @@ export const $modals = createStore<State>(initialState)
     return state
   })
   .on(closeAllModals, () => [])
+
+export default $modals

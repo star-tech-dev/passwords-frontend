@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router5'
 import { useStore } from 'effector-react'
-import { $auth as authStore } from '../../store/auth/store'
 import { lock } from '../../store/locker/events'
+import { $auth as authStore } from '../../store/auth/store'
 
 import './_index.scss'
 
@@ -10,7 +10,7 @@ function Header () {
   const $auth = useStore(authStore)
   const user = $auth.user
 
-  const lockApp = e => {
+  const lockApp = (e: React.FormEvent) => {
     e.preventDefault()
     lock()
   }

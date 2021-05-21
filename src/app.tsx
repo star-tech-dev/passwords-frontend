@@ -27,7 +27,7 @@ function App () {
   const locker = useStore($locker)
 
   useEffect(() => {
-    console.log('++ onAppDidMount')
+    console.log('[app] mounted')
     const unwatchMounted = setMounted.watch(mounted => {
       if (mounted) {
         /**
@@ -42,7 +42,6 @@ function App () {
   }, [])
 
   useEffect(() => {
-    console.log('[app] locker useEffect')
     checkIsAppLocked()
   }, [locker])
 

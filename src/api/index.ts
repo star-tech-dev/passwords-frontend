@@ -1,12 +1,13 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { openModal } from '../store/modals/events'
 
-export const sendRequest = options => {
+export const sendRequest = (options: AxiosRequestConfig) => {
   const mergedOptions = {
     method: 'get',
     withCredentials: true,
     ...options
-  }
+  } as AxiosRequestConfig
+
   mergedOptions.url = `${process.env.REACT_APP_API_BASE_URL}${options.url}`
 
   if (mergedOptions.method === 'get' && Object.prototype.hasOwnProperty.call(mergedOptions, 'data')) {

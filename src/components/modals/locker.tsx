@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { nextTick } from '../../helpers/nextTick'
 import { logout } from '../../store/auth/events'
 import { closeModal } from '../../store/modals/events'
@@ -9,28 +9,27 @@ function LockerModal () {
   const id = 'locker'
   const [code, setCode] = useState('')
 
-  const fieldRef = createRef()
+  let codeField = null as HTMLInputElement | null
+  const setCodeFieldRef = (element: HTMLInputElement) => {
+    codeField = element
+  }
 
-  const _logout = async e => {
+  const _logout = async (e: React.FormEvent) => {
     e.preventDefault()
     await logout()
     closeModal(id)
   }
 
-  const onSubmit = async e => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     await unlock(code)
   }
 
-  const onCodeInput = e => {
-    setCode(e.target.value)
-  }
-
   useEffect(() => {
     nextTick(() => {
-      fieldRef.current?.focus()
+      codeField?.focus()
     })
-  }, [fieldRef])
+  }, [codeField])
 
   return (
     <ModalWrapper id={id} closable={false}>
@@ -38,7 +37,7 @@ function LockerModal () {
         <div>App was locked.</div>
         <div>Enter your security code to unlock:</div>
         <div>
-          <input type="text" ref={fieldRef} value={code} onInput={onCodeInput} />
+          <input type="text" ref={setCodeFieldRef} value={code} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)} />
         </div>
         <div>
           <button type="submit">Unlock</button>

@@ -1,38 +1,36 @@
-.Modal {
-  &.Component {
+.modal.component {
+  max-height: 100%;
+
+  &:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+  }
+
+  .bg {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+  }
+
+  .dialog {
+    position: relative;
+    max-width: 100%;
     max-height: 100%;
-
-    &:before {
-      content: '';
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1001;
-      top: 0;
-      left: 0;
-    }
-
-    .Bg {
-      content: '';
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1001;
-      top: 0;
-      left: 0;
-    }
-
-    .Dialog {
-      position: relative;
-      max-width: 100%;
-      max-height: 100%;
-      z-index: 1010;
-      border: none;
-      padding: 28px 32px 32px;
-      background: #fff;
-      border-radius: 7px;
-      display: block;
-      margin-bottom: 40px;
-    }
+    z-index: 1010;
+    border: none;
+    padding: 28px 32px 32px;
+    background: #fff;
+    border-radius: 7px;
+    display: block;
+    margin-bottom: 40px;
   }
 }
