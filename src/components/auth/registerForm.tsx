@@ -3,7 +3,11 @@ import { useRouter } from 'react-router5'
 import { checkUserSecurityCode, register as sendRegisterRequest } from '../../store/auth/events'
 import { nextTick } from '../../helpers/nextTick'
 
-function RegisterForm () {
+interface RegisterFormOptions {
+  onLoginShow?: () => void
+}
+
+function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
   const [registerUsername, setRegisterUsername] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
 
@@ -25,6 +29,13 @@ function RegisterForm () {
     })
   }
 
+  const goToLogin = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (onLoginShow) {
+      onLoginShow()
+    }
+  }
+
   useEffect(() => {
     nextTick(() => {
       usernameField?.focus()
@@ -35,13 +46,17 @@ function RegisterForm () {
     <div className="component -register-form">
       <form onSubmit={register}>
         <div>
-          <input ref={setUsernameFieldRef} type="text" placeholder="username" onChange={e => setRegisterUsername(e.target.value)} />
+          <input ref={setUsernameFieldRef} type="text" placeholder="Username" onChange={e => setRegisterUsername(e.target.value)} />
         </div>
         <div>
-          <input type="text" placeholder="password" onChange={e => setRegisterPassword(e.target.value)} />
+          <input type="text" placeholder="Password" onChange={e => setRegisterPassword(e.target.value)} />
         </div>
         <div>
           <button type="submit">Register</button>
+        </div>
+        <div>
+          <span>or </span>
+          <a href="#" onClick={goToLogin}>return to login</a>
         </div>
       </form>
     </div>
