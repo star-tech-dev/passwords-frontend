@@ -17,6 +17,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "effector": "^21.8.11",
     "effector-react": "^21.3.2",
     "mongoose": "^5.12.10",
