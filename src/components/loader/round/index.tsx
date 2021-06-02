@@ -2,11 +2,7 @@ import React from 'react'
 
 import './_index.scss'
 
-interface LoaderOptions {
-  theme: 'default' | 'dark'
-}
-
-function RoundLoader ({ theme }: LoaderOptions) {
+function RoundLoader () {
   return (
     <div className="component -loader-round">
       <svg className="svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">

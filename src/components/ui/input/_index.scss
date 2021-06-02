@@ -1,9 +1,12 @@
 @import "../../../assets/scss/variables";
 
 .input.-component {
-  & > * {
+  position: relative;
+
+  input {
     width: 100%;
-    padding: 15px 20px;
+    padding: 15px 21px;
+    padding-right: 58px;
 
     font-family: $font-family-default;
     font-size: 15px;
@@ -21,5 +24,16 @@
       border-color: $color-border;
       box-shadow: $box-shadow-default-highlight;
     }
+  }
+
+  .buttons {
+    position: absolute;
+    top: 16px;
+    right: 21px;
+    z-index: 1;
+  }
+
+  .icon-error {
+    color: $color-danger;
   }
 }

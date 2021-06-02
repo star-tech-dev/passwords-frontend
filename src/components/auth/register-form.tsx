@@ -56,7 +56,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
           <UIInput placeholder="Password" onChange={e => setRegisterPassword(e.target.value)} />
         </div>
         <div className="button-block">
-          <UIButton type="submit" fullWidth={true}>Create</UIButton>
+          <UIButton type="submit" fullWidth={true}>Sign up</UIButton>
         </div>
         <div>
           <span>or </span>

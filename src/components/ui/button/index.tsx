@@ -32,7 +32,7 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
       <button {...buttonProps} ref={innerRef}>
         { props.loading
           ? <div className="loader">
-            <LoaderRound theme="dark" />
+            <LoaderRound />
           </div>
           : props.children }
       </button>
