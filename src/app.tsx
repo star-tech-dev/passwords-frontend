@@ -14,9 +14,9 @@ import SimpleLayout from './layouts/simple'
 import HomePage from './pages/home'
 import ProfilePage from './pages/profile'
 import AuthPage from './pages/auth'
-import AddItemPage from './pages/addItem'
+import AddItemPage from './pages/add-item'
 import ItemPage from './pages/item'
-import NotFound from './pages/notFound'
+import NotFound from './pages/not-found'
 
 // Layout components
 import Loader from './components/loader/page-loader'

@@ -1,0 +1,7 @@
+$transition-default-time: .2s;
+$transition-default-function: ease;
+
+$transition-default: all $transition-default-time $transition-default-function;
+
+$transition-field: all .15s $transition-default-function;
+$transition-button: background .2s ease, color .2s ease, border .2s ease;

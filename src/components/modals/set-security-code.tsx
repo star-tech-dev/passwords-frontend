@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ModalWrapper from './wrapper'
 import { logout, setUserSecurityCode } from '../../store/auth/events'
 import { closeModal } from '../../store/modals/events'
-import { nextTick } from '../../helpers/nextTick'
+import { nextTick } from '../../helpers/next-tick'
 
 function SetSecurityCodeModal () {
   const id = 'set_security_code'

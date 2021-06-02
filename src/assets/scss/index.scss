@@ -13,12 +13,29 @@ body {
   color: $color-text-regular;
 }
 
+::-webkit-input-placeholder { color: $color-text-placeholder; }
+::-moz-placeholder { color: $color-text-placeholder; }
+:-ms-input-placeholder { color: $color-text-placeholder; }
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
 .container {
   width: 600px;
   max-width: 100%;
   margin: 0 auto;
-}
 
-nav a[aria-current] {
-  font-weight: bold;
+  &.-narrow {
+    width: 330px;
+  }
 }

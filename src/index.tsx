@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import { RouterProvider } from 'react-router5'
 import { configureRouter as createRouter } from './router'
 import { setMounted } from './store/app/events'
-import reportWebVitals from './reportWebVitals'
+import reportWebVitals from './report-web-vitals'
 import App from './app'
 
-import './scss/index.scss'
+import './assets/scss/index.scss'
 
 const router = createRouter()
 

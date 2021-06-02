@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import LoginForm from '../../components/auth/loginForm'
-import RegisterForm from '../../components/auth/registerForm'
+import LoginForm from '../../components/auth/login-form'
+import RegisterForm from '../../components/auth/register-form'
 
 import './_index.scss'
 
@@ -10,10 +10,17 @@ function AuthPage () {
 
   return (
     <div className="page -auth">
-      <h1>Hi, I&apos;m your password manager.</h1>
-      {mode === 'register'
-        ? <RegisterForm onLoginShow={() => setMode('login')} />
-        : <LoginForm onRegisterShow={() => setMode('register')} /> }
+      <h1>
+        {mode === 'register'
+          ? <span>Let&apos;s create a new account:</span>
+          : <span>Hi, I&apos;m your password manager.</span> }
+      </h1>
+
+      <div className="container -narrow">
+        {mode === 'register'
+          ? <RegisterForm onLoginShow={() => setMode('login')} />
+          : <LoginForm onRegisterShow={() => setMode('register')} /> }
+      </div>
     </div>
   )
 }

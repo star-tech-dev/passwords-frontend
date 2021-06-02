@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
-import { checkUserSecurityCode, login as sendLoginRequest } from '../../store/auth/events'
-import { nextTick } from '../../helpers/nextTick'
+import { checkUserSecurityCode, login as sendLoginRequest } from '../../../store/auth/events'
+import { nextTick } from '../../../helpers/next-tick'
 
-import UIInput from '../ui/input'
+import UIInput from '../../ui/input'
+import UIButton from '../../ui/button'
+
+import './_index.scss'
 
 interface LoginFormOptions {
   onRegisterShow?: () => void
 }
 
-function LoginForm ({ onRegisterShow }: LoginFormOptions) {
+function Index ({ onRegisterShow }: LoginFormOptions) {
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const router = useRouter()
 
   const usernameField = React.createRef()
+  const passwordField = React.createRef()
+  const [isLoading, setIsLoading] = useState(false)
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault()
-    await sendLoginRequest({
+    setIsLoading(true)
+    const successResponse = await sendLoginRequest({
       username: loginUsername,
       password: loginPassword
-    })
-    await router.navigate('home')
-    checkUserSecurityCode()
+    }).then(() => true)
+      .catch(() => {
+        console.log('passwordField.current', passwordField.current);
+        (passwordField.current as any).focus();
+        (passwordField.current as any).select()
+        return false
+      })
+
+    setIsLoading(false)
+
+    if (successResponse) {
+      await router.navigate('home')
+      checkUserSecurityCode()
+    }
   }
 
   const goToRegister = (e: React.FormEvent) => {
@@ -46,11 +63,11 @@ function LoginForm ({ onRegisterShow }: LoginFormOptions) {
           <UIInput ref={usernameField} placeholder="Username" onChange={e => setLoginUsername(e.target.value)} />
         </div>
         <div>
-          <UIInput type="password" placeholder="Password" onChange={e => setLoginPassword(e.target.value)} />
+          <UIInput ref={passwordField} type="password" placeholder="Password" onChange={e => setLoginPassword(e.target.value)} />
         </div>
-        <div>
-          <UIButton></UIButton>
-          <button type="submit">Login</button>
+
+        <div className="button-block">
+          <UIButton type="submit" loading={isLoading} fullWidth={true}>Login</UIButton>
         </div>
         <div>
           <span>or </span>
@@ -61,4 +78,4 @@ function LoginForm ({ onRegisterShow }: LoginFormOptions) {
   )
 }
 
-export default LoginForm
+export default Index

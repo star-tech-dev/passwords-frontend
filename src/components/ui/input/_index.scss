@@ -1,3 +1,25 @@
+@import "../../../assets/scss/variables";
+
 .input.-component {
-  //
+  & > * {
+    width: 100%;
+    padding: 15px 20px;
+
+    font-family: $font-family-default;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: .1px;
+
+    border: 1px solid transparent;
+    border-radius: $border-radius-default;
+    box-shadow: $box-shadow-default;
+    transition: $transition-field;
+
+    color: $color-text-regular;
+
+    &:focus {
+      border-color: $color-border;
+      box-shadow: $box-shadow-default-highlight;
+    }
+  }
 }

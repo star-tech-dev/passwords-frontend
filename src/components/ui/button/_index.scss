@@ -1,3 +1,50 @@
+@import "../../../assets/scss/variables";
+
 .button.-component {
-  //
+  & > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 15px 24px 16px;
+    border: none;
+    border-radius: $border-radius-default;
+
+    font-family: $font-family-secondary;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: .2px;
+
+    background: $color-primary;
+    color: $color-text-white;
+    cursor: pointer;
+    transition: $transition-button;
+
+    &:hover {
+      background: $color-primary-highlight;
+    }
+
+    &:focus {
+      background: $color-primary-highlight;
+    }
+  }
+
+  .loader {
+    position: absolute;
+    color: $color-text-white;
+  }
+
+  &.-full-width {
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &.-loading {
+    & > * {
+      pointer-events: none;
+    }
+  }
 }

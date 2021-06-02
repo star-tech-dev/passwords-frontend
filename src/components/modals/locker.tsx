@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { nextTick } from '../../helpers/nextTick'
+import { nextTick } from '../../helpers/next-tick'
 import { logout } from '../../store/auth/events'
 import { closeModal } from '../../store/modals/events'
 import { unlock } from '../../store/locker/events'

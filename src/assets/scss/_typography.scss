@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+
+@include font-face('SF Pro Text', normal, $font-weight-regular, '../fonts/sf-pro-text/SFProText-Regular', 'SFProText-Regular')
+@include font-face('Gilroy', normal, $font-weight-semibold, '../fonts/gilroy/gilroy-semibold', 'Gilroy-SemiBold')
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: $color-text-dark;
+}
+
+h1, .h1 {
+  font-family: $font-family-secondary;
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+  font-weight: $font-weight-semibold;
+}

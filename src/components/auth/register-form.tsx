@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
 import { checkUserSecurityCode, register as sendRegisterRequest } from '../../store/auth/events'
-import { nextTick } from '../../helpers/nextTick'
+import { nextTick } from '../../helpers/next-tick'
+
+import UIInput from '../ui/input'
+import UIButton from '../ui/button'
 
 interface RegisterFormOptions {
   onLoginShow?: () => void
@@ -10,18 +13,16 @@ interface RegisterFormOptions {
 function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
   const [registerUsername, setRegisterUsername] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
+  const [registerEmail, setRegisterEmail] = useState('')
 
   const router = useRouter()
-
-  let usernameField = null as HTMLInputElement | null
-  const setUsernameFieldRef = (element: HTMLInputElement) => {
-    usernameField = element
-  }
+  const usernameField = React.createRef()
 
   const register = async (e: React.FormEvent) => {
     e.preventDefault()
     await sendRegisterRequest({
       username: registerUsername,
+      email: registerEmail,
       password: registerPassword
     }).then(async () => {
       await router.navigate('home')
@@ -38,7 +39,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
 
   useEffect(() => {
     nextTick(() => {
-      usernameField?.focus()
+      (usernameField.current as any).focus()
     })
   }, [])
 
@@ -46,13 +47,16 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
     <div className="component -register-form">
       <form onSubmit={register}>
         <div>
-          <input ref={setUsernameFieldRef} type="text" placeholder="Username" onChange={e => setRegisterUsername(e.target.value)} />
+          <UIInput ref={usernameField} placeholder="Username" onChange={e => setRegisterUsername(e.target.value)} />
         </div>
         <div>
-          <input type="text" placeholder="Password" onChange={e => setRegisterPassword(e.target.value)} />
+          <UIInput type="email" placeholder="Email" onChange={e => setRegisterEmail(e.target.value)} />
         </div>
         <div>
-          <button type="submit">Register</button>
+          <UIInput placeholder="Password" onChange={e => setRegisterPassword(e.target.value)} />
+        </div>
+        <div className="button-block">
+          <UIButton type="submit" fullWidth={true}>Create</UIButton>
         </div>
         <div>
           <span>or </span>

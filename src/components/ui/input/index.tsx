@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef } from 'react'
-import { nextTick } from '../../../helpers/nextTick'
+import { nextTick } from '../../../helpers/next-tick'
 
 import './_index.scss'
 
@@ -11,14 +11,21 @@ const Input = forwardRef((props: InputOptions, ref) => {
   }
 
   const innerRef = useRef(null)
-  function focus () {
+
+  const focus = () => {
     nextTick(() => {
       innerRef.current && (innerRef.current as HTMLInputElement | null)?.focus()
     })
   }
 
+  const select = () => {
+    nextTick(() => {
+      innerRef.current && (innerRef.current as HTMLInputElement | null)?.select()
+    })
+  }
+
   // @ts-ignore
-  ref.current = { focus }
+  ref.current = { focus, select }
 
   return (
     <div className="input -component">
