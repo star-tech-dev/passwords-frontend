@@ -47,4 +47,4 @@ jobs:
         port: ${{ secrets.DIGITAL_OCEAN_PORT }}
         key: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
         passphrase: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
-        script: /var/www/star-tech-dev/passwords-frontend/deploy.sh
+        script: "sh /var/www/star-tech-dev/passwords-frontend/deploy.sh"
