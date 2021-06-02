@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: MainCI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Run a one-line script 8
+      run: echo Hello, world!
+
+    - name: Copy fikillle via scp
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
+        USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+        PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
+        KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+      with:
+        source: "."
+        target: "/var/www/star-tech-dev/passwords-frontend"
+
+    - name: Executing remote  command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+        USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+        PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
+        KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+        script: cd /var/www/star-tech-dev/passwords-frontend; sh deploy.sh;
