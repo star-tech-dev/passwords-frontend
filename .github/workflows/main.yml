@@ -24,6 +24,7 @@ jobs:
         USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
         PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
         KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+        PASSPHRASE: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
       with:
         host: ${{ secrets.DIGITAL_OCEAN_HOST }}
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
@@ -41,6 +42,7 @@ jobs:
         USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
         PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
         KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+        PASSPHRASE: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
       with:
         host: ${{ secrets.DIGITAL_OCEAN_HOST }}
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
