@@ -36,6 +36,11 @@ jobs:
 
     - name: Executing remote ssh command
       uses: appleboy/ssh-action@master
+      env:
+        HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
+        USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+        PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
+        KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
       with:
         host: ${{ secrets.DIGITAL_OCEAN_HOST }}
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
