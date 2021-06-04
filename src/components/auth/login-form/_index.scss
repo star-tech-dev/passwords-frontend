@@ -1,13 +1,5 @@
 .component.-login-form,
 .component.-register-form {
-  form {
-    & > * {
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-    }
-  }
-
   .button-block {
     margin: 20px 0 20px;
   }

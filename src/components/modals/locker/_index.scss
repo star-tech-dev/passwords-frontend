@@ -1,0 +1,30 @@
+@import "src/assets/scss/variables";
+
+.component.modal.-locker {
+  form {
+    margin: 35px 0 30px;
+  }
+
+  .bottom {
+    font-size: 13px;
+    line-height: 16px;
+    color: $color-text-light;
+
+    .name {
+      max-width: 110px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    a {
+      color: $color-text-light;
+      font-weight: $font-weight-semibold;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}

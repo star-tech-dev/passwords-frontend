@@ -69,10 +69,6 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
     return res
   }
 
-  // const updateErrors = () => {
-  //   //
-  // }
-
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const errorsFound = validateForm()

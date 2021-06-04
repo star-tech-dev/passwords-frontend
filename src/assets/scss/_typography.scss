@@ -2,15 +2,25 @@
 @import "mixins";
 
 @include font-face('SF Pro Text', normal, $font-weight-regular, '../fonts/sf-pro-text/SFProText-Regular', 'SFProText-Regular')
+@include font-face('SF Pro Text', normal, $font-weight-medium, '../fonts/sf-pro-text/SFProText-Medium', 'SFProText-Medium')
+@include font-face('SF Pro Text', normal, $font-weight-semibold, '../fonts/sf-pro-text/SFProText-Semibold', 'SFProText-Semibold')
+
 @include font-face('Gilroy', normal, $font-weight-semibold, '../fonts/gilroy/gilroy-semibold', 'Gilroy-SemiBold')
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  color: $color-text-dark;
+  color: $color-text-regular;
 }
 
 h1, .h1 {
   font-family: $font-family-secondary;
   font-size: $font-size-h1;
   line-height: $line-height-h1;
+  font-weight: $font-weight-semibold;
+}
+
+h2, .h2 {
+  font-family: $font-family-secondary;
+  font-size: 22px;
+  line-height: 28px;
   font-weight: $font-weight-semibold;
 }

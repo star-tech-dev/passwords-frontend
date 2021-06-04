@@ -12,25 +12,49 @@ interface ModalWrapperProps {
   id: ModalName,
   children?: any,
   closable?: boolean,
-  heading?: any
+  heading?: any,
+  size?: 'default' | 'auto',
+  onOpen?: Function,
+  onClose?: Function
 }
 
-function ModalWrapper ({ id, children, closable = true, heading }: ModalWrapperProps) {
+function ModalWrapper (props: ModalWrapperProps) {
+  if (props.closable === undefined) {
+    props.closable = true
+  }
+
+  const [_mounted, _setMounted] = useState(false)
   const modals = useStore($modals)
   const [show, setShow] = useState(false)
+  const classList = `component modal -${props.id} -size-${props.size || 'default'}`
+
+  useEffect(() => {
+    _setMounted(true)
+  }, [])
 
   useEffect(() => {
     const unwatch = $modals.watch(modals => {
-      setShow(modals.includes(id))
+      setShow(modals.includes(props.id))
     })
     return () => {
       unwatch()
     }
   }, [modals])
 
+  useEffect(() => {
+    if (_mounted) {
+      if (show && props.onOpen) {
+        props.onOpen()
+      }
+      if (!show && props.onClose) {
+        props.onClose()
+      }
+    }
+  }, [show])
+
   const close = () => {
-    if (closable) {
-      closeModal(id)
+    if (props.closable) {
+      closeModal(props.id)
     }
   }
 
@@ -43,13 +67,15 @@ function ModalWrapper ({ id, children, closable = true, heading }: ModalWrapperP
 
   if (show) {
     return (
-      <div className="modal component" onClick={onParentClick}>
+      <div className={classList} onClick={onParentClick}>
         <dialog open className="dialog">
-          {closable && <div className="close" onClick={close}>
+          {props.closable && <div className="close" onClick={close}>
             <CrossIcon/>
           </div>}
-          <div className="head">{heading}</div>
-          <div className="body">{children}</div>
+          <div className="head">
+            <div className="h2 flex center">{props.heading}</div>
+          </div>
+          <div className="body">{props.children}</div>
         </dialog>
       </div>
     )

@@ -32,18 +32,21 @@ const Input = forwardRef((props: InputOptions, ref) => {
     })
   }
 
-  const update = () => {
-    // @ts-ignore
-    ref.current = { focus, select }
-    setLocalError(props.error)
-  }
-
   const onTooltipClick = (e: React.FormEvent) => {
     e.preventDefault()
     focus()
   }
 
+  const onInput = (e: React.FormEvent) => {
+    console.log('[ui input] onInput event')
+    if (props.onInput) {
+      props.onInput(e)
+    }
+    setLocalError('')
+  }
+
   useEffect(() => {
+    console.log('local error changed to', localError)
     if (localError) {
       if (iconError.current) {
         tippy(iconError.current, {
@@ -55,8 +58,19 @@ const Input = forwardRef((props: InputOptions, ref) => {
   }, [localError])
 
   useEffect(() => {
-    update()
+    // @ts-ignore
+    ref.current = { focus, select }
+    setLocalError(props.error)
+  }, [])
+
+  useEffect(() => {
+    console.log('< incoming props. error:', props.error)
   }, [props])
+
+  useEffect(() => {
+    console.log('< incoming error:', props.error)
+    setLocalError(props.error)
+  }, [props.error])
 
   return (
     <div className={classList}>
@@ -67,7 +81,11 @@ const Input = forwardRef((props: InputOptions, ref) => {
         </div>
           : null}
       </div>
-      <input {...props} ref={innerRef} type={props.type || 'text'} />
+      <input
+        {...props}
+        ref={innerRef}
+        type={props.type || 'text'}
+        onInput={(e) => onInput(e)} />
     </div>
   )
 })

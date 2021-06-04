@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 
 import LoaderRound from '../../loader/round'
 
@@ -6,7 +6,9 @@ import './_index.scss'
 
 interface ButtonOptions extends React.ButtonHTMLAttributes<any> {
   fullWidth?: boolean,
-  loading?: boolean
+  loading?: boolean,
+  size?: 'default' | 'small',
+  theme?: 'default' | 'ghost'
 }
 
 const Button = forwardRef((props: ButtonOptions, ref) => {
@@ -14,17 +16,25 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
     ref = useRef()
   }
 
-  const classList = `button -component ${props.fullWidth ? '-full-width' : ''} ${props.loading ? '-loading' : ''}`
+  const [buttonProps, setButtonProps] = useState({})
+  const classList = `button -component -theme-${props.theme || 'default'} -size-${props.size || 'default'} ${props.fullWidth ? '-full-width' : ''} ${props.loading ? '-loading' : ''}`
   const innerRef = useRef(null)
-  let buttonProps = {} as ButtonOptions
 
-  useEffect(() => {
+  const update = () => {
     // @ts-ignore
     ref.current = {}
 
-    buttonProps = { ...props }
-    delete buttonProps.fullWidth
-    delete buttonProps.loading
+    // eslint-disable-next-line no-new-object
+    const fieldProps = { ...props } as ButtonOptions
+    delete fieldProps.fullWidth
+    delete fieldProps.loading
+    delete fieldProps.size
+    delete fieldProps.theme
+    setButtonProps(fieldProps)
+  }
+
+  useEffect(() => {
+    update()
   }, [props])
 
   return (

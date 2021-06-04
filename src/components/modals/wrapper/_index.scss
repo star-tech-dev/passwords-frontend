@@ -1,3 +1,5 @@
+@import "src/assets/scss/variables";
+
 .modal.component {
   max-height: 100%;
 
@@ -28,9 +30,24 @@
     z-index: 1010;
     border: none;
     padding: 28px 32px 32px;
-    background: #fff;
+    background: $color-content-bg;
+    color: $color-text-regular;
     border-radius: 7px;
     display: block;
     margin-bottom: 40px;
+  }
+
+  .head {
+    margin-bottom: 10px;
+  }
+
+  &.-size {
+    &-default {}
+
+    &-auto {
+      dialog {
+        padding: 40px 60px 35px;
+      }
+    }
   }
 }

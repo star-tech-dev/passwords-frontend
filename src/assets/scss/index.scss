@@ -24,6 +24,7 @@ body {
 a {
   color: $color-primary;
   text-decoration: none;
+  transition: $transition-link;
 
   &:hover {
     text-decoration: underline;
@@ -41,32 +42,5 @@ a {
 
   &.-narrow {
     width: 330px;
-  }
-}
-
-[data-tippy-root] {
-  .tippy-box {
-    background: $color-text-dark;
-    transform: translate(12px, 0);
-    border-radius: $border-radius-default;
-    box-shadow: $box-shadow-default;
-  }
-
-  .tippy-content {
-    padding: 10px 15px;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .tippy-arrow {
-    width: 12px;
-    height: 12px;
-    margin-left: -14px;
-    color: $color-text-dark;
-
-    &:before {
-      bottom: -6px;
-      border-width: 6px 6px 0;
-    }
   }
 }

@@ -53,4 +53,4 @@ export const $auth = AuthDomain.store<AuthState>(initialState)
     return state
   })
 
-export default $auth
+export default { $auth }

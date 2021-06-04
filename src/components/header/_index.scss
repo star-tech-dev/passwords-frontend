@@ -1,7 +1,30 @@
-//@import "@/scss/variables";
+@import "../../assets/scss/variables";
 
-.Component.Header {
-  padding: 20px 0;
-  margin-bottom: 20px;
-  // background: $color-content-bg;
+.component.-header {
+  padding: 30px 0;
+  margin-bottom: 50px;
+
+  nav {
+    a {
+      color: $color-text-regular;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      &:hover,
+      &.active {
+        color: $color-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .right {
+    & > * {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
 }

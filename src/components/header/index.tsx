@@ -1,32 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router5'
-import { useStore } from 'effector-react'
 import { lock } from '../../store/locker/events'
-import { $auth as authStore } from '../../store/auth/store'
+
+import UIButton from '../ui/button'
+// import UserBar from '../user-bar'
+import IconLock from '../icons/lock'
 
 import './_index.scss'
 
 function Header () {
-  const $auth = useStore(authStore)
-  const user = $auth.user
-
   const lockApp = (e: React.FormEvent) => {
+    console.log('lockApp')
     e.preventDefault()
     lock()
   }
 
   return (
-    <header className="Header Component flex a-center j-between">
+    <header className="component -header flex a-center j-between">
       <nav>
         <Link routeName="home">Home</Link>
-        <Link routeName="auth">Auth</Link>
-        <Link routeName="profile">Profile</Link>
+        <Link routeName="profile">Account</Link>
+        {/* <Link routeName="about">About</Link> */}
+        <a href="https://github.com/star-tech-dev/passwords-frontend" target="_blank" rel="noreferrer">Github</a>
       </nav>
-      <div className="flex a-center">
-        <div>
-          <a href="#" onClick={lockApp}>lock</a>
-        </div>
-        <div>user: {user ? user.username : 'null'}</div>
+      <div className="right flex a-center">
+        <UIButton size="small" theme="ghost" onClick={lockApp}>
+          <IconLock />
+          <span>Lock app</span>
+        </UIButton>
+        {/* <UserBar /> */}
       </div>
     </header>
   )
