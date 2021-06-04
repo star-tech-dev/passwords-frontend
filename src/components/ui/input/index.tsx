@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import tippy from 'tippy.js'
 import { nextTick } from '../../../helpers/next-tick'
 
 import IconInfo from '../../icons/info'
@@ -16,6 +17,7 @@ const Input = forwardRef((props: InputOptions, ref) => {
 
   const [localError, setLocalError] = useState(props.error)
   const innerRef = useRef(null)
+  const iconError = React.useRef<HTMLInputElement>(null)
   const classList = `input -component ${props.error ? '-error' : ''}`
 
   const focus = () => {
@@ -30,19 +32,38 @@ const Input = forwardRef((props: InputOptions, ref) => {
     })
   }
 
-  useEffect(() => {
+  const update = () => {
     // @ts-ignore
     ref.current = { focus, select }
-    console.log('setting by props', props.error)
     setLocalError(props.error)
+  }
+
+  const onTooltipClick = (e: React.FormEvent) => {
+    e.preventDefault()
+    focus()
+  }
+
+  useEffect(() => {
+    if (localError) {
+      if (iconError.current) {
+        tippy(iconError.current, {
+          placement: 'top-end',
+          content: localError
+        })
+      }
+    }
+  }, [localError])
+
+  useEffect(() => {
+    update()
   }, [props])
 
   return (
     <div className={classList}>
       <div className="buttons">
         {localError
-          ? <div className="icon-error">
-          <IconInfo title={localError} />
+          ? <div ref={iconError} className="icon-error" onClick={e => onTooltipClick(e)}>
+          <IconInfo />
         </div>
           : null}
       </div>

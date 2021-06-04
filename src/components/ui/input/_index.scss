@@ -35,5 +35,13 @@
 
   .icon-error {
     color: $color-danger;
+    cursor: text;
+  }
+
+  &.-disabled,
+  &.-readonly {
+    .icon-error {
+      cursor: default;
+    }
   }
 }

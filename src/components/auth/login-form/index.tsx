@@ -51,7 +51,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
     if (!loginUsername.length) {
       res.push({
         field: 'username',
-        message: 'The field cannot be empty'
+        message: 'This field is required'
       });
       (usernameField.current as any).focus()
       return res
@@ -59,7 +59,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
     if (!loginPassword.length) {
       res.push({
         field: 'password',
-        message: 'The field cannot be empty'
+        message: 'This field is required'
       })
       if (loginUsername.length) {
         (passwordField.current as any).focus()
