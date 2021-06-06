@@ -38,19 +38,14 @@ function UnlockPage () {
 
     _setLoading(true)
     await unlock(code).catch(e => {
-      console.log('e.response.data.message', e.response.data.message)
+      setCodeFieldError('')
       setCodeFieldError(e.response.data.message)
-      console.log('codeFieldError', codeFieldError)
       nextTick(() => {
         (codeField.current as any)?.focus()
       })
     })
-    _setLoading(false)
-  }
 
-  const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setCodeFieldError('')
-    setCode(e.target.value)
+    _setLoading(false)
   }
 
   useEffect(() => {
@@ -67,9 +62,9 @@ function UnlockPage () {
       <div className="flex column center">
         <div>Enter your security code to unlock the app:</div>
 
-        <form className="flex column" onSubmit={(e) => onSubmit(e)}>
+        <form className="flex column" onSubmit={onSubmit}>
           <div>
-            <UIInput ref={codeField} type="password" error={codeFieldError} placeholder="your_security_code" value={code} onInput={onInput} />
+            <UIInput ref={codeField} type="password" error={codeFieldError} placeholder="your_security_code" value={code} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)} />
           </div>
           <div>
             <UIButton type="submit" loading={_loading} fullWidth={true}>Unlock</UIButton>

@@ -28,8 +28,6 @@ export const $locker = createStore(initialState)
     const routerState = router.getState()
     const isAuthed = !!$auth.getState().user
 
-    console.log('@@ checkIsAppLocked', routerState)
-
     if (isAuthed && routerState) {
       if (state.isLocked && routerState.name !== 'unlock') {
         router.navigate('unlock')
