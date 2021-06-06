@@ -8,10 +8,7 @@ const DefaultLayout: React.FC = ({ children }) => {
     <div className="layout -default">
       <div className="container">
         <HeaderComponent />
-
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </div>
     </div>
   )

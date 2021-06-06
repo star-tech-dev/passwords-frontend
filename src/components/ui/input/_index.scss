@@ -37,7 +37,21 @@
 
   .icon-error {
     color: $color-danger;
-    cursor: text;
+    cursor: none;
+  }
+
+  &.-theme {
+    &-default {}
+
+    &-clean {
+      input {
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+      }
+    }
   }
 
   &.-disabled,

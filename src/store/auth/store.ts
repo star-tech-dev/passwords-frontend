@@ -40,12 +40,7 @@ export const $auth = AuthDomain.store<AuthState>(initialState)
     return state
   })
   .on(checkUserSecurityCode, (state) => {
-    if (!state.user) {
-      return state
-    }
-    if (!state.user.hasSecurityCode) {
-      openModal('set_security_code')
-    }
+    state.user && !state.user.hasSecurityCode && openModal('set_security_code')
     return state
   })
   .on(setUserSecurityCode, (state) => {

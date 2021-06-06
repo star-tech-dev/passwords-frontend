@@ -1,79 +1,69 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
-import { logout } from '../../../store/auth/events'
-import { closeModal } from '../../../store/modals/events'
-import { unlock } from '../../../store/locker/events'
-import { $auth } from '../../../store/auth/store'
+import { useRouter } from 'react-router5'
+import { nextTick } from '../../helpers/next-tick'
+import { unlock } from '../../store/locker/events'
+import { logout as _logout } from '../../store/auth/events'
+import { $auth } from '../../store/auth/store'
 
-import ModalWrapper from '../wrapper'
-import UIInput from '../../ui/input'
-import UIButton from '../../ui/button'
+import UIInput from '../../components/ui/input'
+import UIButton from '../../components/ui/button'
 
 import './_index.scss'
-import { nextTick } from '../../../helpers/next-tick'
 
-function LockerModal () {
+function UnlockPage () {
   const [_loading, _setLoading] = useState(false)
-  const id = 'locker'
-  const user = useStore($auth).user
   const [code, setCode] = useState('')
   const [codeFieldError, setCodeFieldError] = useState('')
-
+  const user = useStore($auth).user
+  const router = useRouter()
   const codeField = React.createRef()
 
-  const _logout = async (e: React.FormEvent) => {
+  const logout = async (e: React.FormEvent) => {
     e.preventDefault()
-    await logout()
-    closeModal(id)
+    await _logout()
+    router.navigate('auth')
   }
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('onsubmit')
-    // console.log('setCodeFieldError', setCodeFieldError)
-    // setCodeFieldError('')
-    // console.log('current error (must be asd):', codeFieldError)
 
     if (!code.length) {
-      console.log('set error about length')
       setCodeFieldError('This field is required')
+      nextTick(() => {
+        (codeField.current as any)?.focus()
+      })
       return
     }
 
     _setLoading(true)
     await unlock(code).catch(e => {
+      console.log('e.response.data.message', e.response.data.message)
       setCodeFieldError(e.response.data.message)
+      console.log('codeFieldError', codeFieldError)
+      nextTick(() => {
+        (codeField.current as any)?.focus()
+      })
     })
     _setLoading(false)
   }
 
   const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCodeFieldError('')
+    // setCodeFieldError('')
     setCode(e.target.value)
   }
 
-  const onOpen = () => {
+  useEffect(() => {
     nextTick(() => {
       (codeField.current as any)?.focus()
     })
-  }
-
-  const onClose = () => {
-    setCode('')
-  }
-
-  useEffect(() => {
-    console.log('codeFieldError changed to:', codeFieldError)
-  }, [codeFieldError])
+    return () => {}
+  }, [])
 
   return (
-    <ModalWrapper
-      id={id}
-      size="auto"
-      heading="App is locked!"
-      closable={false}
-      onOpen={onOpen}
-      onClose={onClose}>
+    <div className="page -unlock">
+      <h1>App is locked!</h1>
+
       <div className="flex column center">
         <div>Enter your security code to unlock the app:</div>
 
@@ -90,12 +80,12 @@ function LockerModal () {
           <div>You signed as&nbsp;</div>
           <div className="name">{user?.username}</div>
           <div>.&nbsp;</div>
-          <a href="#" onClick={_logout}>logout</a>
+          <a href="#" onClick={logout}>logout</a>
           <div>.</div>
         </div>
       </div>
-    </ModalWrapper>
+    </div>
   )
 }
 
-export default LockerModal
+export default UnlockPage

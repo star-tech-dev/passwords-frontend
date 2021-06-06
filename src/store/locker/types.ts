@@ -1,5 +1,6 @@
 export interface State {
-  isLocked: boolean
+  isLocked: boolean,
+  lastPath: string | null
 }
 
 export type SecurityCode = string

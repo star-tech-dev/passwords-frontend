@@ -4,11 +4,12 @@ import { RouterProvider } from 'react-router5'
 import { configureRouter as createRouter } from './router'
 import { setMounted } from './store/app/events'
 // import reportWebVitals from './report-web-vitals'
+
 import App from './app'
 
 import './assets/scss/index.scss'
 
-const router = createRouter()
+export const router = createRouter()
 
 ReactDOM.render(
   <RouterProvider router={router}>

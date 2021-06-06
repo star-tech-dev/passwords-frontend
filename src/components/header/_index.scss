@@ -21,9 +21,13 @@
   }
 
   .right {
+    & > a {
+      text-decoration: none;
+    }
+
     & > * {
       &:not(:last-child) {
-        margin-right: 20px;
+        margin-right: 15px;
       }
     }
   }

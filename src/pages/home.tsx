@@ -1,24 +1,28 @@
 import React, { useEffect } from 'react'
-import { useRouter } from 'react-router5'
-import { useStore } from 'effector-react'
-import { $auth } from '../store/auth/store'
+import { nextTick } from '../helpers/next-tick'
 
 import Items from '../components/items'
+import SearchBar from '../components/search-bar'
 
 function HomePage () {
-  const user = useStore($auth).user
-  const router = useRouter()
+  const searchField = React.createRef()
 
   useEffect(() => {
-    if (!user) {
-      router.navigate('auth')
-    }
-  }, [user])
+    nextTick(() => {
+      (searchField.current as any)?.focus()
+    })
+  }, [])
 
   return (
     <div className="page -home">
       <div>
-        <div>Items</div>
+        <div className="flex a-center j-between">
+          <div>
+            <SearchBar ref={searchField} />
+          </div>
+          <div>sort by:</div>
+        </div>
+
         <div>
           <Items />
         </div>

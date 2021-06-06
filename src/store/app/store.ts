@@ -12,4 +12,4 @@ export const $app = AppDomain.store<AppState>(initialState)
     return state
   })
 
-export default $app
+export default { $app }

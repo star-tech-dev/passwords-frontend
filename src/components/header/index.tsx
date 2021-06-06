@@ -3,14 +3,13 @@ import { Link } from 'react-router5'
 import { lock } from '../../store/locker/events'
 
 import UIButton from '../ui/button'
-// import UserBar from '../user-bar'
 import IconLock from '../icons/lock'
+import IconAdd from '../icons/add'
 
 import './_index.scss'
 
 function Header () {
   const lockApp = (e: React.FormEvent) => {
-    console.log('lockApp')
     e.preventDefault()
     lock()
   }
@@ -28,7 +27,12 @@ function Header () {
           <IconLock />
           <span>Lock app</span>
         </UIButton>
-        {/* <UserBar /> */}
+        <Link routeName="add">
+          <UIButton size="small">
+            <IconAdd />
+            <span>New item</span>
+          </UIButton>
+        </Link>
       </div>
     </header>
   )

@@ -16,6 +16,7 @@
     font-size: 14px;
     line-height: 17px;
     letter-spacing: .2px;
+    text-decoration: none !important;
 
     background: $color-primary;
     color: $color-text-white;
@@ -45,7 +46,7 @@
 
     &-ghost {
       & > * {
-        background: rgba($color-primary, .05);
+        background: rgba($color-primary, .06);
         //background: transparent;
         color: $color-primary;
 
@@ -61,10 +62,14 @@
 
     &-small {
       & > * {
-        padding: 11px 18px 12px;
+        padding: 11px 16px 12px;
         font-size: 13px;
         line-height: 16px;
         min-height: 40px;
+
+        .icon {
+          margin-right: 6px;
+        }
       }
     }
   }

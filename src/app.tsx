@@ -14,6 +14,7 @@ import SimpleLayout from './layouts/simple'
 import HomePage from './pages/home'
 import ProfilePage from './pages/profile'
 import AuthPage from './pages/auth'
+import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/add-item'
 import ItemPage from './pages/item'
 import NotFound from './pages/not-found'
@@ -27,7 +28,6 @@ function App () {
   const locker = useStore($locker)
 
   useEffect(() => {
-    console.log('[app] mounted')
     const unwatchMounted = setMounted.watch(mounted => {
       if (mounted) {
         /**
@@ -51,6 +51,8 @@ function App () {
         return <DefaultLayout><HomePage /></DefaultLayout>
       case 'auth':
         return <SimpleLayout><AuthPage /></SimpleLayout>
+      case 'unlock':
+        return <SimpleLayout><UnlockPage /></SimpleLayout>
       case 'profile':
         return <DefaultLayout><ProfilePage /></DefaultLayout>
       case 'add':

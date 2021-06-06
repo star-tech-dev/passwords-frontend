@@ -27,7 +27,7 @@ export const login = AuthDomain.effect<LoginPayload, LoginResponse>().use((paylo
 export const logout = AuthDomain.effect<void, void>().use(() => {
   return sendRequest({
     url: '/logout'
-  }).catch(() => null)
+  })
 })
 
 export const checkAuth = AuthDomain.effect<void, AuthCheckResponse>().use(() => {

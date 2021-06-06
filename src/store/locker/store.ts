@@ -1,10 +1,12 @@
 import { createStore } from 'effector'
-import { closeModal, openModal } from '../modals/events'
 import { checkIsAppLocked, lock, setIsAppLocked, unlock } from './events'
+import { $auth } from '../auth/store'
+import { router } from '../../index'
 import { State } from './types'
 
 const initialState: State = {
-  isLocked: false
+  isLocked: false,
+  lastPath: null
 }
 
 export const $locker = createStore(initialState)
@@ -23,15 +25,28 @@ export const $locker = createStore(initialState)
     return state
   })
   .on(checkIsAppLocked, state => {
-    state.isLocked
-      ? openModal('locker')
-      : closeModal('locker')
+    const routerState = router.getState()
+    const isAuthed = !!$auth.getState().user
+
+    console.log('@@ checkIsAppLocked', routerState)
+
+    if (isAuthed && routerState) {
+      if (state.isLocked && routerState.name !== 'unlock') {
+        router.navigate('unlock')
+      }
+      if (!state.isLocked && routerState.name === 'unlock') {
+        router.navigate('home')
+        // TODO: last url
+      }
+    }
     return state
   })
   .on(setIsAppLocked, (state, value) => {
-    state.isLocked = value
     checkIsAppLocked()
-    return state
+    return {
+      ...state,
+      isLocked: value
+    }
   })
 
 export default $locker

@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { openModal } from '../store/modals/events'
+import { setIsAppLocked } from '../store/locker/events'
 
 export const sendRequest = (options: AxiosRequestConfig) => {
   const mergedOptions = {
@@ -19,7 +19,7 @@ export const sendRequest = (options: AxiosRequestConfig) => {
     .then(res => res.data)
     .catch(err => {
       if (err.response.status === 423) {
-        openModal('locker')
+        setIsAppLocked(true)
       }
       throw err
     })

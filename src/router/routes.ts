@@ -1,12 +1,18 @@
 export default [
   {
     name: 'home',
-    path: '/'
+    path: '/',
+    private: true
   },
   {
     name: 'auth',
     path: '/auth',
     forGuests: true
+  },
+  {
+    name: 'unlock',
+    path: '/unlock',
+    private: true
   },
   {
     name: 'item',

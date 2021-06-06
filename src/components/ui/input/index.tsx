@@ -7,10 +7,12 @@ import IconInfo from '../../icons/info'
 import './_index.scss'
 
 interface InputOptions extends React.InputHTMLAttributes<any> {
+  theme?: 'default' | 'clean',
+  model?: any,
   error?: any
 }
 
-const Input = forwardRef((props: InputOptions, ref) => {
+const Input = forwardRef((props: InputOptions, ref: any) => {
   if (!ref) {
     ref = useRef()
   }
@@ -18,7 +20,7 @@ const Input = forwardRef((props: InputOptions, ref) => {
   const [localError, setLocalError] = useState(props.error)
   const innerRef = useRef(null)
   const iconError = React.useRef<HTMLInputElement>(null)
-  const classList = `input -component ${props.error ? '-error' : ''}`
+  const classList = `input -component -theme-${props.theme || 'default'} ${props.error ? '-error' : ''}`
 
   const focus = () => {
     nextTick(() => {
@@ -38,7 +40,6 @@ const Input = forwardRef((props: InputOptions, ref) => {
   }
 
   const onInput = (e: React.FormEvent) => {
-    console.log('[ui input] onInput event')
     if (props.onInput) {
       props.onInput(e)
     }
@@ -46,7 +47,6 @@ const Input = forwardRef((props: InputOptions, ref) => {
   }
 
   useEffect(() => {
-    console.log('local error changed to', localError)
     if (localError) {
       if (iconError.current) {
         tippy(iconError.current, {
@@ -58,17 +58,14 @@ const Input = forwardRef((props: InputOptions, ref) => {
   }, [localError])
 
   useEffect(() => {
-    // @ts-ignore
-    ref.current = { focus, select }
     setLocalError(props.error)
   }, [])
 
   useEffect(() => {
-    console.log('< incoming props. error:', props.error)
-  }, [props])
+    ref.current = { focus, select }
+  }, [ref])
 
   useEffect(() => {
-    console.log('< incoming error:', props.error)
     setLocalError(props.error)
   }, [props.error])
 

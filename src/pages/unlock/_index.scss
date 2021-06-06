@@ -1,6 +1,16 @@
 @import "src/assets/scss/variables";
 
-.component.modal.-locker {
+.page.-unlock {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .subheading {
+    margin-bottom: 10px;
+  }
+
   form {
     margin: 35px 0 30px;
   }

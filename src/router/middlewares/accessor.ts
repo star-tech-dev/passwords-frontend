@@ -3,13 +3,11 @@ import routes from '../routes'
 import { State } from 'router5/dist/types/base'
 
 function showOnlyForGuests (): boolean {
-  const user = $auth.getState().user
-  return !user
+  return !$auth.getState().user
 }
 
 function showOnlyForAuthed (): boolean {
-  const user = $auth.getState().user
-  return !!user
+  return !!$auth.getState().user
 }
 
 const canActivate = (routeName: string): boolean => {
@@ -28,9 +26,10 @@ const canActivate = (routeName: string): boolean => {
 
 export const accessor = (router: any) => (toState: State, fromState: State, done: any) => {
   if (!canActivate(toState.name)) {
-    return router.cancel()
+    // redirecting to /auth
+    return router.navigate('auth')
   }
   done()
 }
 
-export default { accessor }
+export default accessor
