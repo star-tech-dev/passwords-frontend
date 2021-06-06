@@ -30,6 +30,26 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     })
   }
 
+  const onKeyUp = (e: React.KeyboardEvent) => {
+    let watchFocus = true
+    let target = document.activeElement
+    while (target) {
+      if (target.classList.contains('-search-bar')) {
+        watchFocus = false
+        target = null
+        return
+      }
+      target = target.parentElement
+    }
+
+    if (watchFocus && /\w/.test(e.key) && e.key.length === 1) {
+      setQuery(e.key)
+      nextTick(() => {
+        (innerRef.current as any)?.focus()
+      })
+    }
+  }
+
   useEffect(() => {
     clearTimeout(_timeout)
     _setTimeout(null)
@@ -44,6 +64,15 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
       focus: (innerRef.current as any)?.focus
     }
   }, [ref])
+
+  useEffect(() => {
+    // @ts-ignore
+    document.addEventListener('keyup', onKeyUp)
+    return () => {
+      // @ts-ignore
+      document.removeEventListener('keyup', onKeyUp)
+    }
+  }, [])
 
   return (
     <div className="component -search-bar">
