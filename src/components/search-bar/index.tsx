@@ -1,15 +1,33 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import { nextTick } from '../../helpers/next-tick'
+
+import UIInput from '../ui/input'
+import IconSearch from '../icons/search'
+import IconCross from '../icons/cross'
 
 import './_index.scss'
-import UIInput from '../ui/input'
 
-const SearchBar = forwardRef((props, ref: any) => {
+interface SearchBarOptions {
+  onChange?: Function
+}
+
+const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
+  const delay = 300
   const [_timeout, _setTimeout] = useState<any>(null)
   const [query, setQuery] = useState('')
   const innerRef = useRef(null)
 
   const filterItems = () => {
-    // console.log('filterItems')
+    if (props.onChange) {
+      props.onChange(query)
+    }
+  }
+
+  const clear = () => {
+    setQuery('')
+    nextTick(() => {
+      (innerRef.current as any)?.focus()
+    })
   }
 
   useEffect(() => {
@@ -17,7 +35,7 @@ const SearchBar = forwardRef((props, ref: any) => {
     _setTimeout(null)
 
     query
-      ? _setTimeout(setTimeout(filterItems, 1000))
+      ? _setTimeout(setTimeout(filterItems, delay))
       : filterItems()
   }, [query])
 
@@ -29,6 +47,14 @@ const SearchBar = forwardRef((props, ref: any) => {
 
   return (
     <div className="component -search-bar">
+      <div className="icon-parent flex center">
+        {query
+          ? <div className="clear flex center" onClick={clear}>
+            <IconCross />
+          </div>
+          : <IconSearch/>}
+      </div>
+
       <UIInput
         ref={innerRef}
         value={query}

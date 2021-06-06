@@ -1,0 +1,30 @@
+@import "src/assets/scss/variables";
+
+.component.-item-field {
+  .label {
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-text-light;
+    margin-bottom: 4px;
+  }
+
+  .field {
+    position: relative;
+    width: 100%;
+  }
+
+  input {
+    padding-right: 56px !important;
+    cursor: pointer;
+    width: 100%;
+    min-width: auto;
+  }
+
+  .icons {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    z-index: 1;
+    color: $color-text-light;
+  }
+}

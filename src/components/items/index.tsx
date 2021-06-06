@@ -7,12 +7,25 @@ import Item from '../item'
 
 import './_index.scss'
 
-function Items () {
+interface ItemsProps {
+  searchQuery?: string
+}
+
+function Items (props: ItemsProps) {
   const items = useStore($items)
 
-  const list = () => items.map(item => {
-    return <Item data={item} key={item._id} />
-  })
+  const list = () => {
+    let arr = items
+    if (props.searchQuery) {
+      arr = items.filter(item => {
+        const str = `${item.name} ${item.url} ${item.username} ${item.note}`
+        return str.includes(props.searchQuery as string)
+      })
+    }
+    return arr.map(item => {
+      return <Item data={item} mode={arr.length < 3 ? 'large' : 'compact'} key={item._id} />
+    })
+  }
 
   const onMounted = async () => {
     await getItems()

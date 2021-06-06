@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { nextTick } from '../helpers/next-tick'
 
 import Items from '../components/items'
 import SearchBar from '../components/search-bar'
 
 function HomePage () {
+  const [searchQuery, setSearchQuery] = useState('')
   const searchField = React.createRef()
 
   useEffect(() => {
@@ -18,13 +19,13 @@ function HomePage () {
       <div>
         <div className="flex a-center j-between">
           <div>
-            <SearchBar ref={searchField} />
+            <SearchBar ref={searchField} onChange={(query: string) => setSearchQuery(query)} />
           </div>
-          <div>sort by:</div>
+          <div>sort by: default</div>
         </div>
 
         <div>
-          <Items />
+          <Items searchQuery={searchQuery} />
         </div>
       </div>
     </div>

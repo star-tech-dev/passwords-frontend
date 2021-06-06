@@ -4,8 +4,11 @@
   padding: 12px 16px;
   background: $color-content-bg;
   border-radius: $border-radius-default;
-  cursor: pointer;
   transition: $transition-item;
+
+  .head {
+    cursor: pointer;
+  }
 
   .image {
     width: 40px;
@@ -31,7 +34,23 @@
     line-height: 14px;
   }
 
+  .fields {
+    margin-top: 30px;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 18px;
+      }
+    }
+  }
+
   &:hover {
     box-shadow: $box-shadow-default;
+  }
+
+  &.-mode {
+    &-large {
+      padding: 22px 26px;
+    }
   }
 }
