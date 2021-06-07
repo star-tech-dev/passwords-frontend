@@ -1,4 +1,5 @@
-import React, { InputHTMLAttributes, useState } from 'react'
+import React, { InputHTMLAttributes, useEffect, useState } from 'react'
+import tippy from 'tippy.js'
 import UIInput from '../../ui/input'
 import IconEye from '../../icons/eye'
 
@@ -12,7 +13,9 @@ interface ItemFieldProps extends InputHTMLAttributes<any> {
 function ItemField (props: ItemFieldProps) {
   const [fieldType, setFieldType] = useState(props.type)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const id = Math.random().toFixed(10).slice(2)
   const fieldRef = React.useRef()
+  let tooltip = null as any
 
   const select = () => {
     (fieldRef.current as any).focus();
@@ -29,10 +32,38 @@ function ItemField (props: ItemFieldProps) {
     }
   }
 
+  const copy = () => {
+    navigator.clipboard.writeText(props.value)
+    setTimeout(() => {
+      tooltip.show()
+    }, 100)
+    setTimeout(() => {
+      tooltip.hide()
+    }, 1600)
+  }
+
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    select()
+    copy()
+  }
+
+  useEffect(() => {
+    tooltip = tippy(`#item_field_${id}`, {
+      trigger: 'manual',
+      content: 'Copied',
+      placement: 'left',
+      animation: 'perspective-subtle',
+      theme: 'small',
+      duration: 200
+    })
+    tooltip = tooltip[0]
+  }, [])
+
   return (
     <div className="component -item-field">
       <div className="flex column a-start">
-        <div className="label" onClick={select}>
+        <div className="label" onClick={onClick}>
           {props.name}
         </div>
 
@@ -42,7 +73,9 @@ function ItemField (props: ItemFieldProps) {
               <IconEye />
             </div>}
           </div>
-          <UIInput ref={fieldRef} {...props} type={fieldType} theme="clean" onClick={select} />
+          <div id={`item_field_${id}`}>
+            <UIInput ref={fieldRef} {...props} type={fieldType} theme="clean" onClick={onClick} />
+          </div>
         </div>
       </div>
     </div>

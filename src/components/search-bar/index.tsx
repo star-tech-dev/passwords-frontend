@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import { nextTick } from '../../helpers/next-tick'
+import { itemsFiltered } from '../../store/app/events'
 
 import UIInput from '../ui/input'
 import IconSearch from '../icons/search'
@@ -20,6 +21,7 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
   const filterItems = () => {
     if (props.onChange) {
       props.onChange(query)
+      itemsFiltered()
     }
   }
 
@@ -43,10 +45,18 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     }
 
     if (watchFocus && /\w/.test(e.key) && e.key.length === 1) {
-      setQuery(e.key)
+      if (!query.length) {
+        setQuery(e.key)
+      }
       nextTick(() => {
         (innerRef.current as any)?.focus()
       })
+    }
+  }
+
+  const onFieldKeyUp = (e: React.KeyboardEvent) => {
+    if (e.keyCode === 27) { // escape
+      setQuery('')
     }
   }
 
@@ -68,9 +78,14 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
   useEffect(() => {
     // @ts-ignore
     document.addEventListener('keyup', onKeyUp)
+    const field = document.querySelector('.component.-search-bar input') as HTMLElement
+    // @ts-ignore
+    field.addEventListener('keyup', onFieldKeyUp)
     return () => {
       // @ts-ignore
       document.removeEventListener('keyup', onKeyUp)
+      // @ts-ignore
+      field.removeEventListener('keyup', onFieldKeyUp)
     }
   }, [])
 

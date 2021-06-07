@@ -60,13 +60,6 @@ form {
 [data-tippy-root] {
   z-index: 10001 !important;
 
-  .tippy-box {
-    background: $color-text-dark;
-    transform: translate(12px, 0);
-    border-radius: $border-radius-default;
-    box-shadow: $box-shadow-default;
-  }
-
   .tippy-content {
     padding: 10px 15px;
     font-size: 12px;
@@ -76,12 +69,60 @@ form {
   .tippy-arrow {
     width: 12px;
     height: 12px;
-    margin-left: -14px;
     color: $color-text-dark;
+  }
 
-    &:before {
-      bottom: -6px;
-      border-width: 6px 6px 0;
+  .tippy-box {
+    background: $color-text-dark;
+    border-radius: $border-radius-default;
+    box-shadow: $box-shadow-default;
+
+    &[data-placement="top-end"] {
+      transform: translate(12px, 0);
+
+      .tippy-arrow {
+        margin-left: -12px;
+
+        &:before {
+          bottom: -6px;
+          border-width: 6px 6px 0;
+        }
+      }
+    }
+
+    &[data-placement="left"] {
+      .tippy-arrow {
+        &:before {
+          border-width: 6px 6px 0 !important;
+          transform: rotate(225deg);
+          right: -14px !important;
+          bottom: 0px !important;
+        }
+      }
+    }
+
+    //&[data-placement="top-start"] {
+    //  .tippy-arrow {
+    //    transform: translate3d(36px, 0px, 0px) !important;
+    //    margin-left: -10px;
+    //
+    //    &:before {}
+    //  }
+    //}
+
+    &[data-theme="small"] {
+      border-radius: $border-radius-default;
+
+      .tippy-content {
+        padding: 8px 12px;
+      }
+
+      .tippy-arrow {
+        &:before {
+          border-width: 5px 6px 0;
+          bottom: -5px;
+        }
+      }
     }
   }
 }
