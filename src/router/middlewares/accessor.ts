@@ -26,8 +26,8 @@ const canActivate = (routeName: string): boolean => {
 
 export const accessor = (router: any) => (toState: State, fromState: State, done: any) => {
   if (!canActivate(toState.name)) {
-    // redirecting to /auth
-    return router.navigate('auth')
+    // redirecting from unavailable pages to default
+    return router.navigate($auth.getState().user ? 'home' : 'auth')
   }
   done()
 }

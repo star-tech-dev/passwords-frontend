@@ -18,7 +18,7 @@ export const sendRequest = (options: AxiosRequestConfig) => {
   return axios(mergedOptions)
     .then(res => res.data)
     .catch(err => {
-      if (err.response.status === 423) {
+      if (err?.response?.status === 423) {
         setIsAppLocked(true)
       }
       throw err

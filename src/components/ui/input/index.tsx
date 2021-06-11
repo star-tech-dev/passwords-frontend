@@ -9,7 +9,8 @@ import './_index.scss'
 interface InputOptions extends React.InputHTMLAttributes<any> {
   theme?: 'default' | 'clean',
   model?: any,
-  error?: any
+  error?: any,
+  beforeInput?: Function
 }
 
 const Input = forwardRef((props: InputOptions, ref: any) => {
@@ -17,6 +18,9 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     ref = useRef()
   }
 
+  const [inputProps, setInputProps] = useState<InputOptions>({
+    value: ''
+  })
   const [localError, setLocalError] = useState(props.error)
   const innerRef = useRef(null)
   const iconError = React.useRef<HTMLInputElement>(null)
@@ -40,10 +44,20 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   }
 
   const onInput = (e: React.FormEvent) => {
+    if (props.beforeInput) {
+      props.beforeInput(e)
+    }
+
     if (props.onInput) {
       props.onInput(e)
     }
     setLocalError('')
+  }
+
+  const update = () => {
+    const obj = { ...props }
+    delete obj.beforeInput
+    setInputProps(obj)
   }
 
   useEffect(() => {
@@ -59,11 +73,18 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
 
   useEffect(() => {
     setLocalError(props.error)
+    update()
   }, [])
 
   useEffect(() => {
     ref.current = { focus, select }
   }, [ref])
+
+  useEffect(() => {
+    // inputProps = { ...props }
+    update()
+    // inputProps = inputProps
+  }, [props])
 
   useEffect(() => {
     setLocalError(props.error)
@@ -79,7 +100,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
           : null}
       </div>
       <input
-        {...props}
+        {...inputProps}
         ref={innerRef}
         type={props.type || 'text'}
         onInput={(e) => onInput(e)} />

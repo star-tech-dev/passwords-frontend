@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useRouter } from 'react-router5'
 import { $auth } from '../store/auth/store'
 import { logout as sendLogoutRequest } from '../store/auth/events'
-import { useRouter } from 'react-router5'
 import { useStore } from 'effector-react'
 
 function ProfilePage () {
   const router = useRouter()
   const user = useStore($auth).user
 
-  const redirect = () => {
-    router.navigate('home')
-  }
-
   const logout = async () => {
     await sendLogoutRequest()
-    redirect()
+    router.navigate('auth')
   }
-
-  useEffect(() => {
-    if (!user) {
-      redirect()
-    }
-  }, [user])
 
   if (user) {
     return (

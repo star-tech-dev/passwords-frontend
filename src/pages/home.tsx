@@ -12,6 +12,7 @@ function HomePage () {
     nextTick(() => {
       (searchField.current as any)?.focus()
     })
+    return () => {}
   }, [])
 
   return (

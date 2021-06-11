@@ -35,6 +35,9 @@ function Items (props: ItemsProps) {
 
   const createMasonry = () => {
     const gridElement = document.querySelector('.-item-list .grid')
+    if (!gridElement) {
+      return
+    }
     msnry = new Masonry(gridElement, {
       itemSelector: '.-item',
       columnWidth: 330,
