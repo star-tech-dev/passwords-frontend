@@ -35,10 +35,10 @@ function ItemField (props: ItemFieldProps) {
   const copy = () => {
     navigator.clipboard.writeText(props.value)
     setTimeout(() => {
-      tooltip.show()
+      tooltip?.show()
     }, 100)
     setTimeout(() => {
-      tooltip.hide()
+      tooltip?.hide()
     }, 1600)
   }
 

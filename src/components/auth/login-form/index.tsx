@@ -114,6 +114,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
           <UIInput
             ref={usernameField}
             placeholder="Username"
+            value={loginUsername}
             error={usernameError}
             onInput={() => setUsernameError('')}
             onChange={e => setLoginUsername(e.target.value)}
@@ -124,6 +125,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
             ref={passwordField}
             type="password"
             placeholder="Password"
+            value={loginPassword}
             error={passwordError}
             onInput={() => setPasswordError('')}
             onChange={e => setLoginPassword(e.target.value)}
