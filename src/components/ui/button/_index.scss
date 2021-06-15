@@ -8,13 +8,14 @@
     justify-content: center;
 
     min-height: 48px;
-    padding: 15px 24px 16px;
+    padding: 11px 20px 12px;
     border: none;
     border-radius: $border-radius-default;
 
-    font-family: $font-family-secondary;
-    font-size: 14px;
-    line-height: 17px;
+    font-family: $font-family-default;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: $font-weight-medium;
     letter-spacing: .2px;
     text-decoration: none !important;
 
@@ -46,12 +47,11 @@
 
     &-ghost {
       & > * {
-        background: rgba($color-primary, .06);
-        //background: transparent;
-        color: $color-primary;
+        background: $color-page-bg-highlight;
+        color: $color-text-regular;
 
         &:hover {
-          background: rgba($color-primary, .12);
+          background: lighten($color-page-bg-highlight, 1%);
         }
       }
     }

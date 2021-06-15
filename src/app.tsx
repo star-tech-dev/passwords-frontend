@@ -17,17 +17,25 @@ import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/add-item'
 import ItemPage from './pages/item'
+import SettingsPage from './pages/settings'
+import SettingsProfilePage from './pages/settings/profile'
+import SettingsAppearancePage from './pages/settings/appearance'
+import SettingsLanguagePage from './pages/settings/language'
+import SettingsAboutPage from './pages/settings/about'
 import NotFound from './pages/not-found'
 
 // Layout components
 import Loader from './components/loader/page-loader'
 import ModalController from './components/modals/controller'
 
+const SIMPLE_LAYOUT_PAGES = ['auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
+
 function App () {
   const { route } = useRoute()
   const locker = useStore($locker)
 
   useEffect(() => {
+    console.log('app mounted')
     const unwatchMounted = setMounted.watch(mounted => {
       if (mounted) {
         /**
@@ -45,37 +53,63 @@ function App () {
     checkIsAppLocked()
   }, [locker])
 
-  function Switch () {
+  function PageSwitcher () {
     switch (route.name) {
       case 'home':
-        return <DefaultLayout><HomePage /></DefaultLayout>
-      case 'auth':
-        return <SimpleLayout><AuthPage /></SimpleLayout>
-      case 'unlock':
-        return <SimpleLayout><UnlockPage /></SimpleLayout>
-      case 'profile':
-        return <DefaultLayout><ProfilePage /></DefaultLayout>
-      case 'add':
-        return <DefaultLayout><AddItemPage /></DefaultLayout>
+        return <HomePage />
+      case 'favourites':
+        return <HomePage />
+
       case 'item':
-        return <DefaultLayout><ItemPage /></DefaultLayout>
+        return <ItemPage />
+      case 'add':
+        return <AddItemPage />
+
+      case 'auth':
+        return <AuthPage />
+      case 'unlock':
+        return <UnlockPage />
+      case 'profile':
+        return <ProfilePage />
+
+      case 'settings':
+        return <SettingsPage />
+      case 'settings.profile':
+        return <SettingsProfilePage />
+      case 'settings.appearance':
+        return <SettingsAppearancePage />
+      case 'settings.language':
+        return <SettingsLanguagePage />
+      case 'settings.about':
+        return <SettingsAboutPage />
       default:
-        return <SimpleLayout><NotFound /></SimpleLayout>
+        return <NotFound />
     }
   }
 
-  if (route) {
-    return (
-      <div className="app">
-        <Switch />
-        <ModalController />
-      </div>
-    )
-  } else {
-    return (
-      <Loader />
-    )
-  }
+  /**
+   * Комментарий по layouts:
+   * Если выбор layout вынести в функцию LayoutSwitcher,
+   * то при каждой смене роута layout будет монтироваться в dom
+   * TODO: research that
+   */
+  return (
+    <div>
+      {route
+        ? <div className="app">
+          {SIMPLE_LAYOUT_PAGES.includes(route.name)
+            ? <SimpleLayout>
+            <PageSwitcher/>
+          </SimpleLayout>
+            : <DefaultLayout>
+            <PageSwitcher/>
+          </DefaultLayout>}
+
+          <ModalController/>
+        </div>
+        : <Loader /> }
+    </div>
+  )
 }
 
 export default App

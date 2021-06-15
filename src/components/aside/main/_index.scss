@@ -1,0 +1,98 @@
+@import "src/assets/scss/variables";
+
+.component.-main-aside {
+  position: relative;
+  width: 22%;
+  height: 100%;
+  padding: 40px 0 104px;
+  background: $color-content-bg;
+  border-right: 1px solid $color-dark;
+  overflow: auto;
+
+  .scroll-parent {
+    padding: 0 20px;
+  }
+
+  section {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    .title {
+      margin-bottom: 15px;
+      color: $color-text-faded;
+    }
+  }
+
+  nav {
+    display: block;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .right {
+    & > a {
+      text-decoration: none;
+    }
+
+    & > * {
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.component.-nav-item {
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    //background: $color-page-bg-highlight;
+    border-radius: $border-radius-default;
+    color: $color-text-regular;
+    text-decoration: none;
+    //color: inherit;
+    transition: $transition-default;
+
+    svg {
+      color: $color-text-faded;
+    }
+
+    &:hover {
+      background: $color-page-bg-highlight;
+    }
+
+    &.active {
+      text-decoration: none;
+      background: $color-primary;
+      color: $color-text-white;
+
+      svg {
+        color: $color-text-white !important;
+      }
+    }
+
+    &.-all {
+      svg {
+        color: $color-success;
+      }
+    }
+
+    &.-favourites {
+      svg {
+        color: $color-warning;
+      }
+    }
+  }
+
+  svg {
+    width: 20px;
+    margin-right: 15px;
+  }
+}

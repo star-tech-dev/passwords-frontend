@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { $modals } from '../../../store/modals/store'
 
 import SetSecurityCodeModal from '../set-security-code'
+import PasswordGeneratorModal from '../password-generator'
 
 import './_index.scss'
 
@@ -18,8 +19,9 @@ function ModalController () {
   })
 
   return (
-    <div className={`Modal Controller ${show ? '-active' : ''}`}>
+    <div className={`component -modal-controller ${show ? '-active' : ''}`}>
       <SetSecurityCodeModal />
+      <PasswordGeneratorModal />
     </div>
   )
 }

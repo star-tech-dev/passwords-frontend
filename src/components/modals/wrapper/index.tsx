@@ -19,14 +19,14 @@ interface ModalWrapperProps {
 }
 
 function ModalWrapper (props: ModalWrapperProps) {
-  if (props.closable === undefined) {
-    props.closable = true
-  }
-
   const [_mounted, _setMounted] = useState(false)
   const modals = useStore($modals)
   const [show, setShow] = useState(false)
-  const classList = `component modal -${props.id} -size-${props.size || 'default'}`
+  const classList = `component -modal -${props.id} -size-${props.size || 'default'}`
+
+  const isClosable = () => {
+    return props.closable || props.closable === undefined
+  }
 
   useEffect(() => {
     _setMounted(true)
@@ -53,14 +53,15 @@ function ModalWrapper (props: ModalWrapperProps) {
   }, [show])
 
   const close = () => {
-    if (props.closable) {
+    if (isClosable()) {
       closeModal(props.id)
     }
   }
 
   const onParentClick = (e: React.MouseEvent) => {
     const target = e.target as Element
-    if (target.classList.contains('Modal') && target.classList.contains('Component')) {
+    console.log('target.classList', target.classList)
+    if (target.classList.contains('component') && target.classList.contains('-modal')) {
       close()
     }
   }
@@ -69,7 +70,7 @@ function ModalWrapper (props: ModalWrapperProps) {
     return (
       <div className={classList} onClick={onParentClick}>
         <dialog open className="dialog">
-          {props.closable && <div className="close" onClick={close}>
+          {isClosable() && <div className="close" onClick={close}>
             <CrossIcon/>
           </div>}
           <div className="head">

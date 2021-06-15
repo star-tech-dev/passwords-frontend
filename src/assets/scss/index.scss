@@ -14,6 +14,7 @@ body {
   font-family: $font-family-default;
   font-size: $font-size-regular;
   line-height: $line-height-regular;
+  font-weight: $font-weight-medium;
   background: $color-page-bg;
   color: $color-text-regular;
 }
@@ -23,7 +24,7 @@ body {
 :-ms-input-placeholder { color: $color-text-placeholder; }
 
 a {
-  color: $color-primary;
+  color: $color-primary-light;
   text-decoration: none;
   transition: $transition-link;
 
@@ -34,6 +35,10 @@ a {
   &:focus {
     text-decoration: underline;
   }
+}
+
+.app {
+  height: 100vh;
 }
 
 .container {

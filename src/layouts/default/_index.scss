@@ -1,0 +1,13 @@
+.layout.-default {
+  height: 100vh;
+  overflow: hidden;
+
+  & > * {
+    height: 100%;
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 40px 20px;
+  }
+}

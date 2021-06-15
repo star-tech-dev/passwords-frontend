@@ -1,0 +1,44 @@
+@import "src/assets/scss/variables";
+
+.component.-user-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 16px;
+  color: $color-text-faded;
+  text-decoration: none;
+  transition: $transition-default;
+
+  &:hover {
+    background: $color-page-bg-highlight;
+  }
+
+  .photo {
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background: $color-dark;
+    color: $color-text-regular;
+  }
+
+  .name {
+    font-size: 17px;
+    line-height: 20px;
+    color: $color-text-regular;
+    margin-bottom: 4px;
+  }
+
+  &.active {
+    background: $color-primary;
+    color: $color-text-light;
+
+    .photo {
+      background: $color-primary-highlight;
+    }
+  }
+}

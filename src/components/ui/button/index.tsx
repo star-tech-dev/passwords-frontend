@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router5'
 
 import LoaderRound from '../../loader/round'
 
@@ -8,7 +9,8 @@ interface ButtonOptions extends React.ButtonHTMLAttributes<any> {
   fullWidth?: boolean,
   loading?: boolean,
   size?: 'default' | 'small',
-  theme?: 'default' | 'ghost'
+  theme?: 'default' | 'ghost',
+  routeName?: string
 }
 
 const Button = forwardRef((props: ButtonOptions, ref) => {
@@ -18,11 +20,9 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
 
   const [buttonProps, setButtonProps] = useState({})
   const classList = `button -component -theme-${props.theme || 'default'} -size-${props.size || 'default'} ${props.fullWidth ? '-full-width' : ''} ${props.loading ? '-loading' : ''}`
-  const innerRef = useRef(null)
 
   const update = () => {
-    // @ts-ignore
-    ref.current = {}
+    (ref as any).current = {}
 
     // eslint-disable-next-line no-new-object
     const fieldProps = { ...props } as ButtonOptions
@@ -30,6 +30,7 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
     delete fieldProps.loading
     delete fieldProps.size
     delete fieldProps.theme
+    delete fieldProps.routeName
     setButtonProps(fieldProps)
   }
 
@@ -39,13 +40,21 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
 
   return (
     <div className={classList}>
-      <button {...buttonProps} ref={innerRef}>
+      {props.routeName
+        ? <Link {...buttonProps} routeName={props.routeName}>
+          { props.loading
+            ? <div className="loader">
+              <LoaderRound />
+            </div>
+            : props.children }
+      </Link>
+        : <button {...buttonProps}>
         { props.loading
           ? <div className="loader">
             <LoaderRound />
           </div>
           : props.children }
-      </button>
+      </button>}
     </div>
   )
 })

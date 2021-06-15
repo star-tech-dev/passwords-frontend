@@ -18,7 +18,7 @@
   .bottom {
     font-size: 13px;
     line-height: 16px;
-    color: $color-text-light;
+    color: $color-text-faded;
 
     .name {
       max-width: 110px;
@@ -29,7 +29,7 @@
     }
 
     a {
-      color: $color-text-light;
+      color: $color-text-faded;
       font-weight: $font-weight-semibold;
 
       &:hover {

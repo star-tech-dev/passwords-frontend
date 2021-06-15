@@ -1,19 +1,17 @@
-.Modal {
-  &.Controller {
-    &.-active {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      padding: 40px 0 0;
-      background: rgba(0,0,0,.35);
-      box-sizing: border-box;
-      overflow: auto;
-    }
+.component.-modal-controller {
+  &.-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 0 0;
+    background: rgba(0,0,0,.35);
+    box-sizing: border-box;
+    overflow: auto;
   }
 }

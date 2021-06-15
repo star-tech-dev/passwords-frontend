@@ -32,6 +32,9 @@
   &.a-end {
     align-items: flex-end;
   }
+  &.a-stretch {
+    align-items: stretch;
+  }
   &.wrap {
     flex-wrap: wrap;
   }
@@ -57,6 +60,12 @@ form {
   }
 }
 
+.scroll-parent {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+
 [data-tippy-root] {
   z-index: 10001 !important;
 
@@ -69,11 +78,11 @@ form {
   .tippy-arrow {
     width: 12px;
     height: 12px;
-    color: $color-text-dark;
+    color: $color-dark;
   }
 
   .tippy-box {
-    background: $color-text-dark;
+    background: $color-dark;
     border-radius: $border-radius-default;
     box-shadow: $box-shadow-default;
 

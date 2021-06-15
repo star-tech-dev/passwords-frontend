@@ -1,0 +1,39 @@
+@import "src/assets/scss/variables";
+
+.component {
+  &.-sub-aside {
+    width: 28%;
+    height: 100%;
+    padding: 40px 0 0;
+    border-right: 1px solid $color-dark;
+
+    & > * {
+      height: 100%;
+    }
+
+    .aside-head {
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+
+    .scroll-parent {
+      padding: 0 20px;
+    }
+  }
+
+  &.-sub-aside-item-list {}
+
+  &.-sub-aside-profile-menu {
+    padding: 0 20px;
+
+    a {
+      color: $color-text-regular;
+
+      &.active {
+        color: $color-primary-light;
+      }
+    }
+  }
+
+  &.-sub-aside {}
+}

@@ -1,83 +1,57 @@
 import React, { useEffect, useState } from 'react'
-// import { useRouter } from 'react-router5'
-import { toggleMasonryItem } from '../../store/app/events'
+import { useRouter } from 'react-router5'
+import { State as RouterState } from 'router5'
+import { Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
 
 import { Item as ItemInterface } from '../../store/items/types'
-
-import ItemField from '../ui/item-field'
 
 import './_index.scss'
 
 interface ItemProps {
   data: ItemInterface,
-  mode?: 'compact' | 'full'
+  active?: boolean
 }
 
-function Index ({ data, mode }: ItemProps) {
-  const [localMode, setLocalMode] = useState('compact')
+function Index ({ data, active }: ItemProps) {
+  const [localActive, setLocalActive] = useState(false)
   const subtitle = data.username || data.url || data.note || ''
   const title = data.name || subtitle
-  // const router = useRouter()
-
-  // const compactIfFull = () => {
-  //   if (localMode === 'full') {
-  //     console.log('compact')
-  //     setLocalMode('compact')
-  //   }
-  // }
+  const router = useRouter()
 
   const onClick = () => {
-    // router.navigate('item', { id: data._id })
-    localMode === 'full'
-      ? setLocalMode('compact')
-      : setLocalMode('full')
+    setLocalActive(true)
+    router.navigate('item', { id: data._id })
+  }
 
-    toggleMasonryItem()
+  const checkRoute = (route: RouterState) => {
+    // Если мы на странице item с тем же id, то делаем компонент активным
+    const isActive = route.name === 'item' && route.params.id === data._id
+    setLocalActive(isActive)
   }
 
   useEffect(() => {
-    setLocalMode(mode as string)
-  }, [mode])
+    checkRoute(router.getState())
+    const unsubscribe = router.subscribe(({ route }) => {
+      checkRoute(route)
+    }) as UnsubscribeRouter
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
-  if (localMode === 'full') {
-    return (
-      <div className={`component -item -mode-${localMode}`}>
-        <div className="head flex a-start" onClick={onClick}>
-          <div className="image">
-            <img src="" alt=""/>
-          </div>
-          <div className="content">
-            <div className="title">{title}</div>
-            <div className="subtitle">
-              {data.url
-                ? <a href={data.url} target="_blank" rel="noreferrer">{data.url}</a>
-                : <div>{subtitle}</div>}
-            </div>
-          </div>
+  return (
+    <div className={`component -item ${localActive ? '-active' : ''}`} onClick={onClick}>
+      <div className="head flex a-start">
+        <div className="image">
+          <img src="" alt=""/>
         </div>
-
-        <div className="fields">
-          {data.username && <ItemField name="username" value={data.username} readOnly={true}/>}
-          {data.password && <ItemField name="password" type="password" value={data.password} readOnly={true}/>}
-          {data.note && <ItemField name="note" value={data.note} readOnly={true}/>}
+        <div className="content">
+          <div className="title">{title}</div>
+          <div className="subtitle">{subtitle}</div>
         </div>
       </div>
-    )
-  } else {
-    return (
-      <div className={`component -item -mode-${localMode}`} onClick={onClick}>
-        <div className="head flex a-start">
-          <div className="image">
-            <img src="" alt=""/>
-          </div>
-          <div className="content">
-            <div className="title">{title}</div>
-            <div className="subtitle">{subtitle}</div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Index

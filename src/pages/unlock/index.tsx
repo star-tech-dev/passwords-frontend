@@ -41,7 +41,8 @@ function UnlockPage () {
       setCodeFieldError('')
       setCodeFieldError(e.response.data.message)
       nextTick(() => {
-        (codeField.current as any)?.focus()
+        (codeField.current as any)?.focus();
+        (codeField.current as any)?.select()
       })
     })
 

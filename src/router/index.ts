@@ -11,7 +11,11 @@ import locker from './middlewares/locker'
 import routes from './routes'
 
 export function configureRouter () {
-  const router = createRouter(routes, {})
+  const router = createRouter(routes, {
+    allowNotFound: true,
+    caseSensitive: false,
+    autoCleanUp: true
+  })
 
   router.usePlugin(loggerPlugin)
   router.usePlugin(browserPlugin())

@@ -6,7 +6,8 @@ export interface Item {
   url?: string,
   username?: string,
   password?: string,
-  note?: string
+  note?: string,
+  isFavourite?: boolean
 }
 
 export interface ItemPayload {
