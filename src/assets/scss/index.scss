@@ -19,6 +19,12 @@ body {
   color: $color-text-regular;
 }
 
+::selection {
+  background: rgba($color-primary-light, .5);
+  color: $color-text-regular;
+  text-shadow: none;
+}
+
 ::-webkit-input-placeholder { color: $color-text-placeholder; }
 ::-moz-placeholder { color: $color-text-placeholder; }
 :-ms-input-placeholder { color: $color-text-placeholder; }

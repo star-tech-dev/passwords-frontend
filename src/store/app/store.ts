@@ -1,15 +1,24 @@
-import { AppState } from './types'
+import { AppState, ItemsMode } from './types'
 import { AppDomain } from './domain'
-import { setMounted } from './events'
+import { setMounted, setItemsMode } from './events'
 
 const initialState: AppState = {
-  mounted: false
+  mounted: false,
+  itemsMode: ItemsMode.default
 }
 
 export const $app = AppDomain.store<AppState>(initialState)
   .on(setMounted, (state, value) => {
-    state.mounted = value
-    return state
+    return {
+      ...state,
+      mounted: value
+    }
+  })
+  .on(setItemsMode, (state, value) => {
+    return {
+      ...state,
+      itemsMode: value
+    }
   })
 
 export default { $app }

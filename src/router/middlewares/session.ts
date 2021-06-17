@@ -10,20 +10,9 @@ import routes from '../routes'
 
 async function _checkAuth () {
   const user = $auth.getState().user
-  // console.log('_checkAuth', user)
   if (!user) {
     await checkAuth()
   }
-}
-
-function _checkLocker () {
-  // checkIsAppLocked()
-  // const user = $auth.getState().user
-  // if (!user) {
-  //   return
-  // }
-  // const isLocked = $locker.getState().isLocked
-  // console.log('_checkLocker', isLocked)
 }
 
 export const session = (router: Router) => (toState: State, fromState: State) => {
@@ -38,7 +27,6 @@ export const session = (router: Router) => (toState: State, fromState: State) =>
     // actions before app mounting
     .then(async data => {
       await _checkAuth()
-      _checkLocker()
       return data
     })
     .then(data => {

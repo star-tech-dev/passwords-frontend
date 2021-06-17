@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { useStore } from 'effector-react'
 import { $items } from '../../store/items/store'
 import { getItems } from '../../store/items/events'
+import { ItemsMode } from '../../store/app/types'
 
 import Item from '../item'
 import UIButton from '../ui/button'
 
 import './_index.scss'
-
-export type ItemsMode = 'default' | 'favourites'
 
 interface ItemsProps {
   searchQuery?: string,
@@ -21,7 +20,7 @@ function Items (props: ItemsProps) {
   const list = () => {
     let arr = items
 
-    if (props.mode === 'favourites') {
+    if (props.mode === ItemsMode.favourites) {
       arr = items.filter(item => item.isFavourite)
     }
 

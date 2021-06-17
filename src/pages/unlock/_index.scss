@@ -29,12 +29,7 @@
     }
 
     a {
-      color: $color-text-faded;
       font-weight: $font-weight-semibold;
-
-      &:hover {
-        color: $color-primary;
-      }
     }
   }
 }

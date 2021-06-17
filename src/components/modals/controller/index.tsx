@@ -16,7 +16,7 @@ function ModalController () {
     return () => {
       unwatch()
     }
-  })
+  }, [])
 
   return (
     <div className={`component -modal-controller ${show ? '-active' : ''}`}>

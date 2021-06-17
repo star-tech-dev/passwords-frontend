@@ -8,13 +8,14 @@ function ItemPage () {
   const [data, setData] = useState<Item>(null)
   const { route, router } = useRoute()
 
+  const onMounted = () => {
+    getItem(route.params.id).then(res => {
+      setData(res)
+    }).catch(() => router.navigate('home'))
+  }
+
   useEffect(() => {
-    async function _getData () {
-      getItem(route.params.id).then(res => {
-        setData(res)
-      }).catch(() => router.navigate('home'))
-    }
-    _getData()
+    onMounted()
     return () => {}
   }, [route.params.id])
 

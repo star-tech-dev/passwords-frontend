@@ -8,11 +8,10 @@ import { Item as ItemInterface } from '../../store/items/types'
 import './_index.scss'
 
 interface ItemProps {
-  data: ItemInterface,
-  active?: boolean
+  data: ItemInterface
 }
 
-function Index ({ data, active }: ItemProps) {
+function Index ({ data }: ItemProps) {
   const [localActive, setLocalActive] = useState(false)
   const subtitle = data.username || data.url || data.note || ''
   const title = data.name || subtitle

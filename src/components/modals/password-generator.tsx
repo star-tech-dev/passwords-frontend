@@ -4,6 +4,7 @@ import { nextTick } from '../../helpers/next-tick'
 
 import ModalWrapper from './wrapper'
 import UIInput from '../ui/input'
+import UIButton from '../ui/button'
 
 function SetSecurityCodeModal () {
   const id = 'password_generator'
@@ -16,7 +17,7 @@ function SetSecurityCodeModal () {
 
   const generate = () => {
     console.log('generate')
-    setCode('asd')
+    setCode('random_code_here')
   }
 
   useEffect(() => {
@@ -30,6 +31,10 @@ function SetSecurityCodeModal () {
       <div>Password generator</div>
       <div>
         <UIInput ref={setCodeFieldRef} value={code} />
+      </div>
+      <div className="buttons">
+        <UIButton onClick={generate}>Regenerate</UIButton>
+        <UIButton theme="ghost" onClick={() => closeModal(id)}>Close</UIButton>
       </div>
     </ModalWrapper>
   )

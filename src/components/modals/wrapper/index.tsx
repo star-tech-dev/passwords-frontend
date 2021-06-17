@@ -60,7 +60,6 @@ function ModalWrapper (props: ModalWrapperProps) {
 
   const onParentClick = (e: React.MouseEvent) => {
     const target = e.target as Element
-    console.log('target.classList', target.classList)
     if (target.classList.contains('component') && target.classList.contains('-modal')) {
       close()
     }
