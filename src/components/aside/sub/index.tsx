@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { State as RouterState } from 'router5'
 import { useRouter } from 'react-router5'
 import { Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
+import { setItemsMode } from '../../../store/app/events'
+import { ItemsMode } from '../../../store/app/types'
 
 import ItemList from './item-list'
 import ProfileMenu from './profile-menu'
@@ -15,6 +17,13 @@ function SubAsideWrapper () {
   const checkRoute = (route: RouterState) => {
     const mode = route.name.includes('settings') ? 'menu' : 'items'
     setMode(mode)
+
+    if (route.name === 'favourites') {
+      setItemsMode(ItemsMode.favourites)
+    }
+    if (route.name === 'home') {
+      setItemsMode(ItemsMode.default)
+    }
   }
 
   useEffect(() => {

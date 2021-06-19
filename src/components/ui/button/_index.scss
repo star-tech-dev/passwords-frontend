@@ -45,10 +45,25 @@
   &.-theme {
     &-default {}
 
+    &-danger {
+      & > * {
+        background: $color-danger;
+        color: $color-text-regular;
+
+        &:hover {
+          background: darken($color-danger, 5%);
+        }
+      }
+    }
+
     &-ghost {
       & > * {
         background: $color-page-bg-highlight;
         color: $color-text-regular;
+
+        svg {
+          color: $color-icon-faded;
+        }
 
         &:hover {
           background: lighten($color-page-bg-highlight, 1%);
@@ -62,13 +77,13 @@
 
     &-small {
       & > * {
-        padding: 11px 16px 12px;
+        padding: 10px 16px 11px;
         font-size: 13px;
         line-height: 16px;
         min-height: 40px;
 
         .icon {
-          margin-right: 6px;
+          margin-right: 8px;
         }
       }
     }

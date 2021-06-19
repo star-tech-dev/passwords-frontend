@@ -1,0 +1,46 @@
+@import "src/assets/scss/variables";
+
+.component.-item-field {
+  padding: 20px 40px 20px 20px;
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  transition: $transition-default;
+
+  .label {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 16px;
+    color: $color-text-faded;
+  }
+
+  .field {
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-text-regular;
+  }
+
+  .icons {
+    margin-left: 30px;
+
+    .copy {
+      opacity: 0;
+      visibility: hidden;
+      transition: $transition-default;
+    }
+  }
+
+  input, textarea {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: $color-content-bg;
+
+    .icons {
+      .copy {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

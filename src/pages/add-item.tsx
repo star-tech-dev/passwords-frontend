@@ -31,12 +31,12 @@ function AddItemPage () {
   }
 
   return (
-    <div className="Page Home">
+    <div className="page -add-item">
       <div>Add newItem:</div>
       <form onSubmit={create}>
         <div>
           <div>name</div>
-          <input type="text" name="name" value={name} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
+          <input type="text" name="name" value={name} autoFocus={true} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
         </div>
         <div>
           <div>url</div>

@@ -1,8 +1,8 @@
 export type ItemId = string
 
 export interface Item {
-  _id?: ItemId,
-  name?: string,
+  _id: ItemId,
+  name: string,
   url?: string,
   username?: string,
   password?: string,
@@ -15,3 +15,11 @@ export interface ItemPayload {
 }
 
 export type State = Item[]
+
+export interface ItemFavouriteStatusProps {
+  id: ItemId | null
+}
+
+export interface DeleteItemPayload {
+  id: ItemId | null
+}

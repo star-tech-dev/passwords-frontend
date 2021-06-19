@@ -8,6 +8,9 @@
 
   main {
     flex-grow: 1;
-    padding: 40px 20px;
+
+    & > .scroll-parent {
+      padding: 40px 60px;
+    }
   }
 }

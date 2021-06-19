@@ -3,8 +3,7 @@ import { useStore } from 'effector-react'
 import { $modals } from '../../../store/modals/store'
 import { closeModal } from '../../../store/modals/events'
 import { ModalName } from '../../../store/modals/types'
-import CrossIcon from '../../icons/cross'
-import PropTypes from 'prop-types'
+// import CrossIcon from '../../icons/cross'
 
 import './_index.scss'
 
@@ -15,7 +14,8 @@ interface ModalWrapperProps {
   heading?: any,
   size?: 'default' | 'auto',
   onOpen?: Function,
-  onClose?: Function
+  onClose?: Function,
+  onConfirm?: Function
 }
 
 function ModalWrapper (props: ModalWrapperProps) {
@@ -27,6 +27,28 @@ function ModalWrapper (props: ModalWrapperProps) {
   const isClosable = () => {
     return props.closable || props.closable === undefined
   }
+
+  // const onKeyUp = (e: React.KeyboardEvent) => {
+  //   console.log('e', e.keyCode)
+  //   if (e.keyCode === 27) { // esc
+  //     closeModal(props.id)
+  //   }
+  //   if (e.keyCode === 13) { // enter
+  //     props.onConfirm && props.onConfirm()
+  //   }
+  // }
+
+  // const enableKeyUpWatcher = () => {
+  //   console.log('enableKeyUpWatcher')
+  //   // @ts-ignore
+  //   document.addEventListener('keyup', onKeyUp)
+  // }
+
+  // const disableKeyUpWatcher = () => {
+  //   console.log('disableKeyUpWatcher')
+  //   // @ts-ignore
+  //   document.removeEventListener('keyup', onKeyUp)
+  // }
 
   useEffect(() => {
     _setMounted(true)
@@ -43,11 +65,13 @@ function ModalWrapper (props: ModalWrapperProps) {
 
   useEffect(() => {
     if (_mounted) {
-      if (show && props.onOpen) {
-        props.onOpen()
+      if (show) {
+        // enableKeyUpWatcher()
+        props.onOpen && props.onOpen()
       }
-      if (!show && props.onClose) {
-        props.onClose()
+      if (!show) {
+        // disableKeyUpWatcher()
+        props.onClose && props.onClose()
       }
     }
   }, [show])
@@ -69,12 +93,12 @@ function ModalWrapper (props: ModalWrapperProps) {
     return (
       <div className={classList} onClick={onParentClick}>
         <dialog open className="dialog">
-          {isClosable() && <div className="close" onClick={close}>
-            <CrossIcon/>
-          </div>}
-          <div className="head">
+          {/* {isClosable() && <div className="close" onClick={close}> */}
+          {/*  <CrossIcon/> */}
+          {/* </div>} */}
+          {props.heading && <div className="head">
             <div className="h2 flex center">{props.heading}</div>
-          </div>
+          </div>}
           <div className="body">{props.children}</div>
         </dialog>
       </div>
@@ -82,13 +106,6 @@ function ModalWrapper (props: ModalWrapperProps) {
   } else {
     return null
   }
-}
-
-ModalWrapper.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.any,
-  closable: PropTypes.bool,
-  heading: PropTypes.any
 }
 
 export default ModalWrapper

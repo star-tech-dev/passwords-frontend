@@ -1,10 +1,11 @@
 import { AppState, ItemsMode } from './types'
 import { AppDomain } from './domain'
-import { setMounted, setItemsMode } from './events'
+import { setMounted, setItemsMode, setItemToDelete } from './events'
 
 const initialState: AppState = {
   mounted: false,
-  itemsMode: ItemsMode.default
+  itemsMode: ItemsMode.default,
+  itemToDelete: null
 }
 
 export const $app = AppDomain.store<AppState>(initialState)
@@ -18,6 +19,12 @@ export const $app = AppDomain.store<AppState>(initialState)
     return {
       ...state,
       itemsMode: value
+    }
+  })
+  .on(setItemToDelete, (state, value) => {
+    return {
+      ...state,
+      itemToDelete: value
     }
   })
 

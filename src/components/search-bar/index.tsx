@@ -32,27 +32,27 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     })
   }
 
-  const onKeyUp = (e: React.KeyboardEvent) => {
-    let watchFocus = true
-    let target = document.activeElement
-    while (target) {
-      if (target.classList.contains('-search-bar')) {
-        watchFocus = false
-        target = null
-        return
-      }
-      target = target.parentElement
-    }
-
-    if (watchFocus && /\w/.test(e.key) && e.key.length === 1) {
-      if (!query.length) {
-        setQuery(e.key)
-      }
-      nextTick(() => {
-        (innerRef.current as any)?.focus()
-      })
-    }
-  }
+  // const onKeyUp = (e: React.KeyboardEvent) => {
+  //   let watchFocus = true
+  //   let target = document.activeElement
+  //   while (target) {
+  //     if (target.classList.contains('-search-bar')) {
+  //       watchFocus = false
+  //       target = null
+  //       return
+  //     }
+  //     target = target.parentElement
+  //   }
+  //
+  //   if (watchFocus && /\w/.test(e.key) && e.key.length === 1) {
+  //     if (!query.length) {
+  //       setQuery(e.key)
+  //     }
+  //     nextTick(() => {
+  //       (innerRef.current as any)?.focus()
+  //     })
+  //   }
+  // }
 
   const onFieldKeyUp = (e: React.KeyboardEvent) => {
     if (e.keyCode === 27) { // escape
@@ -77,13 +77,13 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
 
   useEffect(() => {
     // @ts-ignore
-    document.addEventListener('keyup', onKeyUp)
+    // document.addEventListener('keyup', onKeyUp)
     const field = document.querySelector('.component.-search-bar input') as HTMLElement
     // @ts-ignore
     field.addEventListener('keyup', onFieldKeyUp)
     return () => {
       // @ts-ignore
-      document.removeEventListener('keyup', onKeyUp)
+      // document.removeEventListener('keyup', onKeyUp)
       // @ts-ignore
       field.removeEventListener('keyup', onFieldKeyUp)
     }

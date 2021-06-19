@@ -10,8 +10,12 @@
     width: 100vw;
     height: 100vh;
     padding: 40px 0 0;
-    background: rgba(0,0,0,.35);
+    background: rgba(0,0,0,.5);
     box-sizing: border-box;
     overflow: auto;
+
+    & + .layout {
+      filter: blur(2px);
+    }
   }
 }

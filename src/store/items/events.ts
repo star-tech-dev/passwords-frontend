@@ -1,6 +1,6 @@
 import { ItemsDomain } from './domain'
 import { sendRequest } from '../../api'
-import { ItemId, Item, ItemPayload } from './types'
+import { ItemId, Item, ItemPayload, ItemFavouriteStatusProps, DeleteItemPayload } from './types'
 
 export const getItems = ItemsDomain.createEffect<void, Array<Item>>().use(() => {
   return sendRequest({
@@ -18,6 +18,22 @@ export const getItem = ItemsDomain.createEffect<ItemId, Item>().use(id => {
 export const createItem = ItemsDomain.createEffect<ItemPayload, Item>().use(payload => {
   return sendRequest({
     method: 'post',
+    data: payload,
+    url: '/items'
+  })
+})
+
+export const toggleItemFavouriteStatus = ItemsDomain.createEffect<ItemFavouriteStatusProps, void>().use(payload => {
+  return sendRequest({
+    method: 'post',
+    data: payload,
+    url: '/favourites'
+  })
+})
+
+export const deleteItem = ItemsDomain.createEffect<DeleteItemPayload, void>().use(payload => {
+  return sendRequest({
+    method: 'delete',
     data: payload,
     url: '/items'
   })

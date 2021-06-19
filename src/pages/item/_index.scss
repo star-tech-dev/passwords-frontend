@@ -1,0 +1,70 @@
+@import "src/assets/scss/variables";
+
+.page.-profile {
+  section {
+    &.actions {
+      margin-bottom: 40px;
+    }
+
+    &.head {
+      margin-bottom: 20px;
+
+      .image {
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+        border-radius: $border-radius-default;
+        background: $color-page-bg-highlight;
+      }
+
+      .name {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: $font-weight-semibold;
+      }
+
+      .type {
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 18px;
+        color: $color-text-faded;
+      }
+
+      .star {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        &.-active {
+          color: $color-warning;
+        }
+      }
+    }
+
+    &.fields {
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  .intro {
+    & > * {
+      &:not(.fields) {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        &.separator {
+          width: calc(100% - 40px);
+        }
+      }
+    }
+  }
+}

@@ -3,13 +3,14 @@ $color-primary-light: #4783F4;
 $color-primary-highlight: #0D4DC7;
 
 $color-dark: #151515;
-$color-danger: #DC394D;
+$color-danger: #bf1d4a;
 $color-success: #85D79B;
 $color-warning: #FDBF61;
 
 $color-page-bg: #1F1F1F;
 $color-page-bg-highlight: #252525;
 $color-content-bg: #292929;
+$color-modal-bg: $color-page-bg;
 
 $color-text-regular: #FBFBFB;
 $color-text-light: rgba($color-text-regular, .5);
@@ -18,6 +19,7 @@ $color-text-white: #fff;
 $color-text-placeholder: $color-text-faded;
 
 $color-border: #CEC7ED;
+$color-icon-faded: #9E9E9E;
 
 $color-shadow: rgba(#000, 0);
 $color-shadow-highlight: rgba(#000, .15);

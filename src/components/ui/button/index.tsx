@@ -9,7 +9,7 @@ interface ButtonOptions extends React.ButtonHTMLAttributes<any> {
   fullWidth?: boolean,
   loading?: boolean,
   size?: 'default' | 'small',
-  theme?: 'default' | 'ghost',
+  theme?: 'default' | 'ghost' | 'danger',
   routeName?: string
 }
 

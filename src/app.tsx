@@ -96,6 +96,8 @@ function App () {
     <div>
       {route
         ? <div className="app">
+          <ModalController/>
+
           {SIMPLE_LAYOUT_PAGES.includes(route.name)
             ? <SimpleLayout>
             <PageSwitcher/>
@@ -103,8 +105,6 @@ function App () {
             : <DefaultLayout>
             <PageSwitcher/>
           </DefaultLayout>}
-
-          <ModalController/>
         </div>
         : <Loader /> }
     </div>

@@ -30,9 +30,9 @@
     z-index: 1010;
     border: none;
     padding: 28px 32px 32px;
-    background: $color-content-bg;
+    background: $color-modal-bg;
     color: $color-text-regular;
-    border-radius: 7px;
+    border-radius: $border-radius-default;
     display: block;
     margin-bottom: 40px;
   }
@@ -42,12 +42,36 @@
   }
 
   &.-size {
-    &-default {}
+    &-default {
+      dialog {
+        padding: 50px 50px;
+      }
+    }
 
     &-auto {
       dialog {
         padding: 40px 60px 35px;
       }
+    }
+  }
+
+  .body {
+    .modal-title {
+      font-size: 19px;
+      line-height: 24px;
+      color: $color-text-regular;
+      font-weight: $font-weight-semibold;
+    }
+
+    .modal-subtitle {
+      margin-top: 5px;
+      font-size: 13px;
+      line-height: 16px;
+      color: $color-text-faded;
+    }
+
+    .buttons {
+      margin-top: 30px;
     }
   }
 }
