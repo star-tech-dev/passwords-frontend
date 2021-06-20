@@ -10,3 +10,5 @@ export const itemsFiltered = AppDomain.event<void>()
 export const setItemsMode = AppDomain.event<ItemsMode>()
 
 export const setItemToDelete = AppDomain.createEvent<string>()
+
+export const onSaveGenerated = AppDomain.createEvent<string>()

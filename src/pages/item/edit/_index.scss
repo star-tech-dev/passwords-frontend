@@ -1,0 +1,17 @@
+.page.-edit-item {
+  padding: 0 20px;
+
+  section {
+    &.actions {
+      margin-bottom: 40px;
+    }
+
+    &.fields {
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

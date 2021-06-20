@@ -23,6 +23,14 @@ export const createItem = ItemsDomain.createEffect<ItemPayload, Item>().use(payl
   })
 })
 
+export const updateItem = ItemsDomain.createEffect<ItemPayload, Item>().use(payload => {
+  return sendRequest({
+    method: 'put',
+    data: payload,
+    url: '/items'
+  })
+})
+
 export const toggleItemFavouriteStatus = ItemsDomain.createEffect<ItemFavouriteStatusProps, void>().use(payload => {
   return sendRequest({
     method: 'post',

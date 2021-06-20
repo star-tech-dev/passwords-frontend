@@ -23,19 +23,19 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   })
   const [localError, setLocalError] = useState(props.error)
   const localId = props.id || Math.random().toFixed(10).slice(2)
-  const innerRef = useRef(null) as React.RefObject<HTMLInputElement>
+  const innerRef = useRef(null)
   const iconError = React.useRef<HTMLInputElement>(null)
   const classList = `input -component -theme-${props.theme || 'default'} ${props.error ? '-error' : ''}`
 
   const focus = () => {
     nextTick(() => {
-      innerRef.current && innerRef.current?.focus()
+      innerRef.current && (innerRef.current as HTMLInputElement | null)?.focus()
     })
   }
 
   const select = () => {
     nextTick(() => {
-      innerRef.current && innerRef.current?.select()
+      innerRef.current && (innerRef.current as HTMLInputElement | null)?.select()
     })
   }
 
@@ -76,7 +76,6 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   useEffect(() => {
     setLocalError(props.error)
     update()
-    props.autoFocus && focus()
   }, [])
 
   useEffect(() => {
@@ -94,21 +93,20 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   return (
     <div className={classList}>
       {props.children && <label htmlFor={localId} className="label">{props.children}</label>}
-      <div className="relative">
-        <div className="buttons">
-          {localError
-            ? <div ref={iconError} className="icon-error" onClick={e => onTooltipClick(e)}>
-              <IconInfo />
-            </div>
-            : null}
+
+      <div className="buttons">
+        {localError
+          ? <div ref={iconError} className="icon-error" onClick={e => onTooltipClick(e)}>
+          <IconInfo />
         </div>
-        <input
-          {...inputProps}
-          ref={innerRef}
-          type={props.type || 'text'}
-          id={props.id || localId}
-          onInput={(e) => onInput(e)} />
+          : null}
       </div>
+      <textarea
+        rows={3}
+        {...inputProps}
+        ref={innerRef}
+        id={props.id || localId}
+        onInput={(e) => onInput(e)} />
     </div>
   )
 })

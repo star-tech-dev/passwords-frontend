@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import tippy from 'tippy.js'
 
 import UIInput from '../ui/input'
 import IconCopy from '../icons/copy'
+import IconEye from '../icons/eye'
 
 import './_index.scss'
 
@@ -12,8 +13,9 @@ interface ItemFieldProps extends React.ComponentProps<any> {
 }
 
 function ItemField (props: ItemFieldProps) {
+  const [fieldType, setFieldType] = useState<'text' | 'password'>(props.type === 'password' ? 'password' : props.type || 'text')
   const id = Math.random().toFixed(10).slice(2)
-  let tooltip = null as any
+  const tooltip = null as any
 
   const fieldProps = () => {
     const _props = { ...props }
@@ -22,29 +24,23 @@ function ItemField (props: ItemFieldProps) {
     return _props
   }
 
-  // let fieldRef = null as HTMLInputElement | null
-  // const setFieldRef = (element: HTMLInputElement) => {
-  //   fieldRef = element
-  // }
-
   const copyValue = () => {
+    const _tooltip = document.querySelector(`#item_field_${id}`)
     navigator.clipboard.writeText(props.value)
     setTimeout(() => {
-      tooltip?.show()
+      (_tooltip as any)._tippy?.show()
     }, 100)
     setTimeout(() => {
-      tooltip?.hide()
+      (_tooltip as any)._tippy?.hide()
     }, 1600)
   }
 
-  const onClick = () => {
-    // fieldRef?.focus()
-    // fieldRef?.select()
-    copyValue()
+  const toggleFieldType = () => {
+    setFieldType(fieldType === 'password' ? 'text' : 'password')
   }
 
   useEffect(() => {
-    tooltip = tippy(`#item_field_${id}`, {
+    tippy(`#item_field_${id}`, {
       trigger: 'manual',
       content: 'Copied',
       placement: 'left',
@@ -52,18 +48,22 @@ function ItemField (props: ItemFieldProps) {
       theme: 'small',
       duration: 200
     })
-    tooltip = tooltip[0]
   }, [])
 
   return (
-    <div className="component -item-field flex a-center" onClick={onClick}>
-      <div className="grow">
-        <div className="label">{props.children}</div>
-        <UIInput theme="clean" {...fieldProps()} readOnly={true} />
+    <div className="component -item-field">
+      <div className="intro" onClick={copyValue}>
+        <div className="grow">
+          <div className="label">{props.children}</div>
+          <UIInput theme="clean" {...fieldProps()} type={fieldType} readOnly={true} />
+        </div>
       </div>
 
-      <div className="icons">
-        <div id={`item_field_${id}`} className="copy">
+      <div className="icons flex a-center">
+        {props.type === 'password' && <div className="icon-container -eye" onClick={toggleFieldType}>
+          <IconEye/>
+        </div>}
+        <div id={`item_field_${id}`} className="icon-container -copy" onClick={copyValue}>
           <IconCopy />
         </div>
       </div>

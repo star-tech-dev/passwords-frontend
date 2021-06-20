@@ -17,6 +17,7 @@ import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/add-item'
 import ItemPage from './pages/item'
+import ItemEditPage from './pages/item/edit'
 import SettingsPage from './pages/settings'
 import SettingsProfilePage from './pages/settings/profile'
 import SettingsAppearancePage from './pages/settings/appearance'
@@ -61,6 +62,8 @@ function App () {
 
       case 'item':
         return <ItemPage />
+      case 'item.edit':
+        return <ItemEditPage />
       case 'add':
         return <AddItemPage />
 

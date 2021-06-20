@@ -6,9 +6,10 @@ import { $items } from '../../../store/items/store'
 import { $app } from '../../../store/app/store'
 import { ItemsMode } from '../../../store/app/types'
 
-import UIButton from '../../ui/button'
 import SearchBar from '../../search-bar'
 import Items from '../../items'
+import IconAdd from '../../icons/add'
+import UIButton from '../../ui/button'
 
 // import IconAdd from '../../icons/add'
 
@@ -41,7 +42,9 @@ function SubAsideItemList () {
       {items.length
         ? <div className="aside-head flex a-center j-between">
         <SearchBar ref={searchField} onChange={(query: string) => setSearchQuery(query)}/>
-        <UIButton routeName="add" size="small">+</UIButton>
+        <UIButton routeName="add" size="square">
+          <IconAdd />
+        </UIButton>
       </div>
         : null}
 

@@ -50,7 +50,7 @@ function DeleteItemModal () {
           <IconDelete />
           <span>Delete</span>
         </UIButton>
-        <UIButton size="small" theme="ghost" onClick={() => closeModal(id)}>Close</UIButton>
+        <UIButton size="small" theme="ghost" onClick={() => closeModal(id)}>Cancel</UIButton>
       </div>
     </ModalWrapper>
   )

@@ -1,0 +1,19 @@
+@import "src/assets/scss/variables";
+
+.page.-add-item {
+  padding: 0 20px;
+
+  section {
+    &.actions {
+      margin-bottom: 40px;
+    }
+
+    &.fields {
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

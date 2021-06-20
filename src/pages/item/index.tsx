@@ -66,6 +66,10 @@ function ItemPage () {
     tooltip?.destroy()
   }
 
+  const onEditClick = () => {
+    router.navigate('item.edit', { id: data._id })
+  }
+
   const onDeleteClick = () => {
     setItemToDelete(data._id)
     openModal('delete_item')
@@ -98,7 +102,7 @@ function ItemPage () {
         ? <div className="intro">
           <section className="actions">
             <div className="buttons flex j-end">
-              <UIButton size="small" theme="ghost">
+              <UIButton size="small" theme="ghost" onClick={onEditClick}>
                 <IconEdit />
                 <span>Edit</span>
               </UIButton>
@@ -129,6 +133,10 @@ function ItemPage () {
           <section className="fields">
             {data.name && <ItemField value={data.name}>
               <div>Name</div>
+            </ItemField>}
+
+            {data.url && <ItemField type="url" value={data.url}>
+              <div>Website</div>
             </ItemField>}
 
             {data.username && <ItemField value={data.username}>

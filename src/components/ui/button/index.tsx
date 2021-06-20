@@ -8,7 +8,7 @@ import './_index.scss'
 interface ButtonOptions extends React.ButtonHTMLAttributes<any> {
   fullWidth?: boolean,
   loading?: boolean,
-  size?: 'default' | 'small',
+  size?: 'default' | 'small' | 'square',
   theme?: 'default' | 'ghost' | 'danger',
   routeName?: string
 }
@@ -49,16 +49,13 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
             : props.children }
       </Link>
         : <button {...buttonProps}>
-        { props.loading
-          ? <div className="loader">
+        { props.loading && <div className="loader">
             <LoaderRound />
-          </div>
-          : props.children }
+          </div> }
+          {props.children}
       </button>}
     </div>
   )
 })
-
-Button.displayName = 'Button'
 
 export default Button

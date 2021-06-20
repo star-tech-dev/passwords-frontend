@@ -25,7 +25,9 @@
     transition: $transition-button;
 
     & > .icon {
-      margin-right: 8px;
+      & + * {
+        margin-left: 8px;
+      }
     }
 
     &:hover {
@@ -83,8 +85,19 @@
         min-height: 40px;
 
         .icon {
-          margin-right: 8px;
+          & + * {
+            margin-left: 8px;
+          }
         }
+      }
+    }
+
+    &-square {
+      & > * {
+        width: 40px;
+        height: 40px;
+        min-height: auto;
+        padding: 0;
       }
     }
   }
@@ -98,6 +111,13 @@
   &.-loading {
     & > * {
       pointer-events: none;
+
+      & > * {
+        &:not(.loader) {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
     }
   }
 }

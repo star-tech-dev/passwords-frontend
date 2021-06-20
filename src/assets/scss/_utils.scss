@@ -71,6 +71,10 @@ form {
   }
 }
 
+.relative {
+  position: relative;
+}
+
 .scroll-parent {
   position: relative;
   height: 100%;
@@ -83,6 +87,69 @@ form {
   height: 1px;
   background: $color-content-bg;
   margin: 30px auto;
+}
+
+.item-page-head {
+  margin-bottom: 20px;
+
+  .image {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: $border-radius-default;
+    background: $color-page-bg-highlight;
+  }
+
+  .name {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: $font-weight-semibold;
+  }
+
+  .type {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 18px;
+    color: $color-text-faded;
+  }
+
+  .star {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.-active {
+      color: $color-warning;
+    }
+  }
+}
+
+.icons {
+  & > .icon-container {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
+
+.icon-container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-text-faded;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-text-regular;
+  }
 }
 
 [data-tippy-root] {

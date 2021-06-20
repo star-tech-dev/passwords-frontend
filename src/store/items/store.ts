@@ -1,5 +1,5 @@
 import { createStore } from 'effector'
-import { createItem, deleteItem, getItems, toggleItemFavouriteStatus } from './events'
+import { createItem, updateItem, deleteItem, getItems, toggleItemFavouriteStatus } from './events'
 import { State } from './types'
 
 const initialState: State = []
@@ -14,6 +14,14 @@ export const $items = createStore(initialState)
       state.push(result)
     }
     return state
+  })
+  .on(updateItem.done, (state, { result }) => {
+    return state.map(i => {
+      if (i._id === result._id) {
+        return { ...i, ...result }
+      }
+      return i
+    })
   })
   .on(toggleItemFavouriteStatus.done, (state, { params, result }) => {
     return state.map(i => {

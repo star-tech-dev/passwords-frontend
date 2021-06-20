@@ -32,6 +32,11 @@ export default [
     private: true
   },
   {
+    name: 'item.edit',
+    path: '/edit',
+    private: true
+  },
+  {
     name: 'add',
     path: '/add',
     private: true
