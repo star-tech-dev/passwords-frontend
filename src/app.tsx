@@ -12,7 +12,6 @@ import SimpleLayout from './layouts/simple'
 
 // App pages
 import HomePage from './pages/home'
-import ProfilePage from './pages/profile'
 import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/add-item'
@@ -71,8 +70,6 @@ function App () {
         return <AuthPage />
       case 'unlock':
         return <UnlockPage />
-      case 'profile':
-        return <ProfilePage />
 
       case 'settings':
         return <SettingsPage />

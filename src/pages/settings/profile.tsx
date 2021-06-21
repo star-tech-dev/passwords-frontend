@@ -20,10 +20,6 @@ function SettingsProfilePage () {
         <div>name</div>
         <input type="text" value={user?.username} readOnly />
       </div>
-      <div className="flex a-center">
-        <div>hasSecurityCode</div>
-        <input type="checkbox" checked={user?.hasSecurityCode} readOnly />
-      </div>
       <div>
         <button onClick={logout}>logout</button>
       </div>

@@ -7,10 +7,15 @@ export enum ItemsMode {
   default = 'default',
   favourites = 'favourites'
 }
+export enum GeneratorMode {
+  default = 'default',
+  field = 'field'
+}
 /* eslint-enable */
 
 export interface AppState {
   mounted: boolean,
   itemsMode: ItemsMode,
-  itemToDelete: ItemId | null
+  itemToDelete: ItemId | null,
+  generatorMode: GeneratorMode
 }

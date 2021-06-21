@@ -1,11 +1,12 @@
-import { AppState, ItemsMode } from './types'
+import { AppState, GeneratorMode, ItemsMode } from './types'
 import { AppDomain } from './domain'
-import { setMounted, setItemsMode, setItemToDelete } from './events'
+import { setItemsMode, setItemToDelete, setMounted, onOpenGenerator, onCloseGenerator } from './events'
 
 const initialState: AppState = {
   mounted: false,
   itemsMode: ItemsMode.default,
-  itemToDelete: null
+  itemToDelete: null,
+  generatorMode: GeneratorMode.default
 }
 
 export const $app = AppDomain.store<AppState>(initialState)
@@ -25,6 +26,18 @@ export const $app = AppDomain.store<AppState>(initialState)
     return {
       ...state,
       itemToDelete: value
+    }
+  })
+  .on(onOpenGenerator, (state, value) => {
+    return {
+      ...state,
+      generatorMode: value
+    }
+  })
+  .on(onCloseGenerator, (state, value) => {
+    return {
+      ...state,
+      generatorMode: GeneratorMode.default
     }
   })
 

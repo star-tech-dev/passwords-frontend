@@ -6,7 +6,7 @@ function SettingsLanguagePage () {
       <div>
         <div>Language:</div>
         <select disabled={true}>
-          <option value="ru">Russian</option>
+          <option value="en">English</option>
         </select>
       </div>
     </div>

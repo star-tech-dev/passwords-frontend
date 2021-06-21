@@ -1,7 +1,42 @@
 .component.-modal.-password_generator {
   section {
+    &.field {
+      position: relative;
+      width: 400px;
+      max-width: 100%;
+
+      .icons {
+        position: absolute;
+        bottom: 12px;
+        right: 24px;
+        z-index: 1;
+
+        .icon-container.-copy {
+          svg {
+            width: 18px;
+          }
+        }
+      }
+
+      input {
+        box-shadow: none;
+      }
+    }
+
     &.options {
       margin: 35px 0 55px;
+
+      .length-bar {
+        margin-bottom: 20px;
+      }
+
+      .checkboxes {
+        & > * {
+          &:not(:last-child) {
+            margin-right: 20px;
+          }
+        }
+      }
     }
   }
 }

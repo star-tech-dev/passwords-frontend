@@ -16,11 +16,6 @@ export default [
     forGuests: true
   },
   {
-    name: 'profile',
-    path: '/profile',
-    private: true
-  },
-  {
     name: 'unlock',
     path: '/unlock',
     private: true

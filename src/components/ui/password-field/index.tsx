@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { GeneratorMode } from '../../../store/app/types'
 import { openModal } from '../../../store/modals/events'
 import { $modals } from '../../../store/modals/store'
-import { onSaveGenerated } from '../../../store/app/events'
+import { onOpenGenerator, onSaveGenerated } from '../../../store/app/events'
 
 import UIInput from '../input'
 import IconKey from '../../icons/key'
@@ -25,6 +26,11 @@ function PasswordField (props: PasswordFieldProps) {
     setFieldType(fieldType === 'password' ? 'text' : 'password')
   }
 
+  const openGenerator = () => {
+    onOpenGenerator(GeneratorMode.field)
+    openModal('password_generator')
+  }
+
   useEffect(() => {
     $modals.on(onSaveGenerated, (state, value) => {
       props.onGenerate && props.onGenerate(value)
@@ -38,7 +44,7 @@ function PasswordField (props: PasswordFieldProps) {
   return (
     <div className="component -password-field">
       <div className="icons flex a-center">
-        <div className="icon-container -icon -key" onClick={() => openModal('password_generator')}>
+        <div className="icon-container -icon -key" onClick={openGenerator}>
           <IconKey />
         </div>
         <div className="icon-container -eye" onClick={toggleFieldType}>

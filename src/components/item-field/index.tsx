@@ -15,7 +15,6 @@ interface ItemFieldProps extends React.ComponentProps<any> {
 function ItemField (props: ItemFieldProps) {
   const [fieldType, setFieldType] = useState<'text' | 'password'>(props.type === 'password' ? 'password' : props.type || 'text')
   const id = Math.random().toFixed(10).slice(2)
-  const tooltip = null as any
 
   const fieldProps = () => {
     const _props = { ...props }
