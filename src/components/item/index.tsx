@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
 import { State as RouterState } from 'router5'
 import { Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
+import { getItemLetter } from '../../helpers/item'
 
 import { Item as ItemInterface } from '../../store/items/types'
+import ItemImage from '../item/image'
 
 import './_index.scss'
 
@@ -14,7 +16,6 @@ interface ItemProps {
 function Index ({ data }: ItemProps) {
   const [localActive, setLocalActive] = useState(false)
   const subtitle = data.username || data.url || data.note || ''
-  const title = data.name || subtitle
   const router = useRouter()
 
   const onClick = () => {
@@ -41,11 +42,14 @@ function Index ({ data }: ItemProps) {
   return (
     <div className={`component -item ${localActive ? '-active' : ''}`} onClick={onClick}>
       <div className="head flex a-start">
-        <div className="image">
-          <img src="" alt=""/>
-        </div>
+        <ItemImage
+          className="image"
+          image={data.image}
+          color={data.color}
+          itemName={data.name} />
+
         <div className="content">
-          <div className="title">{title}</div>
+          <div className="title">{data.name}</div>
           <div className="subtitle">{subtitle}</div>
         </div>
       </div>

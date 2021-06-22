@@ -5,7 +5,7 @@
   width: 22%;
   height: 100%;
   padding: 40px 0 104px;
-  background: $color-content-bg;
+  background: $color-page-bg-highlight;
   border-right: 1px solid $color-dark;
   overflow: auto;
 
@@ -19,7 +19,9 @@
     }
 
     .title {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 16px;
       color: $color-text-faded;
     }
   }

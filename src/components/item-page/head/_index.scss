@@ -1,0 +1,83 @@
+@import "../../../assets/scss/variables/index";
+
+.component.-item-page-head {
+  margin-bottom: 20px;
+
+  .image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: $border-radius-default;
+    background: $color-page-bg-highlight;
+    transition: $transition-default;
+
+    img {
+      width: 40px;
+      height: 40px;
+      opacity: 1;
+      visibility: visible;
+      transition: $transition-default;
+
+      &.-not-ready {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(.5);
+      }
+
+      &.-ready {
+        animation: scale-image .3s ease;
+      }
+    }
+
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .name {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: $font-weight-semibold;
+  }
+
+  .type {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 18px;
+    color: $color-text-faded;
+  }
+
+  .star {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.-active {
+      color: $color-warning;
+    }
+  }
+}
+
+@keyframes scale-image {
+  from {
+    transform: scale(.5);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}

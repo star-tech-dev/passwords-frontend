@@ -2,11 +2,15 @@ export type ItemId = string
 
 export interface Item {
   _id: ItemId,
+
   name: string,
   url?: string,
   username?: string,
   password?: string,
   note?: string,
+
+  color?: string,
+  image?: string,
   isFavourite?: boolean
 }
 

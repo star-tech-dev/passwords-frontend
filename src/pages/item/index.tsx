@@ -9,12 +9,12 @@ import { openModal } from '../../store/modals/events'
 import { setItemToDelete } from '../../store/app/events'
 
 import UIButton from '../../components/ui/button'
-import ItemField from '../../components/item-field'
-import IconStar from '../../components/icons/star'
+import ItemField from '../../components/item-page/field'
 import IconEdit from '../../components/icons/edit'
 import IconDelete from '../../components/icons/delete'
 
 import './_index.scss'
+import ItemPageHead from '../../components/item-page/head'
 
 function ItemPage () {
   // @ts-ignore (null as initial value)
@@ -113,20 +113,16 @@ function ItemPage () {
             </div>
           </section>
 
-          <section className="head flex a-center">
-            <div className="flex a-center grow">
-              <div className="image">
-                <img src="" alt=""/>
-              </div>
-              <div>
-                <div className="name">{getItemName(data)}</div>
-                <div className="type">Account credentials</div> { /* TODO: обновить после реализации типов */}
-              </div>
-            </div>
-            <div id={favouritesButtonId} className={`star ${data.isFavourite ? '-active' : ''} flex center`} onClick={toggleFavourites}>
-              <IconStar />
-            </div>
-          </section>
+          <ItemPageHead
+            imageSrc={data.image}
+            itemName={data.name}
+            color={data.color}
+            isFavourite={data.isFavourite}
+            favouritesButtonId={favouritesButtonId}
+            toggleFavourites={toggleFavourites}>
+            <div className="name">{getItemName(data)}</div>
+            <div className="type">Account credentials</div> { /* TODO: обновить после реализации типов */}
+          </ItemPageHead>
 
           <div className="separator"/>
 

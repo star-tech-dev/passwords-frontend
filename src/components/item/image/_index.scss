@@ -1,0 +1,22 @@
+@import "src/assets/scss/variables";
+
+.component.-item-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $color-page-bg-highlight;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .letter {
+    text-transform: uppercase;
+    color: $color-content-bg;
+    font-weight: $font-weight-heavy;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

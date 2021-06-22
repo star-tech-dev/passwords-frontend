@@ -59,7 +59,6 @@ function PasswordGeneratorModal () {
     navigator.clipboard.writeText(code)
 
     const tooltipElement = document.querySelector('.component.-modal.-password_generator .icon-container.-copy')
-    console.log('tooltipElement', tooltipElement)
     if (tooltipElement) {
       setTimeout(() => {
         (tooltipElement as any)._tippy?.show()

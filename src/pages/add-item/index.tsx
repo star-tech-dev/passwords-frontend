@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRoute } from 'react-router5'
 import { createItem } from '../../store/items/events'
 
 import UIButton from '../../components/ui/button'
 import UIInput from '../../components/ui/input'
 import UITextarea from '../../components/ui/textarea'
+import ItemPageHead from '../../components/item-page/head'
 import PasswordField from '../../components/ui/password-field'
 import IconCheck from '../../components/icons/check'
 import IconCross from '../../components/icons/cross'
 
 import './_index.scss'
+import { getRandomColor } from '../../helpers/image'
 
 function AddItemPage () {
   const { router } = useRoute()
   const [isLoading, setIsLoading] = useState(false)
+  const [image, setImage] = useState('')
+  const [color, setColor] = useState('')
+  const [randomColor, setRandomColor] = useState('')
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')
   const [username, setUsername] = useState('')
@@ -34,13 +39,16 @@ function AddItemPage () {
       url,
       username,
       password,
-      note
+      note,
+      image: image || null,
+      color: color || randomColor
     }
 
     if (!item.name) {
       setNameError('This field is required')
       nameField.current?.focus()
     } else {
+      // console.log('item', item)
       const res = await createItem(item)
       router.navigate('item', { id: res._id })
     }
@@ -50,6 +58,12 @@ function AddItemPage () {
   const onCancelClick = () => {
     router.navigate('home')
   }
+
+  useEffect(() => {
+    if (!url) {
+      setColor('')
+    }
+  }, [url])
 
   return (
     <div className="page -add-item">
@@ -66,17 +80,15 @@ function AddItemPage () {
         </div>
       </section>
 
-      <section className="item-page-head flex a-center">
-        <div className="flex a-center grow">
-          <div className="image">
-            <img src="" alt=""/>
-          </div>
-          <div>
-            <div className="name">New item creation</div>
-            <div className="type">Icon is based on item name or website</div>
-          </div>
-        </div>
-      </section>
+      <ItemPageHead
+        itemUrl={url}
+        itemName={name}
+        color={color}
+        onImageChange={(image: string) => setImage(image)}
+        onColorChange={(color: string) => setRandomColor(color)}>
+        <div className="name">New item creation</div>
+        <div className="type">Icon is based on item name or website</div>
+      </ItemPageHead>
 
       <div className="separator"/>
 
@@ -87,21 +99,37 @@ function AddItemPage () {
           name="name"
           value={name}
           autoFocus={true}
+          autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
           onBlur={e => !e.target.value.length ? setNameError('') : null }>
           <div>Name</div>
         </UIInput>
-        <UIInput type="url" name="url" value={url} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}>
+        <UIInput
+          type="url"
+          name="url"
+          value={url}
+          autoComplete="off"
+          placeholder="https://example.com"
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}>
           <div>Website</div>
         </UIInput>
-        <UIInput name="username" value={username} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}>
+        <UIInput
+          name="username"
+          value={username}
+          autoComplete="off"
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}>
           <div>Username</div>
         </UIInput>
         <PasswordField
           value={password}
+          autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           onGenerate={(value: string) => setPassword(value)}/>
-        <UITextarea name="note" value={note} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)}>
+        <UITextarea
+          name="note"
+          value={note}
+          autoComplete="off"
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)}>
           <div>Note</div>
         </UITextarea>
       </section>

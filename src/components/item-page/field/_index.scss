@@ -1,10 +1,11 @@
-@import "src/assets/scss/variables";
+@import "../../../assets/scss/variables/index";
 
 .component.-item-field {
   position: relative;
   border-radius: $border-radius-default;
   cursor: pointer;
   transition: $transition-default;
+  user-select: none;
 
   .intro {
     padding: 20px 110px 26px 20px;
@@ -22,6 +23,7 @@
     font-size: 16px;
     line-height: 20px;
     color: $color-text-regular;
+    user-select: text;
   }
 
   .icons {

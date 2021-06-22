@@ -4,6 +4,8 @@
 @include font-face('SF Pro Text', normal, $font-weight-regular, '../fonts/sf-pro-text/SFProText-Regular', 'SFProText-Regular')
 @include font-face('SF Pro Text', normal, $font-weight-medium, '../fonts/sf-pro-text/SFProText-Medium', 'SFProText-Medium')
 @include font-face('SF Pro Text', normal, $font-weight-semibold, '../fonts/sf-pro-text/SFProText-Semibold', 'SFProText-Semibold')
+@include font-face('SF Pro Text', normal, $font-weight-bold, '../fonts/sf-pro-text/SFProText-Bold', 'SFProText-Bold')
+@include font-face('SF Pro Text', normal, $font-weight-heavy, '../fonts/sf-pro-text/SFProText-Heavy', 'SFProText-Heavy')
 
 @include font-face('Gilroy', normal, $font-weight-semibold, '../fonts/gilroy/gilroy-semibold', 'Gilroy-SemiBold')
 

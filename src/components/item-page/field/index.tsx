@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import tippy from 'tippy.js'
 
-import UIInput from '../ui/input'
-import IconCopy from '../icons/copy'
-import IconEye from '../icons/eye'
+import UIInput from '../../ui/input'
+import IconCopy from '../../icons/copy'
+import IconEye from '../../icons/eye'
 
 import './_index.scss'
 

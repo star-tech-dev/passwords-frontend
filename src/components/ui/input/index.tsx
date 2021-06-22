@@ -18,14 +18,18 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     ref = useRef()
   }
 
-  const [inputProps, setInputProps] = useState<InputOptions>({
-    value: ''
-  })
   const [localError, setLocalError] = useState(props.error)
   const localId = props.id || Math.random().toFixed(10).slice(2)
   const innerRef = useRef(null) as React.RefObject<HTMLInputElement>
   const iconError = React.useRef<HTMLInputElement>(null)
   const classList = `input -component -theme-${props.theme || 'default'} ${props.error ? '-error' : ''}`
+
+  const inputProps = () => {
+    const obj = { ...props }
+    delete obj.beforeInput
+    delete obj.children
+    return obj
+  }
 
   const focus = () => {
     nextTick(() => {
@@ -55,13 +59,6 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     setLocalError('')
   }
 
-  const update = () => {
-    const obj = { ...props }
-    delete obj.beforeInput
-    delete obj.children
-    setInputProps(obj)
-  }
-
   useEffect(() => {
     if (localError) {
       if (iconError.current) {
@@ -75,17 +72,12 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
 
   useEffect(() => {
     setLocalError(props.error)
-    update()
     props.autoFocus && focus()
   }, [])
 
   useEffect(() => {
     ref.current = { focus, select }
   }, [ref])
-
-  useEffect(() => {
-    update()
-  }, [props])
 
   useEffect(() => {
     setLocalError(props.error)
@@ -103,7 +95,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
             : null}
         </div>
         <input
-          {...inputProps}
+          {...inputProps()}
           ref={innerRef}
           type={props.type || 'text'}
           id={props.id || localId}
@@ -112,5 +104,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     </div>
   )
 })
+
+Input.displayName = 'Input'
 
 export default Input
