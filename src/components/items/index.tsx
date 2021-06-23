@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
 import { $items } from '../../store/items/store'
 import { getItems } from '../../store/items/events'
 import { ItemsMode } from '../../store/app/types'
 
 import Item from '../item'
+import LoaderRound from '../loader/round'
 import UIButton from '../ui/button'
 
 import './_index.scss'
@@ -15,6 +16,7 @@ interface ItemsProps {
 }
 
 function Items (props: ItemsProps) {
+  const [isLoading, setIsLoading] = useState(false)
   const items = useStore($items)
 
   const list = () => {
@@ -35,22 +37,30 @@ function Items (props: ItemsProps) {
     })
   }
 
+  const onMounted = async () => {
+    setIsLoading(true)
+    await getItems().catch(() => [])
+    setIsLoading(false)
+  }
+
   useEffect(() => {
-    getItems()
+    onMounted()
   }, [])
 
   return (
     <div className={`component -item-list ${!items.length ? '-empty' : ''}`}>
-      {items.length
-        ? <div>
-        {list()}
-      </div>
-        : <div className="flex column center">
-        <div>You have no items yet</div>
-        <div className="button-parent">
-          <UIButton routeName="add" theme="ghost">Create one</UIButton>
-        </div>
-      </div>}
+      {isLoading
+        ? <LoaderRound />
+        : items.length
+          ? <div>
+            {list()}
+          </div>
+          : <div className="flex column center">
+            <div>You have no items yet</div>
+            <div className="button-parent">
+              <UIButton routeName="add" theme="ghost">Create one</UIButton>
+            </div>
+        </div>}
     </div>
   )
 }

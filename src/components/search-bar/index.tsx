@@ -93,10 +93,12 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     <div className="component -search-bar">
       <div className="icon-parent flex center">
         {query
-          ? <div className="clear flex center" onClick={clear}>
+          ? <div className="icon-container -cross flex center" onClick={clear}>
             <IconCross />
           </div>
-          : <IconSearch/>}
+          : <div className="icon-container -search">
+            <IconSearch/>
+          </div>}
       </div>
 
       <UIInput

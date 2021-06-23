@@ -2,7 +2,7 @@ import React from 'react'
 
 function EyeIcon () {
   return (
-    <svg className="icon -eye" width="18px" height="12px" viewBox="0 0 18 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg className="icon -eye" width="20px" height="14px" viewBox="0 0 18 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-701.000000, -405.000000)" fill="currentColor" fillRule="nonzero">
           <g transform="translate(701.000000, 405.000000)">

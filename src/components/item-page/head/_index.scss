@@ -32,13 +32,6 @@
         animation: scale-image .3s ease;
       }
     }
-
-    .loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 
   .name {
@@ -54,7 +47,7 @@
     color: $color-text-faded;
   }
 
-  .star {
+  .icon-container.-star {
     width: 60px;
     height: 60px;
     cursor: pointer;

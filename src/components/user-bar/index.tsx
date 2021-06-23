@@ -40,7 +40,9 @@ function UserBar () {
     return (
       <Link routeName="settings.profile" className={`component -user-bar flex a-center ${isActive && 'active'}`}>
         <div className="photo flex center">
-          <IconUser />
+          <div className="icon-container -user">
+            <IconUser />
+          </div>
         </div>
         <div>
           <div className="name">{user.username}</div>

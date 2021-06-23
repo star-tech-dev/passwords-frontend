@@ -13,6 +13,7 @@ import IconDelete from '../../icons/delete'
 import './_index.scss'
 
 function DeleteItemModal () {
+  const [isLoading, setIsLoading] = useState(false)
   const [name, setName] = useState('')
   const id = 'delete_item'
   const $app = useStore(appStore)
@@ -28,8 +29,10 @@ function DeleteItemModal () {
     getItemName()
   }
 
-  const onDelete = () => {
-    deleteItem({
+  const onDelete = async () => {
+    setIsLoading(true)
+
+    await deleteItem({
       id: $app.itemToDelete
     }).then(() => {
       closeModal(id)
@@ -37,6 +40,8 @@ function DeleteItemModal () {
     }).catch(err => {
       console.warn('err', err)
     })
+
+    setIsLoading(false)
   }
 
   return (
@@ -46,8 +51,10 @@ function DeleteItemModal () {
         <div className="item-name">{name}</div>
       </div>
       <div className="buttons">
-        <UIButton size="small" theme="danger" onClick={onDelete}>
-          <IconDelete />
+        <UIButton size="small" theme="danger" loading={isLoading} onClick={onDelete}>
+          <div className="icon-container -delete">
+            <IconDelete />
+          </div>
           <span>Delete</span>
         </UIButton>
         <UIButton size="small" theme="ghost" onClick={() => closeModal(id)}>Cancel</UIButton>

@@ -52,7 +52,7 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
         { props.loading && <div className="loader">
             <LoaderRound />
           </div> }
-          {props.children}
+          <div className="flex a-center">{props.children}</div>
       </button>}
     </div>
   )

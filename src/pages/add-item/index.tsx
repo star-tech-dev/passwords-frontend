@@ -70,11 +70,15 @@ function AddItemPage () {
       <section className="actions">
         <div className="buttons flex j-end">
           <UIButton size="small" theme="ghost" loading={isLoading} onClick={create}>
-            <IconCheck />
+            <div className="icon-container -check">
+              <IconCheck />
+            </div>
             <span>Create</span>
           </UIButton>
           <UIButton size="small" theme="ghost" onClick={onCancelClick}>
-            <IconCross />
+            <div className="icon-container -cross">
+              <IconCross />
+            </div>
             <span>Cancel</span>
           </UIButton>
         </div>

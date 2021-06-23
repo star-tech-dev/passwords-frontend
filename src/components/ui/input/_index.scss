@@ -41,12 +41,12 @@
 
   .buttons {
     position: absolute;
-    top: 15px;
-    right: 21px;
+    top: 12px;
+    right: 20px;
     z-index: 1;
   }
 
-  .icon-error {
+  .icon-container.-error {
     color: $color-danger;
     cursor: none;
   }

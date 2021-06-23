@@ -10,8 +10,7 @@ import SearchBar from '../../search-bar'
 import Items from '../../items'
 import IconAdd from '../../icons/add'
 import UIButton from '../../ui/button'
-
-// import IconAdd from '../../icons/add'
+import IconKey from '../../icons/key'
 
 function SubAsideItemList () {
   const [mode, setMode] = useState<ItemsMode>(ItemsMode.default)
@@ -21,6 +20,7 @@ function SubAsideItemList () {
   const searchField = React.createRef()
 
   const checkRoute = (route: RouterState) => {
+    // TODO: route has old value here
     const _mode = $app.getState().itemsMode
     setMode(_mode)
   }
@@ -43,7 +43,9 @@ function SubAsideItemList () {
         ? <div className="aside-head flex a-center j-between">
         <SearchBar ref={searchField} onChange={(query: string) => setSearchQuery(query)}/>
         <UIButton routeName="add" size="square">
-          <IconAdd />
+          <div className="icon-container -add">
+            <IconAdd />
+          </div>
         </UIButton>
       </div>
         : null}

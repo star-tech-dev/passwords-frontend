@@ -96,7 +96,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
 
       <div className="buttons">
         {localError
-          ? <div ref={iconError} className="icon-error" onClick={e => onTooltipClick(e)}>
+          ? <div ref={iconError} className="icon-container -info" onClick={e => onTooltipClick(e)}>
           <IconInfo />
         </div>
           : null}

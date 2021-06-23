@@ -24,7 +24,11 @@
     cursor: pointer;
     transition: $transition-button;
 
-    & > .icon {
+    span {
+      display: flex;
+    }
+
+    .icon-container {
       & + * {
         margin-left: 8px;
       }
@@ -40,12 +44,15 @@
   }
 
   .loader {
-    position: absolute;
     color: $color-text-white;
   }
 
   &.-theme {
-    &-default {}
+    &-default {
+      .icon-container {
+        color: $color-text-regular;
+      }
+    }
 
     &-danger {
       & > * {
@@ -84,7 +91,11 @@
         line-height: 16px;
         min-height: 40px;
 
-        .icon {
+        .icon-container {
+          width: 20px;
+          height: 20px;
+          margin-left: -2px;
+
           & + * {
             margin-left: 8px;
           }

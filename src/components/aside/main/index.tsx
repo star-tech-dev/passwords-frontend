@@ -7,6 +7,7 @@ import NavItem from './nav-item'
 import IconShield from '../../icons/shield'
 import IconStar from '../../icons/star'
 import IconKey from '../../icons/key'
+import IconLock from '../../icons/lock'
 
 import './_index.scss'
 
@@ -17,12 +18,16 @@ function MainAside () {
         <section>
           <nav>
             <NavItem className="-all" routeName="home">
-              <IconShield />
+              <div className="icon-container -shield">
+                <IconShield />
+              </div>
               <span>All items</span>
             </NavItem>
 
             <NavItem className="-favourites" routeName="favourites">
-              <IconStar />
+              <div className="icon-container -star">
+                <IconStar />
+              </div>
               <span>Favourites</span>
             </NavItem>
           </nav>
@@ -31,8 +36,17 @@ function MainAside () {
         <section>
           <div className="title">Features</div>
           <NavItem className="-generator" onClick={() => openModal('password_generator')}>
-            <IconKey />
+            <div className="icon-container -key">
+              <IconKey />
+            </div>
             <span>Password generator</span>
+          </NavItem>
+
+          <NavItem className="-locker" onClick={lockApp}>
+            <div className="icon-container -lock">
+              <IconLock />
+            </div>
+            <span>Lock the app</span>
           </NavItem>
         </section>
 
@@ -43,10 +57,6 @@ function MainAside () {
         {/* <section> */}
         {/*  <div className="title">Folders</div> */}
         {/* </section> */}
-
-        <section>
-          <button onClick={() => lockApp()}>lock app</button>
-        </section>
       </div>
 
       <UserBar />

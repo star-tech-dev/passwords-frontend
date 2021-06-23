@@ -16,7 +16,7 @@ function UICheckbox (props: UICheckboxProps) {
     <div className="component -ui-checkbox">
       <label className="flex a-center">
         <input type="checkbox" {...inputProps()} />
-        <div className="box flex center">
+        <div className="icon-container -check box flex center">
           <IconCheck />
         </div>
         <div className="label">{props.children}</div>

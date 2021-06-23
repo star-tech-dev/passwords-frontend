@@ -103,11 +103,15 @@ function ItemPage () {
           <section className="actions">
             <div className="buttons flex j-end">
               <UIButton size="small" theme="ghost" onClick={onEditClick}>
-                <IconEdit />
+                <div className="icon-container -edit">
+                  <IconEdit />
+                </div>
                 <span>Edit</span>
               </UIButton>
               <UIButton size="small" theme="ghost" onClick={onDeleteClick}>
-                <IconDelete />
+                <div className="icon-container -delete">
+                  <IconDelete />
+                </div>
                 <span>Delete</span>
               </UIButton>
             </div>

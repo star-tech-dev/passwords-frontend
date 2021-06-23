@@ -93,7 +93,7 @@ function ItemPageHead (props: ItemPageHeadProps) {
 
       {props.favouritesButtonId && <div
         id={props.favouritesButtonId}
-        className={`star ${props.isFavourite ? '-active' : ''} flex center`}
+        className={`icon-container -star ${props.isFavourite ? '-active' : ''} flex center`}
         onClick={onToggleFavourites}>
         <IconStar/>
       </div>}
