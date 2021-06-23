@@ -11,7 +11,6 @@ import IconCheck from '../../components/icons/check'
 import IconCross from '../../components/icons/cross'
 
 import './_index.scss'
-import { getRandomColor } from '../../helpers/image'
 
 function AddItemPage () {
   const { router } = useRoute()

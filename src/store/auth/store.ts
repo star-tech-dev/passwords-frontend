@@ -2,7 +2,7 @@ import { AuthState } from './types'
 import { AuthDomain } from './domain'
 import { checkIsAppLocked, setIsAppLocked } from '../locker/events'
 import { closeModal, openModal } from '../modals/events'
-import { register, login, logout, checkAuth, checkUserSecurityCode, setUserSecurityCode } from './events'
+import { register, login, logout, checkAuth, checkUserSecurityCode, onSuccessSetSecurityCode } from './events'
 
 const initialState: AuthState = {
   user: null
@@ -43,7 +43,7 @@ export const $auth = AuthDomain.store<AuthState>(initialState)
     state.user && !state.user.hasSecurityCode && openModal('set_security_code')
     return state
   })
-  .on(setUserSecurityCode, (state) => {
+  .on(onSuccessSetSecurityCode, (state) => {
     closeModal('set_security_code')
     return state
   })

@@ -6,7 +6,7 @@ import { setItemsMode } from '../../../store/app/events'
 import { ItemsMode } from '../../../store/app/types'
 
 import ItemList from './item-list'
-import ProfileMenu from './profile-menu'
+import ProfileMenu from './menu'
 
 import './_index.scss'
 

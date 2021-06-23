@@ -19,10 +19,9 @@ import ItemPage from './pages/item'
 import ItemEditPage from './pages/item/edit'
 import SettingsPage from './pages/settings'
 import SettingsProfilePage from './pages/settings/profile'
-import SettingsAppearancePage from './pages/settings/appearance'
-import SettingsLanguagePage from './pages/settings/language'
+import SettingsGeneralPage from './pages/settings/general'
 import SettingsAboutPage from './pages/settings/about'
-import NotFound from './pages/not-found'
+import Index from './pages/not-found'
 
 // Layout components
 import Loader from './components/loader/page-loader'
@@ -75,14 +74,12 @@ function App () {
         return <SettingsPage />
       case 'settings.profile':
         return <SettingsProfilePage />
-      case 'settings.appearance':
-        return <SettingsAppearancePage />
-      case 'settings.language':
-        return <SettingsLanguagePage />
+      case 'settings.general':
+        return <SettingsGeneralPage />
       case 'settings.about':
         return <SettingsAboutPage />
       default:
-        return <NotFound />
+        return <Index />
     }
   }
 

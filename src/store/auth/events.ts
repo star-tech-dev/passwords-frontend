@@ -38,10 +38,14 @@ export const checkAuth = AuthDomain.effect<void, AuthCheckResponse>().use(() => 
 
 export const checkUserSecurityCode = AuthDomain.event()
 
+export const onSuccessSetSecurityCode = AuthDomain.event()
+
 export const setUserSecurityCode = AuthDomain.effect<SecurityCode, void>().use((securityCode) => {
   return sendRequest({
     method: 'post',
     url: '/security-code',
     data: { securityCode }
+  }).then(() => {
+    onSuccessSetSecurityCode()
   })
 })

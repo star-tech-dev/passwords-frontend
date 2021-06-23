@@ -1,0 +1,19 @@
+@import "src/assets/scss/variables";
+
+.component.-modal.-set_security_code {
+  .form {
+    margin: 30px 0;
+
+    & > * {
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .text {
+    font-size: 13px;
+    line-height: 18px;
+    color: $color-text-faded;
+  }
+}

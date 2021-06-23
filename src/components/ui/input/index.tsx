@@ -6,11 +6,12 @@ import IconInfo from '../../icons/info'
 
 import './_index.scss'
 
-interface InputOptions extends React.InputHTMLAttributes<any> {
+export interface InputOptions extends React.InputHTMLAttributes<any> {
   theme?: 'default' | 'clean',
   model?: any,
   error?: any,
-  beforeInput?: Function
+  beforeInput?: Function,
+  boxShadow?: boolean
 }
 
 const Input = forwardRef((props: InputOptions, ref: any) => {
@@ -22,12 +23,13 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   const localId = props.id || Math.random().toFixed(10).slice(2)
   const innerRef = useRef(null) as React.RefObject<HTMLInputElement>
   const iconError = React.useRef<HTMLInputElement>(null)
-  const classList = `input -component -theme-${props.theme || 'default'} ${props.error ? '-error' : ''}`
+  const classList = `input -component -theme-${props.theme || 'default'} ${props.error ? '-error' : ''} ${props.boxShadow === false ? '-no-box-shadow' : ''}`
 
   const inputProps = () => {
     const obj = { ...props }
     delete obj.beforeInput
     delete obj.children
+    delete obj.boxShadow
     return obj
   }
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
 import { State as RouterState } from 'router5'
 import { Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
-import { getItemLetter } from '../../helpers/item'
 
 import { Item as ItemInterface } from '../../store/items/types'
 import ItemImage from '../item/image'

@@ -133,7 +133,7 @@ function PasswordGeneratorModal () {
         </div>
       </section>
 
-      <section className="buttons">
+      <section className="modal-buttons buttons">
         {$app.generatorMode === GeneratorMode.field && <UIButton onClick={save}>Keep</UIButton>}
         <UIButton onClick={generate} theme="ghost">Regenerate</UIButton>
         <UIButton theme="ghost" onClick={() => closeModal(id)}>Close</UIButton>

@@ -50,7 +50,7 @@ function DeleteItemModal () {
       <div className="modal-subtitle">
         <div className="item-name">{name}</div>
       </div>
-      <div className="buttons">
+      <div className="modal-buttons buttons">
         <UIButton size="small" theme="danger" loading={isLoading} onClick={onDelete}>
           <div className="icon-container -delete">
             <IconDelete />

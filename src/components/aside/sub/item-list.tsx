@@ -10,7 +10,6 @@ import SearchBar from '../../search-bar'
 import Items from '../../items'
 import IconAdd from '../../icons/add'
 import UIButton from '../../ui/button'
-import IconKey from '../../icons/key'
 
 function SubAsideItemList () {
   const [mode, setMode] = useState<ItemsMode>(ItemsMode.default)

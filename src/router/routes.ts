@@ -46,12 +46,8 @@ export default [
     path: '/profile'
   },
   {
-    name: 'settings.appearance',
-    path: '/appearance'
-  },
-  {
-    name: 'settings.language',
-    path: '/language'
+    name: 'settings.general',
+    path: '/general'
   },
   {
     name: 'settings.about',

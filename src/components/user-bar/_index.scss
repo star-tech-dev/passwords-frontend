@@ -39,6 +39,10 @@
 
     .photo {
       background: $color-primary-highlight;
+
+      .icon-container {
+        color: $color-text-regular;
+      }
     }
   }
 }

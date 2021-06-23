@@ -6,7 +6,7 @@ function SettingsPage () {
   const router = useRouter()
 
   useEffect(() => {
-    router.navigate('settings.profile')
+    router.navigate('settings.general')
   }, [])
 
   return null
