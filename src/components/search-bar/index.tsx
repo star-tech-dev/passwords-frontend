@@ -1,12 +1,17 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import { nextTick } from '../../helpers/next-tick'
 import { itemsFiltered } from '../../store/app/events'
+import { $modals } from '../../store/modals/store'
 
 import UIInput from '../ui/input'
 import IconSearch from '../icons/search'
 import IconCross from '../icons/cross'
 
 import './_index.scss'
+
+interface onKeyUpEvent extends Event {
+  keyCode?: number
+}
 
 interface SearchBarOptions {
   onChange?: Function
@@ -32,29 +37,34 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     })
   }
 
-  // const onKeyUp = (e: React.KeyboardEvent) => {
-  //   let watchFocus = true
-  //   let target = document.activeElement
-  //   while (target) {
-  //     if (target.classList.contains('-search-bar')) {
-  //       watchFocus = false
-  //       target = null
-  //       return
-  //     }
-  //     target = target.parentElement
-  //   }
-  //
-  //   if (watchFocus && /\w/.test(e.key) && e.key.length === 1) {
-  //     if (!query.length) {
-  //       setQuery(e.key)
-  //     }
-  //     nextTick(() => {
-  //       (innerRef.current as any)?.focus()
-  //     })
-  //   }
-  // }
+  const onKeyUp = (e: onKeyUpEvent) => {
+    if ($modals.getState().length) {
+      return
+    }
 
-  const onFieldKeyUp = (e: React.KeyboardEvent) => {
+    let watchFocus = true
+    let target = document.activeElement
+    while (target) {
+      if (target.classList.contains('-search-bar')) {
+        watchFocus = false
+        target = null
+        return
+      }
+      target = target.parentElement
+    }
+
+    if (!watchFocus) {
+      return
+    }
+
+    if (e.keyCode === 27) { // esc
+      nextTick(() => {
+        (innerRef.current as any)?.focus()
+      })
+    }
+  }
+
+  const onFieldKeyUp = (e: onKeyUpEvent) => {
     if (e.keyCode === 27) { // escape
       setQuery('')
     }
@@ -76,15 +86,11 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
   }, [ref])
 
   useEffect(() => {
-    // @ts-ignore
-    // document.addEventListener('keyup', onKeyUp)
+    document.addEventListener('keyup', onKeyUp)
     const field = document.querySelector('.component.-search-bar input') as HTMLElement
-    // @ts-ignore
     field.addEventListener('keyup', onFieldKeyUp)
     return () => {
-      // @ts-ignore
-      // document.removeEventListener('keyup', onKeyUp)
-      // @ts-ignore
+      document.removeEventListener('keyup', onKeyUp)
       field.removeEventListener('keyup', onFieldKeyUp)
     }
   }, [])

@@ -12,7 +12,6 @@ import './_index.scss'
 
 interface PasswordFieldProps extends InputOptions {
   onGenerate?: Function,
-  label?: boolean,
   generator?: boolean
 }
 
@@ -24,7 +23,6 @@ const PasswordField = forwardRef((props: PasswordFieldProps, ref: any) => {
   const fieldProps = () => {
     const _props = { ...props }
     delete _props.onGenerate
-    delete _props.label
     delete _props.generator
     return _props
   }
@@ -88,7 +86,7 @@ const PasswordField = forwardRef((props: PasswordFieldProps, ref: any) => {
         name="password"
         onInput={onInput}
         onBlur={onBlur}>
-        {props.label !== false && <div>Password</div>}
+        {props.children}
       </UIInput>
     </div>
   )

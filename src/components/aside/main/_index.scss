@@ -55,11 +55,9 @@
     align-items: center;
     width: 100%;
     padding: 10px 16px;
-    //background: $color-page-bg-highlight;
     border-radius: $border-radius-default;
     color: $color-text-regular;
     text-decoration: none;
-    //color: inherit;
     transition: $transition-default;
 
     svg {
@@ -67,7 +65,7 @@
     }
 
     &:hover {
-      background: $color-page-bg-highlight;
+      background: darken($color-page-bg-highlight, 1%);
     }
 
     &.active {
@@ -95,5 +93,9 @@
 
   .icon-container {
     margin-right: 15px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
   }
 }

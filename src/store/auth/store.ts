@@ -1,8 +1,16 @@
-import { AuthState } from './types'
+import { AuthState, User } from './types'
 import { AuthDomain } from './domain'
 import { checkIsAppLocked, setIsAppLocked } from '../locker/events'
 import { closeModal, openModal } from '../modals/events'
-import { register, login, logout, checkAuth, checkUserSecurityCode, onSuccessSetSecurityCode } from './events'
+import {
+  register,
+  login,
+  logout,
+  checkAuth,
+  checkUserSecurityCode,
+  onSuccessSetSecurityCode,
+  onProfileUpdate
+} from './events'
 
 const initialState: AuthState = {
   user: null
@@ -46,6 +54,13 @@ export const $auth = AuthDomain.store<AuthState>(initialState)
   .on(onSuccessSetSecurityCode, (state) => {
     closeModal('set_security_code')
     return state
+  })
+  .on(onProfileUpdate, (state, data) => {
+    const updatedUser = { ...state.user, ...data } as User
+    return {
+      ...state,
+      user: updatedUser
+    }
   })
 
 export default { $auth }

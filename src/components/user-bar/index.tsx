@@ -38,7 +38,7 @@ function UserBar () {
 
   if (user) {
     return (
-      <Link routeName="settings.general" className={`component -user-bar flex a-center ${isActive && 'active'}`}>
+      <Link routeName="settings" className={`component -user-bar flex a-center ${isActive && 'active'}`}>
         <div className="photo flex center">
           <div className="icon-container -user">
             <IconUser />
@@ -46,7 +46,7 @@ function UserBar () {
         </div>
         <div>
           <div className="name">{user.username}</div>
-          <div>account & settings</div>
+          <div>account &amp; settings</div>
         </div>
       </Link>
     )

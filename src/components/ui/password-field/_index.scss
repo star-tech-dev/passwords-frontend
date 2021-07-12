@@ -13,4 +13,10 @@
   input {
     padding-right: 70px;
   }
+
+  .icon-container {
+    &:hover {
+      color: $color-text-regular;
+    }
+  }
 }

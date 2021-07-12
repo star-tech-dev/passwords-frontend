@@ -1,0 +1,19 @@
+@import "src/assets/scss/variables";
+
+.page.-settings {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  font-size: 13px;
+  line-height: 18px;
+  color: $color-text-faded;
+}
+
+.page.-settings-general {
+  & > section {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+}

@@ -19,7 +19,7 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
   }
 
   const [buttonProps, setButtonProps] = useState({})
-  const classList = `button -component -theme-${props.theme || 'default'} -size-${props.size || 'default'} ${props.fullWidth ? '-full-width' : ''} ${props.loading ? '-loading' : ''}`
+  const classList = `button -component -theme-${props.theme || 'default'} -size-${props.size || 'default'} ${props.fullWidth ? '-full-width' : ''} ${props.loading ? '-loading' : ''} ${props.disabled ? '-disabled' : ''}`
 
   const update = () => {
     (ref as any).current = {}

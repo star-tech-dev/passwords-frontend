@@ -66,12 +66,12 @@ function AddItemPage () {
 
   return (
     <div className="page -add-item">
-      <section className="actions">
+      <section className="page-actions">
         <div className="buttons flex j-end">
           <UIButton size="small" theme="ghost" loading={isLoading} onClick={create}>
-            <div className="icon-container -check">
+            <span className="icon-container -check">
               <IconCheck />
-            </div>
+            </span>
             <span>Create</span>
           </UIButton>
           <UIButton size="small" theme="ghost" onClick={onCancelClick}>
@@ -125,6 +125,7 @@ function AddItemPage () {
         </UIInput>
         <PasswordField
           value={password}
+          generator={true}
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           onGenerate={(value: string) => setPassword(value)}/>

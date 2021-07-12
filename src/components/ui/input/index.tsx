@@ -7,7 +7,7 @@ import IconInfo from '../../icons/info'
 import './_index.scss'
 
 export interface InputOptions extends React.InputHTMLAttributes<any> {
-  theme?: 'default' | 'clean',
+  theme?: 'default' | 'clean' | 'dark',
   model?: any,
   error?: any,
   beforeInput?: Function,

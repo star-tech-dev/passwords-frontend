@@ -1,0 +1,22 @@
+@import "src/assets/scss/variables";
+
+%ui-field {
+  width: 100%;
+  min-width: 260px;
+  max-width: 100%;
+  padding: 15px 21px;
+  padding-right: 58px;
+
+  font-family: $font-family-default;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: $font-weight-medium;
+  letter-spacing: .1px;
+
+  border: none;
+  border-radius: $border-radius-default;
+  background: $color-content-bg;
+  color: $color-text-regular;
+
+  transition: $transition-field;
+}

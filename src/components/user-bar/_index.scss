@@ -14,10 +14,11 @@
   transition: $transition-default;
 
   &:hover {
-    background: $color-page-bg-highlight;
+    background: darken($color-page-bg-highlight, 1%);
   }
 
   .photo {
+    flex-shrink: 0;
     width: 44px;
     height: 44px;
     margin-right: 15px;
@@ -27,6 +28,9 @@
   }
 
   .name {
+    max-width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 17px;
     line-height: 20px;
     color: $color-text-regular;

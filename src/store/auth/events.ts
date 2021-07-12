@@ -1,6 +1,15 @@
 import { AuthDomain } from './domain'
 import { sendRequest } from '../../api'
-import { RegisterPayload, User, LoginPayload, LoginResponse, AuthCheckResponse, SecurityCode } from './types'
+import {
+  RegisterPayload,
+  LoginPayload,
+  LoginResponse,
+  AuthCheckResponse,
+  SecurityCode,
+  User,
+  UserProps,
+  ChangePasswordPayload
+} from './types'
 
 export const register = AuthDomain.effect<RegisterPayload, User>().use((payload) => {
   return sendRequest({
@@ -45,7 +54,30 @@ export const setUserSecurityCode = AuthDomain.effect<SecurityCode, void>().use((
     method: 'post',
     url: '/security-code',
     data: { securityCode }
-  }).then(() => {
+  }).then(res => {
     onSuccessSetSecurityCode()
+    return res
+  })
+})
+
+export const onProfileUpdate = AuthDomain.event<UserProps>()
+
+export const updateProfile = AuthDomain.effect<UserProps, User>().use(payload => {
+  return sendRequest({
+    method: 'put',
+    url: '/user',
+    data: payload
+  }).then(res => {
+    console.log('res', res)
+    onProfileUpdate(res)
+    return res
+  })
+})
+
+export const changePassword = AuthDomain.effect<ChangePasswordPayload, void>().use(payload => {
+  return sendRequest({
+    method: 'post',
+    url: '/password',
+    data: payload
   })
 })

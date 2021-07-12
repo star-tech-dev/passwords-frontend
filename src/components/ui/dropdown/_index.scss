@@ -1,0 +1,59 @@
+@import "src/assets/scss/variables";
+@import "src/assets/scss/extends";
+
+.component.-dropdown {
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    color: $color-text-faded;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .head {
+    @extend %ui-field;
+    position: relative;
+    padding: 15px 21px;
+    padding-right: 50px;
+    cursor: pointer;
+
+    .icon-container.-angle {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+
+    .right {
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: $font-weight-semibold;
+    }
+
+    &:hover {
+      background: $color-content-bg-highlight;
+    }
+  }
+
+  .content {
+    padding: 20px 40px 30px;
+    background: $color-dark;
+    border-radius: 0 0 $border-radius-default $border-radius-default;
+
+    .row {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &.-opened {
+    .head {
+      border-radius: $border-radius-default $border-radius-default 0 0;
+      background: $color-dark;
+
+      .right {
+        display: none;
+      }
+    }
+  }
+}

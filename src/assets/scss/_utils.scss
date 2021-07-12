@@ -52,6 +52,24 @@
   display: inline-flex;
 }
 
+.text {
+  &-faded {
+    color: $color-text-faded;
+  }
+
+  &-regular {
+    color: $color-text-regular;
+  }
+
+  &-security-strong {
+    color: $color-security-strong;
+  }
+
+  &-security-weak {
+    color: $color-security-weak;
+  }
+}
+
 form {
   & > * {
     &:not(:last-child) {
@@ -106,10 +124,6 @@ form {
   cursor: pointer;
   color: $color-text-faded;
   transition: $transition-default;
-
-  &:hover {
-    color: $color-text-regular;
-  }
 }
 
 [data-tippy-root] {

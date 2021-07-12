@@ -1,8 +1,9 @@
 // app
+@import 'variables/index';
 @import "reset";
 @import 'typography';
 @import 'utils';
-@import 'variables/index';
+@import 'extends';
 
 // dependencies
 @import '/node_modules/tippy.js/dist/tippy.css';
@@ -48,9 +49,15 @@ a {
 }
 
 .page {
-  width: 460px;
+  width: 480px;
   max-width: 100%;
   margin: 0 auto;
+
+  & > section {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .container {

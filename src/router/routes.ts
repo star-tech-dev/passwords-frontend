@@ -39,19 +39,23 @@ export default [
 
   {
     name: 'settings',
-    path: '/settings'
+    path: '/settings',
+    private: true
   },
   {
     name: 'settings.profile',
-    path: '/profile'
+    path: '/profile',
+    private: true
   },
   {
     name: 'settings.general',
-    path: '/general'
+    path: '/general',
+    private: true
   },
   {
     name: 'settings.about',
-    path: '/about'
+    path: '/about',
+    private: true
   },
 
   {

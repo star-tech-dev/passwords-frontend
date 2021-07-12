@@ -111,8 +111,9 @@ function PasswordGeneratorModal () {
       <section className="options">
         <div className="length-bar">
           <div className="flex a-center j-between">
-            <div>length</div>
-            <div>{length}</div>
+            <div>weak</div>
+            <div>length {length}</div>
+            <div>strong</div>
           </div>
           <UISafetyRange min={4} max={30} value={length} step={1} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLength(+e.target.value)} />
         </div>

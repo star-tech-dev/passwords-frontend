@@ -1,8 +1,21 @@
 import React from 'react'
 
-function SettingsAppearancePage () {
+import UIButton from '../../components/ui/button'
+import IconAngle from '../../components/icons/angle'
+import ActionBar from '../../components/settings/action-bar/action-bar'
+
+function SettingsGeneralPage () {
   return (
-    <div className="page -settings-appearance">
+    <div className="page -settings-general">
+      <ActionBar left={
+        <UIButton routeName="settings" size="small" theme="ghost">
+            <span className="icon-container -angle">
+              <IconAngle />
+            </span>
+          <span>Back</span>
+        </UIButton>
+      } right={null} />
+
       <section>
         <div>Color theme:</div>
         <select defaultValue="dark" disabled={true}>
@@ -20,4 +33,4 @@ function SettingsAppearancePage () {
   )
 }
 
-export default SettingsAppearancePage
+export default SettingsGeneralPage

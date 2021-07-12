@@ -153,6 +153,7 @@ function EditItemPage () {
         </UIInput>
         <PasswordField
           value={password}
+          generator={true}
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           onGenerate={(value: string) => setPassword(value)}/>

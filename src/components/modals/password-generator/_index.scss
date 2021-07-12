@@ -1,3 +1,5 @@
+@import "src/assets/scss/variables";
+
 .component.-modal.-password_generator {
   section {
     &.field {
@@ -10,6 +12,13 @@
         bottom: 12px;
         right: 24px;
         z-index: 1;
+        display: flex;
+
+        .icon-container {
+          &:hover {
+            color: $color-text-regular;
+          }
+        }
 
         .icon-container.-copy {
           svg {

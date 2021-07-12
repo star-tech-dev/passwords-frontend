@@ -1,7 +1,75 @@
+@import "src/assets/scss/variables";
+
 .component.-sub-aside-profile-menu {
   display: block;
 
+  .profile {
+    margin-bottom: 30px;
+  }
+
+  .items {
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   .item {
-    //
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-radius: $border-radius-default;
+    text-decoration: none;
+    color: $color-text-regular;
+    transition: $transition-default;
+
+    &:hover {
+      background: $color-content-bg;
+      text-decoration: none;
+    }
+
+    .icon-container {
+      margin-right: 15px;
+    }
+
+    &.-profile {
+      background: $color-content-bg;
+
+      .subtext {
+        margin-top: 4px;
+        font-size: 13px;
+        line-height: 16px;
+        color: $color-text-faded;
+      }
+
+      .icon-container {
+        width: 48px;
+        height: 48px;
+        border-radius: $border-radius-default;
+        background: $color-page-bg;
+      }
+
+      &:hover {
+        background: $color-content-bg-highlight;
+      }
+
+      &.active {
+        background: $color-dark;
+
+        .icon-container {
+          background: $color-page-bg-highlight;
+        }
+      }
+    }
+
+    &.active {
+      background: $color-dark;
+      color: $color-text-regular;
+
+      .icon-container {
+        color: $color-text-regular;
+      }
+    }
   }
 }

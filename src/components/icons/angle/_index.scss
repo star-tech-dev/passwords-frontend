@@ -1,0 +1,9 @@
+.icon.-angle {
+  &.-right {
+    transform: rotate(180deg);
+  }
+
+  &.-bottom {
+    transform: rotate(270deg);
+  }
+}

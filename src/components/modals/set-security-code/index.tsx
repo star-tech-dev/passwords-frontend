@@ -46,7 +46,6 @@ function SetSecurityCodeModal () {
               ref={field}
               autoFocus={true}
               boxShadow={false}
-              label={false}
               generator={false}
               error={fieldError}
               placeholder="security_code"

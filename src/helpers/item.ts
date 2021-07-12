@@ -1,6 +1,9 @@
 import { Item } from '../store/items/types'
 
 export const getItemName = (item: Item) => {
+  if (!item) {
+    return ''
+  }
   return item.name || `Item #${item._id}`
 }
 
