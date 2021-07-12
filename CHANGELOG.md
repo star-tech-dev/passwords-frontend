@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.2.2 (2021-07-12)
+* Change account password feature added.
+* Change security code feature added.
+* Some design changes in menu and profile included.
+
+
 ### 1.2.1 (2021-06-23)
 * Set security code modal updated.
 * Icon wrapper component added.
