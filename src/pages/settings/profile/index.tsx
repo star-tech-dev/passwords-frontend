@@ -8,10 +8,10 @@ import { useStore } from 'effector-react'
 import ActionBar from '../../../components/settings/action-bar/action-bar'
 import UIInput from '../../../components/ui/input'
 import UIButton from '../../../components/ui/button'
-import UIDropdown from '../../../components/ui/dropdown'
 import IconCheck from '../../../components/icons/check'
 import IconAngle from '../../../components/icons/angle'
 import PasswordDropdown from '../../../components/settings/password-dropdown'
+import SecurityCodeDropdown from '../../../components/settings/security-code-dropdown'
 
 import './_index.scss'
 
@@ -72,10 +72,7 @@ function SettingsProfilePage () {
 
       <section className="security">
         <PasswordDropdown />
-
-        <UIDropdown left="Security code" right={<span className="text-security-strong">strong</span>}>
-          <div>content</div>
-        </UIDropdown>
+        <SecurityCodeDropdown />
       </section>
 
       <section>

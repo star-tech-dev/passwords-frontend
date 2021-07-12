@@ -5,6 +5,7 @@ export interface User {
   username: string,
   hasSecurityCode: boolean,
   passwordUpdated?: Date
+  securityCodeUpdated?: Date
 }
 
 export interface UserFull extends User {
@@ -44,4 +45,10 @@ export interface ChangePasswordPayload {
   currentPassword: string,
   newPassword: string,
   repeatPassword: string
+}
+
+export interface ChangeSecurityCodePayload {
+  currentCode: string,
+  newCode: string,
+  repeatCode: string
 }

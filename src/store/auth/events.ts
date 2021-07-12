@@ -8,7 +8,7 @@ import {
   SecurityCode,
   User,
   UserProps,
-  ChangePasswordPayload
+  ChangePasswordPayload, ChangeSecurityCodePayload
 } from './types'
 
 export const register = AuthDomain.effect<RegisterPayload, User>().use((payload) => {
@@ -52,11 +52,19 @@ export const onSuccessSetSecurityCode = AuthDomain.event()
 export const setUserSecurityCode = AuthDomain.effect<SecurityCode, void>().use((securityCode) => {
   return sendRequest({
     method: 'post',
-    url: '/security-code',
+    url: '/set-security-code',
     data: { securityCode }
   }).then(res => {
     onSuccessSetSecurityCode()
     return res
+  })
+})
+
+export const changeSecurityCode = AuthDomain.effect<ChangeSecurityCodePayload, void>().use(payload => {
+  return sendRequest({
+    method: 'post',
+    url: '/security-code',
+    data: payload
   })
 })
 

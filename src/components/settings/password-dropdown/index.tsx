@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useStore } from 'effector-react'
 import moment from 'moment'
 import { changePassword } from '../../../store/auth/events'
 import { $auth } from '../../../store/auth/store'
@@ -8,21 +9,30 @@ import UIButton from '../../ui/button'
 import UIDropdown from '../../ui/dropdown'
 
 import './_index.scss'
-import { useStore } from 'effector-react'
 
 function SettingsPasswordDropdown () {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
   const [currentPasswordError, setCurrentPasswordError] = useState('')
+  const [newPasswordError, setNewPasswordError] = useState('')
   const [repeatPasswordError, setRepeatPasswordError] = useState('')
   const [passwordUpdatedDate, setPasswordUpdatedDate] = useState('')
 
   const user = useStore($auth).user
 
   const currentPasswordField = React.createRef()
+  const newPasswordField = React.createRef()
   const repeatPasswordField = React.createRef()
   const dropdown = React.createRef()
+
+  const updatePasswordDate = (date?: Date) => {
+    if (!user?.passwordUpdated) {
+      return
+    }
+    const lastUpdated = moment(date || user?.passwordUpdated).fromNow()
+    setPasswordUpdatedDate(lastUpdated)
+  }
 
   const close = () => {
     (dropdown.current as any)?.close()
@@ -38,11 +48,19 @@ function SettingsPasswordDropdown () {
       return
     }
 
+    if (newPassword === currentPassword) {
+      setRepeatPassword('')
+      setNewPasswordError('It\'s your current password');
+      (newPasswordField.current as any)?.focus()
+      return
+    }
+
     changePassword({
       currentPassword,
       newPassword,
       repeatPassword
     }).then(() => {
+      updatePasswordDate(new Date())
       close()
     }).catch((err: any) => {
       if (err.response.data.status === 403) {
@@ -68,7 +86,7 @@ function SettingsPasswordDropdown () {
   }
 
   useEffect(() => {
-    console.log(user)
+    updatePasswordDate()
   }, [])
 
   return (
@@ -91,7 +109,9 @@ function SettingsPasswordDropdown () {
           </div>
           <div className="row">
             <PasswordField
+              ref={newPasswordField}
               value={newPassword}
+              error={newPasswordError}
               placeholder="New password"
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)} />
           </div>
