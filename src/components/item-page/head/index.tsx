@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getImageRGB, rgbToHex, getRandomColor } from '../../../helpers/image'
+import { getImageRGB, rgbToHex, getRandomColor, getImageBase64 } from '../../../helpers/image'
 
 import IconStar from '../../icons/star'
 
@@ -30,13 +30,16 @@ function ItemPageHead (props: ItemPageHeadProps) {
     const hexColor = rgbToHex(rgbColor)
     setLocalColor(hexColor)
 
-    props.onImageLoad && props.onImageLoad(e)
+    // base64 generating
+    const base64 = getImageBase64('#item_image')
+    props.onImageChange && props.onImageChange(base64 || e)
   }
 
   const onImageError = () => {
     setIsLoading(false)
     setLocalSrc('')
     props.onImageChange && props.onImageChange('')
+    props.onColorChange && props.onColorChange(randomColor)
   }
 
   const onToggleFavourites = () => {
@@ -73,6 +76,10 @@ function ItemPageHead (props: ItemPageHeadProps) {
   useEffect(() => {
     const _randomColor = getRandomColor()
     setRandomColor(_randomColor)
+
+    setLocalColor(props.color || randomColor)
+    props.imageSrc && setLocalSrc(props.imageSrc)
+
     props.onColorChange && props.onColorChange(_randomColor)
   }, [])
 
@@ -81,6 +88,7 @@ function ItemPageHead (props: ItemPageHeadProps) {
       <div className="flex a-center grow">
         <div className="image" style={{ backgroundColor: localColor || randomColor }}>
           <ItemImage
+            id="item_image"
             image={localSrc}
             color={localColor || randomColor}
             itemName={props.itemName}

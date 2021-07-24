@@ -1,5 +1,4 @@
 import React, { forwardRef, useEffect, useState } from 'react'
-
 import IconAngle, { AngleDirection } from '../../icons/angle'
 
 import './_index.scss'

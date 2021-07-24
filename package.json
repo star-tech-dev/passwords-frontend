@@ -1,6 +1,6 @@
 {
   "name": "passwords-frontend",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "frontend app for star-passwords",
   "private": true,
   "author": "George Shinkarev <gkshi@ya.ru>",
@@ -27,7 +27,7 @@
     "effector": "^21.8.12",
     "effector-react": "^21.3.3",
     "moment": "^2.29.1",
-    "mongoose": "^5.13.0",
+    "mongoose": "^5.13.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -38,17 +38,17 @@
     "router5-plugin-logger": "^8.0.1",
     "router5-transition-path": "^8.0.1",
     "tippy.js": "^6.3.1",
-    "typescript": "^4.3.4",
+    "typescript": "^4.3.5",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^15.12.5",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
-    "eslint": "^7.29.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^15.14.2",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
@@ -56,7 +56,7 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^6.0.0",
     "node-sass": "^4.14.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.12"
   },
   "browserslist": {
     "production": [

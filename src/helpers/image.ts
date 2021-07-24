@@ -60,18 +60,24 @@ export const getImageRGB = (imgEl: HTMLImageElement | null) => {
   return biggest.color.split(',')
 }
 
-export const getImageBase64 = (imgEl: HTMLImageElement | null) => {
-  if (!imgEl) {
+export const getImageBase64 = (imgSelector: string | null) => {
+  if (!imgSelector) {
     return
   }
 
   const canvas = document.createElement('canvas') as HTMLCanvasElement
+  const imgEl = document.querySelector(imgSelector) as HTMLImageElement | null
+  let res = null
+
+  if (!imgEl) {
+    return res
+  }
+
   canvas.width = imgEl.naturalWidth
   canvas.height = imgEl.naturalHeight
   const context = canvas.getContext && canvas.getContext('2d') as CanvasRenderingContext2D
 
   context.drawImage(imgEl, 0, 0)
-  let res = null
 
   try {
     res = canvas.toDataURL()

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useRoute } from 'react-router5'
-import { createItem } from '../../store/items/events'
+import { createItem } from '../../../store/items/events'
 
-import UIButton from '../../components/ui/button'
-import UIInput from '../../components/ui/input'
-import UITextarea from '../../components/ui/textarea'
-import ItemPageHead from '../../components/item-page/head'
-import PasswordField from '../../components/ui/password-field'
-import IconCheck from '../../components/icons/check'
-import IconCross from '../../components/icons/cross'
+import UIButton from '../../../components/ui/button'
+import UIInput from '../../../components/ui/input'
+import UITextarea from '../../../components/ui/textarea'
+import ItemPageHead from '../../../components/item-page/head'
+import PasswordField from '../../../components/ui/password-field'
+import IconCheck from '../../../components/icons/check'
+import IconCross from '../../../components/icons/cross'
 
 import './_index.scss'
 
@@ -61,6 +61,7 @@ function AddItemPage () {
   useEffect(() => {
     if (!url) {
       setColor('')
+      setImage('')
     }
   }, [url])
 

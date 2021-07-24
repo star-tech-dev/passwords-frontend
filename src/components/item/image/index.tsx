@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getItemLetter } from '../../../helpers/item'
 
 import './_index.scss'
@@ -6,6 +6,7 @@ import LoaderRound from '../../loader/round'
 
 interface ItemImageProps extends React.ComponentProps<any> {
   data?: any,
+  id?: string,
   color?: string,
   itemName?: string,
   isLoading?: boolean,
@@ -26,7 +27,7 @@ function ItemImage (props: ItemImageProps) {
   return (
     <div className={`component -item-image flex center ${props.className || ''}`} style={{ backgroundColor: props.color }}>
       {props.image && <img
-          id="item_image"
+          id={props.id ? props.id : ''}
           crossOrigin="anonymous"
           src={props.image}
           alt=""

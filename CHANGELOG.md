@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.2.3 (2021-07-24)
+* Getting image by url feature fixed.
+
+
 ### 1.2.2 (2021-07-12)
 * Change account password feature added.
 * Change security code feature added.

@@ -29,6 +29,8 @@
     }
 
     .icon-container {
+      color: $color-text-white;
+
       & + * {
         margin-left: 8px;
       }
