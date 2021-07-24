@@ -70,10 +70,6 @@ function ItemPageHead (props: ItemPageHeadProps) {
   }, [localColor])
 
   useEffect(() => {
-    setLocalColor(props.color)
-  }, [props.color])
-
-  useEffect(() => {
     const _randomColor = getRandomColor()
     setRandomColor(_randomColor)
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { getItemLetter } from '../../../helpers/item'
 
 import './_index.scss'
