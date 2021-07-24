@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { nextTick } from '../../helpers/next-tick'
 import { itemsFiltered } from '../../store/app/events'
 import { $modals } from '../../store/modals/store'
@@ -37,7 +37,7 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
     })
   }
 
-  const onKeyUp = (e: onKeyUpEvent) => {
+  const onKeyUp = useCallback((e: onKeyUpEvent) => {
     if ($modals.getState().length) {
       return
     }
@@ -62,13 +62,13 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
         (innerRef.current as any)?.focus()
       })
     }
-  }
+  }, [])
 
-  const onFieldKeyUp = (e: onKeyUpEvent) => {
+  const onFieldKeyUp = useCallback((e: onKeyUpEvent) => {
     if (e.keyCode === 27) { // escape
       setQuery('')
     }
-  }
+  }, [])
 
   useEffect(() => {
     clearTimeout(_timeout)

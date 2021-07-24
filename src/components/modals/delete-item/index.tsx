@@ -33,7 +33,7 @@ function DeleteItemModal () {
     setIsLoading(true)
 
     await deleteItem({
-      id: $app.itemToDelete
+      id: appStore.getState().itemToDelete
     }).then(() => {
       closeModal(id)
       router.navigate('home')
