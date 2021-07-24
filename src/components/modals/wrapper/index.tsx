@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import { useStore } from 'effector-react'
 import { $modals } from '../../../store/modals/store'
 import { closeModal } from '../../../store/modals/events'
@@ -78,8 +79,12 @@ function ModalWrapper (props: ModalWrapperProps) {
     }
   }
 
-  if (show) {
-    return (
+  return (
+    <CSSTransition
+      in={show}
+      timeout={0}
+      classNames="modal"
+      unmountOnExit>
       <div className={classList} onClick={onParentClick}>
         <dialog open className="dialog">
           {/* {isClosable() && <div className="close" onClick={close}> */}
@@ -91,10 +96,8 @@ function ModalWrapper (props: ModalWrapperProps) {
           <div className="body">{props.children}</div>
         </dialog>
       </div>
-    )
-  } else {
-    return null
-  }
+    </CSSTransition>
+  )
 }
 
 export default ModalWrapper
