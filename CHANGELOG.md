@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.2.4 (2021-07-25)
+* Loader added to edit item page.
+* Now you can control modals by Enter and Esc buttons.
+* Modal transition added.
+
+
 ### 1.2.3 (2021-07-24)
 * Getting image by url feature fixed.
 
