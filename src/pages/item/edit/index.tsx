@@ -176,7 +176,9 @@ function EditItemPage () {
             generator={true}
             autoComplete="off"
             onInput={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-            onGenerate={(value: string) => setPassword(value)}/>
+            onGenerate={(value: string) => setPassword(value)}>
+            <div>Password</div>
+          </PasswordField>
           <UITextarea
             name="note"
             value={note}
