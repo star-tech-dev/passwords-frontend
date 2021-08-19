@@ -9,7 +9,8 @@ import './_index.scss'
 
 interface ItemFieldProps extends React.ComponentProps<any> {
   value?: any,
-  textarea?: boolean
+  textarea?: boolean,
+  interactive?: boolean
 }
 
 function ItemField (props: ItemFieldProps) {
@@ -20,6 +21,7 @@ function ItemField (props: ItemFieldProps) {
     const _props = { ...props }
     delete _props.children
     delete _props.textarea
+    delete _props.interactive
     return _props
   }
 
@@ -38,6 +40,14 @@ function ItemField (props: ItemFieldProps) {
     setFieldType(fieldType === 'password' ? 'text' : 'password')
   }
 
+  const onClick = () => {
+    if (props.interactive === false) {
+      return false
+    }
+
+    copyValue()
+  }
+
   useEffect(() => {
     tippy(`#item_field_${id}`, {
       trigger: 'manual',
@@ -50,8 +60,8 @@ function ItemField (props: ItemFieldProps) {
   }, [])
 
   return (
-    <div className="component -item-field">
-      <div className="intro" onClick={copyValue}>
+    <div className={`component -item-field ${props.interactive === false ? '-non-interactive' : ''}`}>
+      <div className="intro" onClick={onClick}>
         <div className="grow">
           <div className="label">{props.children}</div>
           <UIInput theme="clean" {...fieldProps()} type={fieldType} readOnly={true} />

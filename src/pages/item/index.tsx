@@ -149,7 +149,7 @@ function ItemPage () {
 
             {data.note && <div>
               <div className="separator"/>
-              <ItemField value={data.note} textarea={true}>
+              <ItemField value={data.note} textarea={true} interactive={false}>
                 <div>Note</div>
               </ItemField>
             </div>}

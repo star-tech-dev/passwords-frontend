@@ -7,6 +7,7 @@ import { onOpenGenerator, onSaveGenerated } from '../../../store/app/events'
 import UIInput, { InputOptions } from '../input'
 import IconKey from '../../icons/key'
 import IconEye from '../../icons/eye'
+import IconEyeCrossed from '../../icons/eye-crossed'
 
 import './_index.scss'
 
@@ -75,7 +76,7 @@ const PasswordField = forwardRef((props: PasswordFieldProps, ref: any) => {
           <IconKey/>
         </div>}
         {!localError && <div className="icon-container -eye" onClick={toggleFieldType}>
-          <IconEye/>
+          {fieldType === 'password' ? <IconEye/> : <IconEyeCrossed/>}
         </div>}
       </div>
       <UIInput

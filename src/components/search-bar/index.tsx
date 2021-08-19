@@ -111,7 +111,7 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
         ref={innerRef}
         value={query}
         theme="clean"
-        placeholder="Start typing to search..."
+        placeholder="Quick search (Esc to focus)"
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)} />
     </div>
   )

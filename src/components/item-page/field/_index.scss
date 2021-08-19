@@ -54,12 +54,22 @@
     cursor: pointer;
   }
 
-  &:hover {
-    background: $color-content-bg;
+  &.-non-interactive {
+    cursor: default;
 
-    .icons {
-      opacity: 1;
-      visibility: visible;
+    input, textarea {
+      cursor: text;
+    }
+  }
+
+  &:not(.-non-interactive) {
+    &:hover {
+      background: $color-content-bg;
+
+      .icons {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }
