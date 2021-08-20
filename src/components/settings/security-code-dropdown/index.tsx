@@ -45,15 +45,8 @@ function SettingsSecurityCodeDropdown () {
 
     if (newCode !== repeatCode) {
       setRepeatCode('')
-      setRepeatCodeError('Codes don\'t match');
+      setRepeatCodeError(t('errors.codes_do_not_match'));
       (repeatCodeField.current as any)?.focus()
-      return
-    }
-
-    if (newCode === currentCode) {
-      setRepeatCode('')
-      setNewCodeError('It\'s your current Code');
-      (newCodeField.current as any)?.focus()
       return
     }
 
@@ -65,8 +58,15 @@ function SettingsSecurityCodeDropdown () {
       updateCodeDate(new Date())
       close()
     }).catch((err: any) => {
-      if (err.response.data.status === 403) {
-        setCurrentCodeError('Wrong current Code');
+      const errorText = err.response.data.message || 'server'
+
+      if (errorText === 'the_same_security_code') {
+        setNewCodeError(t(`errors.${errorText}`))
+        setRepeatCode('');
+        (newCodeField.current as any)?.focus();
+        (newCodeField.current as any)?.select()
+      } else {
+        setCurrentCodeError(t(`errors.${errorText}`));
         (currentCodeField.current as any)?.focus();
         (currentCodeField.current as any)?.select()
       }
@@ -77,6 +77,10 @@ function SettingsSecurityCodeDropdown () {
     setCurrentCode('')
     setNewCode('')
     setRepeatCode('')
+
+    setCurrentCodeError('')
+    setNewCodeError('')
+    setRepeatCodeError('')
   }
 
   const onOpen = () => {

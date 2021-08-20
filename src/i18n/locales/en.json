@@ -27,7 +27,14 @@
     "required": "This field is required",
     "sign_in_failed": "Failed to sign in",
     "username_exist": "This username already exists",
-    "wrong_security_code": "Wrong security code"
+    "no_user_found": "No user found",
+    "passwords_do_not_match": "Passwords do not match",
+    "codes_do_not_match": "Codes do not match",
+    "wrong_password": "Wrong password",
+    "wrong_security_code": "Wrong security code",
+    "the_same_password": "It's your current password",
+    "wrong_item_id": "Item id is not valid",
+    "item_not_found": "Item not found"
   },
 
   "aside": {

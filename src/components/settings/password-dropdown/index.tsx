@@ -45,15 +45,8 @@ function SettingsPasswordDropdown () {
 
     if (newPassword !== repeatPassword) {
       setRepeatPassword('')
-      setRepeatPasswordError('Passwords don\'t match');
+      setRepeatPasswordError(t('errors.passwords_do_not_match'));
       (repeatPasswordField.current as any)?.focus()
-      return
-    }
-
-    if (newPassword === currentPassword) {
-      setRepeatPassword('')
-      setNewPasswordError('It\'s your current password');
-      (newPasswordField.current as any)?.focus()
       return
     }
 
@@ -65,8 +58,14 @@ function SettingsPasswordDropdown () {
       updatePasswordDate(new Date())
       close()
     }).catch((err: any) => {
-      if (err.response.data.status === 403) {
-        setCurrentPasswordError('Wrong current password');
+      const errorText = err.response.data.message || 'server'
+      if (errorText === 'the_same_password') {
+        setNewPasswordError(t(`errors.${errorText}`))
+        setRepeatPassword('');
+        (newPasswordField.current as any)?.focus();
+        (newPasswordField.current as any)?.select()
+      } else {
+        setCurrentPasswordError(t(`errors.${errorText}`));
         (currentPasswordField.current as any)?.focus();
         (currentPasswordField.current as any)?.select()
       }
@@ -77,6 +76,10 @@ function SettingsPasswordDropdown () {
     setCurrentPassword('')
     setNewPassword('')
     setRepeatPassword('')
+
+    setCurrentPasswordError('')
+    setNewPasswordError('')
+    setRepeatPasswordError('')
   }
 
   const onOpen = () => {

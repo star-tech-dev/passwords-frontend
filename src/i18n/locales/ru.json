@@ -27,7 +27,15 @@
     "required": "Обязательно к заполнению",
     "sign_in_failed": "Неправильный логин или пароль",
     "username_exist": "Этот логин уже занят",
-    "wrong_security_code": "Неправильная кодовая фраза"
+    "no_user_found": "Пользователь не найден",
+    "passwords_do_not_match": "Пароли не совпадают",
+    "codes_do_not_match": "Кодовые фразы не совпадают",
+    "wrong_password": "Неправильный пароль",
+    "wrong_security_code": "Неправильная кодовая фраза",
+    "the_same_password": "Это твой текущий пароль",
+    "the_same_security_code": "Это твоя текущая кодовая фраза",
+    "wrong_item_id": "Ошибочный ID записи",
+    "item_not_found": "Запись не найдена"
   },
 
   "aside": {
