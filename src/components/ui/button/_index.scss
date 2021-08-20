@@ -123,6 +123,7 @@
 
   &.-loading {
     & > * {
+      position: relative;
       pointer-events: none;
 
       & > * {

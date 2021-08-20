@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.569829c1.chunk.css",
-    "main.js": "/static/js/main.7aacad9e.chunk.js",
-    "main.js.map": "/static/js/main.7aacad9e.chunk.js.map",
+    "main.css": "/static/css/main.715debeb.chunk.css",
+    "main.js": "/static/js/main.43d0151f.chunk.js",
+    "main.js.map": "/static/js/main.43d0151f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1c67f77a.js",
     "runtime-main.js.map": "/static/js/runtime-main.1c67f77a.js.map",
     "static/css/2.bebddd0b.chunk.css": "/static/css/2.bebddd0b.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.f9930f20.chunk.js.map": "/static/js/2.f9930f20.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.bebddd0b.chunk.css.map": "/static/css/2.bebddd0b.chunk.css.map",
-    "static/css/main.569829c1.chunk.css.map": "/static/css/main.569829c1.chunk.css.map",
+    "static/css/main.715debeb.chunk.css.map": "/static/css/main.715debeb.chunk.css.map",
     "static/js/2.f9930f20.chunk.js.LICENSE.txt": "/static/js/2.f9930f20.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/static/media/gilroy-semibold.cc15998b.svg"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.1c67f77a.js",
     "static/css/2.bebddd0b.chunk.css",
     "static/js/2.f9930f20.chunk.js",
-    "static/css/main.569829c1.chunk.css",
-    "static/js/main.7aacad9e.chunk.js"
+    "static/css/main.715debeb.chunk.css",
+    "static/js/main.43d0151f.chunk.js"
   ]
 }
