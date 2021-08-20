@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { checkUserSecurityCode, login as sendLoginRequest } from '../../../store/auth/events'
 import { nextTick } from '../../../helpers/next-tick'
 
@@ -13,6 +14,7 @@ interface LoginFormOptions {
 }
 
 function Index ({ onRegisterShow }: LoginFormOptions) {
+  const { t } = useTranslation()
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [usernameError, setUsernameError] = useState('')
@@ -33,7 +35,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
       .catch(() => {
         (passwordField.current as any).focus();
         (passwordField.current as any).select()
-        setPasswordError('Failed to sign in')
+        setPasswordError(t('errors.sign_in_failed'))
         return false
       })
 
@@ -51,7 +53,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
     if (!loginUsername.length) {
       res.push({
         field: 'username',
-        message: 'This field is required'
+        message: t('errors.required')
       });
       (usernameField.current as any).focus()
       return res
@@ -59,7 +61,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
     if (!loginPassword.length) {
       res.push({
         field: 'password',
-        message: 'This field is required'
+        message: t('errors.required')
       })
       if (loginUsername.length) {
         (passwordField.current as any).focus()
@@ -113,7 +115,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
         <div>
           <UIInput
             ref={usernameField}
-            placeholder="Username"
+            placeholder={t('auth.username')}
             value={loginUsername}
             error={usernameError}
             onInput={() => setUsernameError('')}
@@ -124,7 +126,7 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
           <UIInput
             ref={passwordField}
             type="password"
-            placeholder="Password"
+            placeholder={t('auth.password')}
             value={loginPassword}
             error={passwordError}
             onInput={() => setPasswordError('')}
@@ -133,11 +135,13 @@ function Index ({ onRegisterShow }: LoginFormOptions) {
         </div>
 
         <div className="button-block">
-          <UIButton type="submit" loading={isLoading} fullWidth={true}>Sign in</UIButton>
+          <UIButton type="submit" loading={isLoading} fullWidth={true}>
+            {t('global.actions.sign_in')}
+          </UIButton>
         </div>
         <div>
-          <span>or </span>
-          <a href="#" onClick={goToRegister}>create new account</a>
+          <span>{t('global.or')} </span>
+          <a href="#" onClick={goToRegister}>{t('auth.create_new_account')}</a>
         </div>
       </form>
     </div>

@@ -1,0 +1,144 @@
+{
+  "global": {
+    "account_password": "Account password",
+    "security_code": "Security code",
+    "copied": "Copied",
+    "or": "or",
+    "updated": "updated",
+
+    "actions": {
+      "back": "Back",
+      "create": "Create",
+      "save": "Save",
+      "change": "Change",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "close": "Close",
+      "delete": "Delete",
+      "unlock": "Unlock",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "logout": "Logout"
+    }
+  },
+
+  "errors": {
+    "server": "Something went wrong",
+    "required": "This field is required",
+    "sign_in_failed": "Failed to sign in",
+    "username_exist": "This username already exists",
+    "wrong_security_code": "Wrong security code"
+  },
+
+  "aside": {
+    "main": {
+      "nav": {
+        "all_items": "All items",
+        "favourites": "Favourites"
+      },
+      "features": {
+        "title": "Features",
+        "password_generator": "Password generator",
+        "app_locker": "Lock the app"
+      },
+      "account": {
+        "subtitle": "account & settings"
+      }
+    },
+
+    "sub": {
+      "search_placeholder": "Quick search (Esc to focus)"
+    }
+  },
+
+  "item": {
+    "fields": {
+      "name": "Name",
+      "website": "Website",
+      "username": "Username",
+      "password": "Password",
+      "note": "Note"
+    },
+
+    "types": {
+      "account": "Account credentials"
+    },
+
+    "index_page_placeholder": "<div>Select an item in the list</div><div>to see detailed information</div>",
+    "new_item_title": "New item creation",
+    "icon_info": "Icon is based on item name or website",
+
+    "add_to_favourites": "Add to favourites",
+    "remove_from_favourites": "Remove from favourites"
+  },
+
+  "settings": {
+    "page_placeholder_text": "Select a menu item to see details",
+
+    "nav": {
+      "profile": "profile & logout",
+      "general": "General settings",
+      "about": "About and contacts"
+    },
+
+    "profile": {
+      "username": "Username",
+      "password": {
+        "current": "Current password",
+        "new": "New password",
+        "confirm": "Confirm new password"
+      },
+      "security_code": {
+        "current": "Current security code",
+        "new": "New security code",
+        "confirm": "Confirm new security code"
+      }
+    },
+
+    "general": {
+      "color_theme": {
+        "title": "Color theme:",
+        "value_dark": "Dark",
+        "value_light": "Light"
+      },
+
+      "language": {
+        "title": "Language:",
+        "value_en": "English",
+        "value_ru": "Russian"
+      }
+    },
+
+    "about": {
+      "see_more": "See more at",
+      "github_repo": "GitHub repo"
+    }
+  },
+
+  "auth": {
+    "heading": "Hi, I'm your password manager.",
+    "register_heading": "Let's create a new account:",
+    "username": "Username",
+    "password": "Password",
+    "create_new_account": "create new account",
+    "return_to_login": "return to login"
+  },
+
+  "locker": {
+    "heading": "App is locked!",
+    "description": "Enter your security code to unlock the app:",
+    "field_placeholder": "your_security_code",
+    "signed_as": "You are signed as"
+  },
+
+  "generator": {
+    "field_label": "Generated password",
+    "strength_weak": "weak",
+    "strength_strong": "strong",
+    "length": "length",
+    "actions": {
+      "regenerate": "Regenerate",
+      "keep": "Keep"
+    }
+  }
+}

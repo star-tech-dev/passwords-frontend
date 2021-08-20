@@ -1,10 +1,14 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import UIButton from '../../components/ui/button'
 import IconAngle from '../../components/icons/angle'
 import ActionBar from '../../components/settings/action-bar/action-bar'
+import LanguageSelect from '../../components/settings/language-select'
 
 function SettingsGeneralPage () {
+  const { t } = useTranslation()
+
   return (
     <div className="page -settings-general">
       <ActionBar left={
@@ -12,22 +16,19 @@ function SettingsGeneralPage () {
             <span className="icon-container -angle">
               <IconAngle />
             </span>
-          <span>Back</span>
+          <span>{t('global.actions.back')}</span>
         </UIButton>
       } right={null} />
 
       <section>
-        <div>Color theme:</div>
+        <div>{t('settings.general.color_theme.title')}</div>
         <select defaultValue="dark" disabled={true}>
-          <option value="dark">Dark</option>
+          <option value="dark">{t('settings.general.color_theme.value_dark')}</option>
         </select>
       </section>
 
       <section>
-        <div>Language:</div>
-        <select defaultValue="en" disabled={true}>
-          <option value="en">English</option>
-        </select>
+        <LanguageSelect />
       </section>
     </div>
   )

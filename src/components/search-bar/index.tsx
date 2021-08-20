@@ -1,4 +1,5 @@
 import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { nextTick } from '../../helpers/next-tick'
 import { itemsFiltered } from '../../store/app/events'
 import { $modals } from '../../store/modals/store'
@@ -18,6 +19,7 @@ interface SearchBarOptions {
 }
 
 const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
+  const { t } = useTranslation()
   const delay = 300
   const [_timeout, _setTimeout] = useState<any>(null)
   const [query, setQuery] = useState('')
@@ -111,7 +113,7 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
         ref={innerRef}
         value={query}
         theme="clean"
-        placeholder="Quick search (Esc to focus)"
+        placeholder={t('aside.sub.search_placeholder')}
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)} />
     </div>
   )

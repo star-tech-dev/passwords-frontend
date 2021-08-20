@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import tippy from 'tippy.js'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
 import { closeModal } from '../../../store/modals/events'
 import { $app as appStore } from '../../../store/app/store'
 import { nextTick } from '../../../helpers/next-tick'
@@ -13,12 +14,12 @@ import UIInput from '../../ui/input'
 import UIButton from '../../ui/button'
 import UICheckbox from '../../ui/checkbox'
 import UISafetyRange from '../../ui/safety-range'
-// import IconUpdate from '../../icons/update'
 import IconCopy from '../../icons/copy'
 
 import './_index.scss'
 
 function PasswordGeneratorModal () {
+  const { t } = useTranslation()
   const id = 'password_generator'
   const $app = useStore(appStore)
   const [length, setLength] = useState(18)
@@ -73,7 +74,7 @@ function PasswordGeneratorModal () {
     nextTick(() => {
       tippy('.component.-modal.-password_generator .icon-container.-copy', {
         trigger: 'click',
-        content: 'Copied'
+        content: t('global.copied')
       })
     })
   }
@@ -104,16 +105,16 @@ function PasswordGeneratorModal () {
           </div>
         </div>
         <UIInput ref={codeField} value={code} readOnly={true} onClick={() => focusAndSelect()}>
-          <div>Generated password</div>
+          <div>{t('generator.field_label')}</div>
         </UIInput>
       </section>
 
       <section className="options">
         <div className="length-bar">
           <div className="flex a-center j-between">
-            <div>weak</div>
-            <div>length {length}</div>
-            <div>strong</div>
+            <div>{t('generator.strength_weak')}</div>
+            <div>{t('generator.length')} {length}</div>
+            <div>{t('generator.strength_strong')}</div>
           </div>
           <UISafetyRange min={4} max={30} value={length} step={1} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLength(+e.target.value)} />
         </div>
@@ -135,9 +136,9 @@ function PasswordGeneratorModal () {
       </section>
 
       <section className="modal-buttons buttons">
-        {$app.generatorMode === GeneratorMode.field && <UIButton onClick={save}>Keep</UIButton>}
-        <UIButton onClick={generate} theme="ghost">Regenerate</UIButton>
-        <UIButton theme="ghost" onClick={() => closeModal(id)}>Close</UIButton>
+        {$app.generatorMode === GeneratorMode.field && <UIButton onClick={save}>{t('generator.actions.keep')}</UIButton>}
+        <UIButton onClick={generate} theme="ghost">{t('generator.actions.regenerate')}</UIButton>
+        <UIButton theme="ghost" onClick={() => closeModal(id)}>{t('global.actions.close')}</UIButton>
       </section>
     </ModalWrapper>
   )

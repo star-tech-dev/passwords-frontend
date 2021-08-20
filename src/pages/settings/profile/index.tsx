@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { $auth } from '../../../store/auth/store'
 import { logout as sendLogoutRequest, updateProfile } from '../../../store/auth/events'
 
@@ -16,6 +17,7 @@ import SecurityCodeDropdown from '../../../components/settings/security-code-dro
 import './_index.scss'
 
 function SettingsProfilePage () {
+  const { t } = useTranslation()
   const router = useRouter()
   const user = useStore($auth).user
   const [hasChanged, setHasChanged] = useState(false)
@@ -51,14 +53,14 @@ function SettingsProfilePage () {
             <span className="icon-container -angle">
               <IconAngle />
             </span>
-          <span>Back</span>
+          <span>{t('global.actions.back')}</span>
         </UIButton>
       } right={
         <UIButton size="small" theme="ghost" disabled={!hasChanged} onClick={save}>
             <span className="icon-container -check">
               <IconCheck />
             </span>
-          <span>Save</span>
+          <span>{t('global.actions.save')}</span>
         </UIButton>
       } />
 
@@ -66,7 +68,7 @@ function SettingsProfilePage () {
         <UIInput
           value={username}
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}>
-          Username
+          {t('settings.profile.username')}
         </UIInput>
       </section>
 
@@ -76,7 +78,7 @@ function SettingsProfilePage () {
       </section>
 
       <section>
-        <UIButton theme="danger" onClick={logout}>Logout</UIButton>
+        <UIButton theme="danger" onClick={logout}>{t('global.actions.logout')}</UIButton>
       </section>
     </div>
   )

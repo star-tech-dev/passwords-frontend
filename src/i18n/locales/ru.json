@@ -1,0 +1,144 @@
+{
+  "global": {
+    "account_password": "Пароль аккаунта",
+    "security_code": "Кодовая фраза",
+    "copied": "Скопировано",
+    "or": "или",
+    "updated": "updated",
+
+    "actions": {
+      "back": "Назад",
+      "create": "Создать",
+      "save": "Сохранить",
+      "change": "Изменить",
+      "edit": "Изменить",
+      "cancel": "Отменить",
+      "close": "Закрыть",
+      "delete": "Удалить",
+      "unlock": "Разблокировать",
+      "sign_in": "Войти",
+      "sign_up": "Создать аккаунт",
+      "logout": "Выйти"
+    }
+  },
+
+  "errors": {
+    "server": "Что-то пошло не так",
+    "required": "Обязательно к заполнению",
+    "sign_in_failed": "Неправильный логин или пароль",
+    "username_exist": "Этот логин уже занят",
+    "wrong_security_code": "Неправильная кодовая фраза"
+  },
+
+  "aside": {
+    "main": {
+      "nav": {
+        "all_items": "Все пароли",
+        "favourites": "Избранные"
+      },
+      "features": {
+        "title": "Фичи",
+        "password_generator": "Генератор паролей",
+        "app_locker": "Заблокировать экран"
+      },
+      "account": {
+        "subtitle": "аккаунт и настройки"
+      }
+    },
+
+    "sub": {
+      "search_placeholder": "Поиск по списку (Esc)"
+    }
+  },
+
+  "item": {
+    "fields": {
+      "name": "Название",
+      "website": "URL",
+      "username": "Имя пользователя",
+      "password": "Пароль",
+      "note": "Дополнительная информация"
+    },
+
+    "types": {
+      "account": "Учетная запись"
+    },
+
+    "index_page_placeholder": "<div>Выберите запись в списке слева</div><div>или создайте новую</div>",
+    "new_item_title": "Новая запись",
+    "icon_info": "Иконка обновится при изменении URL или названия",
+
+    "add_to_favourites": "Добавить в избранное",
+    "remove_from_favourites": "Убрать из избранного"
+  },
+
+  "settings": {
+    "page_placeholder_text": "Выберите пункт меню слева",
+
+    "nav": {
+      "profile": "профиль и выход",
+      "general": "Общие настройки",
+      "about": "Информация и контакты"
+    },
+
+    "profile": {
+      "username": "Имя пользователя",
+      "password": {
+        "current": "Текущий пароль",
+        "new": "Новый пароль",
+        "confirm": "Еще раз новый пароль"
+      },
+      "security_code": {
+        "current": "Текущая кодовая фраза",
+        "new": "Новая кодовая фраза",
+        "confirm": "Еще раз новая кодовая фраза"
+      }
+    },
+
+    "general": {
+      "color_theme": {
+        "title": "Цветовая схема:",
+        "value_dark": "Темная",
+        "value_light": "Светлая"
+      },
+
+      "language": {
+        "title": "Язык интерфейса:",
+        "value_en": "English",
+        "value_ru": "Russian"
+      }
+    },
+
+    "about": {
+      "see_more": "Дополнительная информация в",
+      "github_repo": "GitHub репозитории"
+    }
+  },
+
+  "auth": {
+    "heading": "Привет, я твой менеджер паролей.",
+    "register_heading": "Давай создадим новый аккаунт:",
+    "username": "Логин",
+    "password": "Пароль",
+    "create_new_account": "создать новый аккаунт",
+    "return_to_login": "вернуться ко входу"
+  },
+
+  "locker": {
+    "heading": "Приложение заблокировано!",
+    "description": "Введи свою кодовую фразу для разблокировки:",
+    "field_placeholder": "кодовая_фраза",
+    "signed_as": "Вы авторизованы как"
+  },
+
+  "generator": {
+    "field_label": "Сгенерированный пароль",
+    "strength_weak": "слабый",
+    "strength_strong": "надежный",
+    "length": "длина",
+    "actions": {
+      "regenerate": "Новый",
+      "keep": "Сохранить"
+    }
+  }
+}

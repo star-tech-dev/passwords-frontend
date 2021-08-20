@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { openModal } from '../../../store/modals/events'
 import { lock as lockApp } from '../../../store/locker/events'
 
@@ -12,6 +13,8 @@ import IconLock from '../../icons/lock'
 import './_index.scss'
 
 function MainAside () {
+  const { t } = useTranslation()
+
   return (
     <aside className="component -main-aside">
       <div className="scroll-parent">
@@ -21,32 +24,32 @@ function MainAside () {
               <div className="icon-container -shield">
                 <IconShield />
               </div>
-              <span>All items</span>
+              <span>{t('aside.main.nav.all_items')}</span>
             </NavItem>
 
             <NavItem className="-favourites" routeName="favourites">
               <div className="icon-container -star">
                 <IconStar />
               </div>
-              <span>Favourites</span>
+              <span>{t('aside.main.nav.favourites')}</span>
             </NavItem>
           </nav>
         </section>
 
         <section>
-          <div className="title">Features</div>
+          <div className="title">{t('aside.main.features.title')}</div>
           <NavItem className="-generator" onClick={() => openModal('password_generator')}>
             <div className="icon-container -key">
               <IconKey />
             </div>
-            <span>Password generator</span>
+            <span>{t('aside.main.features.password_generator')}</span>
           </NavItem>
 
           <NavItem className="-locker" onClick={lockApp}>
             <div className="icon-container -lock">
               <IconLock />
             </div>
-            <span>Lock the app</span>
+            <span>{t('aside.main.features.app_locker')}</span>
           </NavItem>
         </section>
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router5'
 import { $auth as authStore } from '../../../../store/auth/store'
 
@@ -10,6 +11,7 @@ import IconAbout from '../../../icons/about'
 import './_index.scss'
 
 function SubAsideProfileMenu () {
+  const { t } = useTranslation()
   const user = useStore(authStore).user
 
   const username = () => {
@@ -25,7 +27,7 @@ function SubAsideProfileMenu () {
           </span>
           <span className="flex column">
             <span>{username()}</span>
-            <span className="subtext">profile &amp; logout</span>
+            <span className="subtext">{t('settings.nav.profile')}</span>
           </span>
         </Link>
       </section>
@@ -35,14 +37,14 @@ function SubAsideProfileMenu () {
         <span className="icon-container -settings">
           <IconSettings />
         </span>
-          <span>General settings</span>
+          <span>{t('settings.nav.general')}</span>
         </Link>
 
         <Link className="item" routeName="settings.about">
           <span className="icon-container -about">
             <IconAbout />
           </span>
-          <span>About and contacts</span>
+          <span>{t('settings.nav.about')}</span>
         </Link>
       </section>
     </nav>

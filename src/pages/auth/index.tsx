@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import LoginForm from '../../components/auth/login-form'
 import RegisterForm from '../../components/auth/register-form'
@@ -6,14 +7,15 @@ import RegisterForm from '../../components/auth/register-form'
 import './_index.scss'
 
 function AuthPage () {
+  const { t } = useTranslation()
   const [mode, setMode] = useState('login')
 
   return (
     <div className="page -auth">
       <h1>
         {mode === 'register'
-          ? <span>Let&apos;s create a new account:</span>
-          : <span>Hi, I&apos;m your password manager.</span> }
+          ? <span>{t('auth.register_heading')}</span>
+          : <span>{t('auth.heading')}</span> }
       </h1>
 
       <div className="container -narrow">

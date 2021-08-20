@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRoute } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { createItem } from '../../../store/items/events'
 
 import UIButton from '../../../components/ui/button'
@@ -13,6 +14,7 @@ import IconCross from '../../../components/icons/cross'
 import './_index.scss'
 
 function AddItemPage () {
+  const { t } = useTranslation()
   const { router } = useRoute()
   const [isLoading, setIsLoading] = useState(false)
   const [image, setImage] = useState('')
@@ -34,20 +36,23 @@ function AddItemPage () {
 
     const item = {
       group: null,
+      type: 'account', // TODO: изменить после добавления других типов
+
       name,
       url,
       username,
       password,
       note,
+
       image: image || null,
-      color: color || randomColor
+      color: color || randomColor,
+      isFavourite: false
     }
 
     if (!item.name) {
-      setNameError('This field is required')
+      setNameError(t('errors.required'))
       nameField.current?.focus()
     } else {
-      // console.log('item', item)
       const res = await createItem(item)
       router.navigate('item', { id: res._id })
     }
@@ -73,13 +78,13 @@ function AddItemPage () {
             <span className="icon-container -check">
               <IconCheck />
             </span>
-            <span>Create</span>
+            <span>{t('global.actions.create')}</span>
           </UIButton>
           <UIButton size="small" theme="ghost" onClick={onCancelClick}>
             <div className="icon-container -cross">
               <IconCross />
             </div>
-            <span>Cancel</span>
+            <span>{t('global.actions.cancel')}</span>
           </UIButton>
         </div>
       </section>
@@ -90,8 +95,8 @@ function AddItemPage () {
         color={color}
         onImageChange={(image: string) => setImage(image)}
         onColorChange={(color: string) => setRandomColor(color)}>
-        <div className="name">New item creation</div>
-        <div className="type">Icon is based on item name or website</div>
+        <div className="name">{t('item.new_item_title')}</div>
+        <div className="type">{t('item.icon_info')}</div>
       </ItemPageHead>
 
       <div className="separator"/>
@@ -106,7 +111,7 @@ function AddItemPage () {
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
           onBlur={e => !e.target.value.length ? setNameError('') : null }>
-          <div>Name</div>
+          <div>{t('item.fields.name')}</div>
         </UIInput>
         <UIInput
           type="url"
@@ -115,14 +120,14 @@ function AddItemPage () {
           autoComplete="off"
           placeholder="https://example.com"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}>
-          <div>Website</div>
+          <div>{t('item.fields.website')}</div>
         </UIInput>
         <UIInput
           name="username"
           value={username}
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}>
-          <div>Username</div>
+          <div>{t('item.fields.username')}</div>
         </UIInput>
         <PasswordField
           value={password}
@@ -130,14 +135,14 @@ function AddItemPage () {
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           onGenerate={(value: string) => setPassword(value)}>
-          <div>Password</div>
+          <div>{t('item.fields.password')}</div>
         </PasswordField>
         <UITextarea
           name="note"
           value={note}
           autoComplete="off"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNote(e.target.value)}>
-          <div>Note</div>
+          <div>{t('item.fields.note')}</div>
         </UITextarea>
       </section>
     </div>

@@ -42,10 +42,19 @@
       }
     }
 
-    .icon-container.-eye {
-      svg {
-        width: 22px;
-        height: 15px;
+    .icon-container {
+      &.-eye {
+        svg {
+          width: 22px;
+          height: 15px;
+          transition: $transition-icon;
+        }
+      }
+
+      &:hover {
+        svg {
+          color: $color-text-white;
+        }
       }
     }
   }

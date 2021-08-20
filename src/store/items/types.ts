@@ -1,7 +1,12 @@
 export type ItemId = string
 
+export enum ItemType {
+  account = 'account'
+}
+
 export interface Item {
   _id: ItemId,
+  type?: ItemType,
 
   name: string,
   url?: string,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
 import moment from 'moment'
 import { changePassword } from '../../../store/auth/events'
 import { $auth } from '../../../store/auth/store'
@@ -11,6 +12,7 @@ import UIDropdown from '../../ui/dropdown'
 import './_index.scss'
 
 function SettingsPasswordDropdown () {
+  const { t } = useTranslation()
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
@@ -93,7 +95,7 @@ function SettingsPasswordDropdown () {
     <div className="component -settings-password-dropdown">
       <UIDropdown
         ref={dropdown}
-        left="Account password"
+        left={t('global.account_password')}
         right={<span className="text-security-strong">updated {passwordUpdatedDate}</span>}
         onOpen={onOpen}
         onClose={onClose}>
@@ -103,7 +105,7 @@ function SettingsPasswordDropdown () {
               ref={currentPasswordField}
               value={currentPassword}
               type="password"
-              placeholder="Current password"
+              placeholder={t('settings.profile.password.current')}
               error={currentPasswordError}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentPassword(e.target.value)} />
           </div>
@@ -112,7 +114,7 @@ function SettingsPasswordDropdown () {
               ref={newPasswordField}
               value={newPassword}
               error={newPasswordError}
-              placeholder="New password"
+              placeholder={t('settings.profile.password.new')}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)} />
           </div>
           <div className="row">
@@ -120,13 +122,18 @@ function SettingsPasswordDropdown () {
               ref={repeatPasswordField}
               value={repeatPassword}
               type="password"
-              placeholder="Confirm new password"
+              placeholder={t('settings.profile.password.confirm')}
               error={repeatPasswordError}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setRepeatPassword(e.target.value)} />
           </div>
+
           <div className="form-buttons buttons">
-            <UIButton size="small" type="submit" disabled={!currentPassword || !newPassword || !repeatPassword}>Change</UIButton>
-            <UIButton size="small" theme="ghost" onClick={close}>Cancel</UIButton>
+            <UIButton size="small" type="submit" disabled={!currentPassword || !newPassword || !repeatPassword}>
+              {t('global.actions.change')}
+            </UIButton>
+            <UIButton size="small" theme="ghost" onClick={close}>
+              {t('global.actions.cancel')}
+            </UIButton>
           </div>
         </form>
       </UIDropdown>

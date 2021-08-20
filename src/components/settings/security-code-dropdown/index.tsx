@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
 import moment from 'moment'
 import { changeSecurityCode } from '../../../store/auth/events'
 import { $auth } from '../../../store/auth/store'
@@ -11,6 +12,7 @@ import UIDropdown from '../../ui/dropdown'
 import './_index.scss'
 
 function SettingsSecurityCodeDropdown () {
+  const { t } = useTranslation()
   const [currentCode, setCurrentCode] = useState('')
   const [newCode, setNewCode] = useState('')
   const [repeatCode, setRepeatCode] = useState('')
@@ -93,7 +95,7 @@ function SettingsSecurityCodeDropdown () {
     <div className="component -settings-security-code-dropdown">
       <UIDropdown
         ref={dropdown}
-        left="Security code"
+        left={t('global.security_code')}
         right={<span className="text-security-strong">updated {codeUpdatedDate}</span>}
         onOpen={onOpen}
         onClose={onClose}>
@@ -103,7 +105,7 @@ function SettingsSecurityCodeDropdown () {
               ref={currentCodeField}
               value={currentCode}
               type="password"
-              placeholder="Current security code"
+              placeholder={t('settings.profile.security_code.current')}
               error={currentCodeError}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentCode(e.target.value)} />
           </div>
@@ -112,7 +114,7 @@ function SettingsSecurityCodeDropdown () {
               ref={newCodeField}
               value={newCode}
               error={newCodeError}
-              placeholder="New security code"
+              placeholder={t('settings.profile.security_code.new')}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setNewCode(e.target.value)} />
           </div>
           <div className="row">
@@ -120,13 +122,17 @@ function SettingsSecurityCodeDropdown () {
               ref={repeatCodeField}
               value={repeatCode}
               type="Code"
-              placeholder="Confirm new security code"
+              placeholder={t('settings.profile.security_code.confirm')}
               error={repeatCodeError}
               onInput={(e: React.ChangeEvent<HTMLInputElement>) => setRepeatCode(e.target.value)} />
           </div>
           <div className="form-buttons buttons">
-            <UIButton size="small" type="submit" disabled={!currentCode || !newCode || !repeatCode}>Change</UIButton>
-            <UIButton size="small" theme="ghost" onClick={close}>Cancel</UIButton>
+            <UIButton size="small" type="submit" disabled={!currentCode || !newCode || !repeatCode}>
+              {t('global.actions.change')}
+            </UIButton>
+            <UIButton size="small" theme="ghost" onClick={close}>
+              {t('global.actions.cancel')}
+            </UIButton>
           </div>
         </form>
       </UIDropdown>

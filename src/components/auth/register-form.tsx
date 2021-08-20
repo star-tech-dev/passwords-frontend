@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { Api } from '../../react-app-env'
 import {
   checkUserSecurityCode,
@@ -15,6 +16,7 @@ interface RegisterFormOptions {
 }
 
 function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
+  const { t } = useTranslation()
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -33,7 +35,8 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
       .catch((err: Api.Error) => {
         (usernameField.current as any).focus();
         (usernameField.current as any).select()
-        setUsernameError(err.response?.data.message)
+        const errorText = err.response?.data.message || 'server'
+        setUsernameError(t(`errors.${errorText}`))
         return false
       })
 
@@ -58,7 +61,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
     if (!username.length) {
       res.push({
         field: 'username',
-        message: 'This field is required'
+        message: t('errors.required')
       });
       (usernameField.current as any).focus()
       return res
@@ -66,7 +69,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
     if (!password.length) {
       res.push({
         field: 'password',
-        message: 'This field is required'
+        message: t('errors.required')
       })
       if (username.length) {
         (passwordField.current as any).focus()
@@ -91,10 +94,6 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
             break
         }
       })
-      console.log({
-        username: username,
-        password: password
-      })
       return
     }
 
@@ -113,7 +112,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
         <div>
           <UIInput
             ref={usernameField}
-            placeholder="Username"
+            placeholder={t('auth.username')}
             value={username}
             error={usernameError}
             onInput={() => setUsernameError('')}
@@ -124,7 +123,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
           <UIInput
             ref={passwordField}
             type="password"
-            placeholder="Password"
+            placeholder={t('auth.password')}
             value={password}
             error={passwordError}
             onInput={() => setPasswordError('')}
@@ -133,11 +132,13 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
         </div>
 
         <div className="button-block">
-          <UIButton type="submit" loading={isLoading} fullWidth={true}>Sign up</UIButton>
+          <UIButton type="submit" loading={isLoading} fullWidth={true}>
+            {t('global.actions.sign_up')}
+          </UIButton>
         </div>
         <div>
-          <span>or </span>
-          <a href="#" onClick={goToLogin}>return to login</a>
+          <span>{t('global.or')} </span>
+          <a href="#" onClick={goToLogin}>{t('auth.return_to_login')}</a>
         </div>
       </form>
     </div>

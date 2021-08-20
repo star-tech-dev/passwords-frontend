@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import tippy, { Instance as TooltipInstance } from 'tippy.js'
 import { useRoute } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { nextTick } from '../../helpers/next-tick'
 import { getItem, toggleItemFavouriteStatus } from '../../store/items/events'
 import { Item } from '../../store/items/types'
@@ -17,6 +18,7 @@ import './_index.scss'
 import ItemPageHead from '../../components/item-page/head'
 
 function ItemPage () {
+  const { t } = useTranslation()
   // @ts-ignore (null as initial value)
   const [data, setData] = useState<Item>(null)
   const { route, router } = useRoute()
@@ -31,7 +33,7 @@ function ItemPage () {
     nextTick(() => {
       const tooltip = getTooltip()
       setTimeout(() => {
-        tooltip?.setContent(data?.isFavourite ? 'Remove from favourites' : 'Add to favourites')
+        tooltip?.setContent(data?.isFavourite ? t('item.remove_from_favourites') : t('item.add_to_favourites'))
       }, 200)
     })
   }
@@ -106,13 +108,13 @@ function ItemPage () {
                 <div className="icon-container -edit">
                   <IconEdit />
                 </div>
-                <span>Edit</span>
+                <span>{t('global.actions.edit')}</span>
               </UIButton>
               <UIButton size="small" theme="ghost" onClick={onDeleteClick}>
                 <div className="icon-container -delete">
                   <IconDelete />
                 </div>
-                <span>Delete</span>
+                <span>{t('global.actions.delete')}</span>
               </UIButton>
             </div>
           </section>
@@ -125,32 +127,32 @@ function ItemPage () {
             favouritesButtonId={favouritesButtonId}
             toggleFavourites={toggleFavourites}>
             <div className="name">{getItemName(data)}</div>
-            <div className="type">Account credentials</div> { /* TODO: обновить после реализации типов */}
+            <div className="type">{t(`item.types.${data.type}`)}</div> { /* TODO: обновить после реализации типов */}
           </ItemPageHead>
 
           <div className="separator"/>
 
           <section className="fields">
             {data.name && <ItemField value={data.name}>
-              <div>Name</div>
+              <div>{t('item.fields.name')}</div>
             </ItemField>}
 
             {data.url && <ItemField type="url" value={data.url}>
-              <div>Website</div>
+              <div>{t('item.fields.website')}</div>
             </ItemField>}
 
             {data.username && <ItemField value={data.username}>
-              <div>Username</div>
+              <div>{t('item.fields.username')}</div>
             </ItemField>}
 
             {data.password && <ItemField type="password" value={data.password}>
-              <div>Password</div>
+              <div>{t('item.fields.password')}</div>
             </ItemField>}
 
             {data.note && <div>
               <div className="separator"/>
               <ItemField value={data.note} textarea={true} interactive={false}>
-                <div>Note</div>
+                <div>{t('item.fields.note')}</div>
               </ItemField>
             </div>}
           </section>

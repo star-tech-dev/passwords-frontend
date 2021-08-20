@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
 import { useRouter } from 'react-router5'
 import { nextTick } from '../../helpers/next-tick'
 import { unlock } from '../../store/locker/events'
@@ -12,6 +13,7 @@ import UIButton from '../../components/ui/button'
 import './_index.scss'
 
 function UnlockPage () {
+  const { t } = useTranslation()
   const [_loading, _setLoading] = useState(false)
   const [code, setCode] = useState('')
   const [codeFieldError, setCodeFieldError] = useState('')
@@ -29,7 +31,7 @@ function UnlockPage () {
     e.preventDefault()
 
     if (!code.length) {
-      setCodeFieldError('This field is required')
+      setCodeFieldError(t('errors.required'))
       nextTick(() => {
         (codeField.current as any)?.focus()
       })
@@ -39,7 +41,8 @@ function UnlockPage () {
     _setLoading(true)
     await unlock(code).catch(e => {
       setCodeFieldError('')
-      setCodeFieldError(e.response.data.message)
+      const errorText = e.response.data.message || 'server'
+      setCodeFieldError(t(`errors.${errorText}`))
       nextTick(() => {
         (codeField.current as any)?.focus();
         (codeField.current as any)?.select()
@@ -58,25 +61,36 @@ function UnlockPage () {
 
   return (
     <div className="page -unlock">
-      <h1>App is locked!</h1>
+      <h1>{t('locker.heading')}</h1>
 
       <div className="flex column center">
-        <div>Enter your security code to unlock the app:</div>
+        <div>{t('locker.description')}</div>
 
         <form className="flex column" onSubmit={onSubmit}>
           <div>
-            <UIInput ref={codeField} type="password" error={codeFieldError} placeholder="your_security_code" value={code} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)} />
+            <UIInput
+              ref={codeField}
+              type="password"
+              error={codeFieldError}
+              placeholder={t('locker.field_placeholder')}
+              value={code}
+              onInput={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)} />
           </div>
           <div>
-            <UIButton type="submit" loading={_loading} fullWidth={true}>Unlock</UIButton>
+            <UIButton type="submit" loading={_loading} fullWidth={true}>
+              {t('global.actions.unlock')}
+            </UIButton>
           </div>
         </form>
 
         <div className="bottom flex a-center">
-          <div>You signed as&nbsp;</div>
+          <div>
+            <span>{t('locker.signed_as')}</span>
+            <span>&nbsp;</span>
+          </div>
           <div className="name">{user?.username}</div>
           <div>.&nbsp;</div>
-          <a href="#" onClick={logout}>logout</a>
+          <a href="#" onClick={logout}>{t('global.actions.logout')}</a>
           <div>.</div>
         </div>
       </div>
