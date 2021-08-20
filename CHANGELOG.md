@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.3.0 (2021-08-21)
+* i18n core added.
+* Russian language support added.
+* Now you can change app language in general settings.
+
+
 ### 1.2.4 (2021-07-25)
 * Loader added to edit item page.
 * Now you can control modals by Enter and Esc buttons.
