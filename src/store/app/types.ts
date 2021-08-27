@@ -17,5 +17,7 @@ export interface AppState {
   mounted: boolean,
   itemsMode: ItemsMode,
   itemToDelete: ItemId | null,
-  generatorMode: GeneratorMode
+  generatorMode: GeneratorMode,
+
+  moment: any
 }

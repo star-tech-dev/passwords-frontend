@@ -100,7 +100,7 @@ function SettingsSecurityCodeDropdown () {
       <UIDropdown
         ref={dropdown}
         left={t('global.security_code')}
-        right={<span className="text-security-strong">updated {codeUpdatedDate}</span>}
+        right={<span className="text-security-strong">{t('global.updated')} {codeUpdatedDate}</span>}
         onOpen={onOpen}
         onClose={onClose}>
         <form onSubmit={save}>

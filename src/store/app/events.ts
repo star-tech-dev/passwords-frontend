@@ -16,3 +16,5 @@ export const onOpenGenerator = AppDomain.createEvent<GeneratorMode>()
 export const onCloseGenerator = AppDomain.createEvent()
 
 export const onSaveGenerated = AppDomain.createEvent<string>()
+
+export const onLanguageChanged = AppDomain.createEvent<string>()

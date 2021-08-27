@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from 'effector-react'
 import { useTranslation } from 'react-i18next'
-import moment from 'moment'
 import { changePassword } from '../../../store/auth/events'
 import { $auth } from '../../../store/auth/store'
+import { $app } from '../../../store/app/store'
 
 import PasswordField from '../../ui/password-field'
 import UIButton from '../../ui/button'
@@ -22,6 +22,7 @@ function SettingsPasswordDropdown () {
   const [passwordUpdatedDate, setPasswordUpdatedDate] = useState('')
 
   const user = useStore($auth).user
+  const moment = useStore($app).moment
 
   const currentPasswordField = React.createRef()
   const newPasswordField = React.createRef()
@@ -99,7 +100,7 @@ function SettingsPasswordDropdown () {
       <UIDropdown
         ref={dropdown}
         left={t('global.account_password')}
-        right={<span className="text-security-strong">updated {passwordUpdatedDate}</span>}
+        right={<span className="text-security-strong">{t('global.updated')} {passwordUpdatedDate}</span>}
         onOpen={onOpen}
         onClose={onClose}>
         <form onSubmit={save}>

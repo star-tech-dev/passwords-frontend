@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from 'react'
+import React, { ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
 function LanguageSelectComponent () {
@@ -15,10 +15,6 @@ function LanguageSelectComponent () {
   const onLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value)
   }
-
-  useEffect(() => {
-    console.log('lang', i18n)
-  }, [])
 
   return (
     <div className="component -language-select">

@@ -1,12 +1,16 @@
+import * as moment from 'moment'
+import 'moment/locale/ru'
 import { AppState, GeneratorMode, ItemsMode } from './types'
 import { AppDomain } from './domain'
-import { setItemsMode, setItemToDelete, setMounted, onOpenGenerator, onCloseGenerator } from './events'
+import { setItemsMode, setItemToDelete, setMounted, onOpenGenerator, onCloseGenerator, onLanguageChanged } from './events'
 
 const initialState: AppState = {
   mounted: false,
   itemsMode: ItemsMode.default,
   itemToDelete: null,
-  generatorMode: GeneratorMode.default
+  generatorMode: GeneratorMode.default,
+
+  moment: moment
 }
 
 export const $app = AppDomain.store<AppState>(initialState)
@@ -39,6 +43,10 @@ export const $app = AppDomain.store<AppState>(initialState)
       ...state,
       generatorMode: GeneratorMode.default
     }
+  })
+  .on(onLanguageChanged, (state, lang) => {
+    state.moment.locale(lang)
+    return state
   })
 
 export default { $app }

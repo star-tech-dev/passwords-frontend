@@ -4,13 +4,13 @@ import { RouterProvider } from 'react-router5'
 import { configureRouter as createRouter } from './router'
 import { setMounted } from './store/app/events'
 // import reportWebVitals from './report-web-vitals'
-import i18n from './i18n'
+import i18next from './i18n'
 
 import App from './app'
 
 import './assets/scss/index.scss'
 
-console.log('i18n', i18n)
+i18next.init()
 
 export const router = createRouter()
 
