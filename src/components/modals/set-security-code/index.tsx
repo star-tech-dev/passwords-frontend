@@ -30,6 +30,10 @@ function SetSecurityCodeModal () {
       return
     }
     await setUserSecurityCode(code)
+      .then(() => {
+        // TODO: хардкод
+        window.location.replace('/')
+      })
       .catch(err => {
         field.current?.focus()
         setFieldError(err?.response?.data?.message || 'Server error')

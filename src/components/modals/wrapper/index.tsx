@@ -29,7 +29,6 @@ function ModalWrapper (props: ModalWrapperProps) {
   }
 
   const onKeyUp: any = useCallback((e: React.KeyboardEvent) => {
-    console.log('e', e.keyCode)
     if (e.keyCode === 27) { // esc
       closeModal(props.id)
     }
