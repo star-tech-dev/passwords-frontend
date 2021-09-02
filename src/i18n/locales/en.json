@@ -147,5 +147,9 @@
       "regenerate": "Regenerate",
       "keep": "Keep"
     }
+  },
+
+  "delete_modal": {
+    "title": "Delete the record?"
   }
 }

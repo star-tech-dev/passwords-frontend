@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useStore } from 'effector-react'
 import { useRouter } from 'react-router5'
+import { useTranslation } from 'react-i18next'
 import { closeModal } from '../../../store/modals/events'
 import { deleteItem } from '../../../store/items/events'
 import { $app as appStore } from '../../../store/app/store'
@@ -13,6 +14,7 @@ import IconDelete from '../../icons/delete'
 import './_index.scss'
 
 function DeleteItemModal () {
+  const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
   const [name, setName] = useState('')
   const id = 'delete_item'
@@ -46,7 +48,7 @@ function DeleteItemModal () {
 
   return (
     <ModalWrapper id={id} onOpen={onOpen} onConfirm={onDelete}>
-      <div className="modal-title">Delete the record?</div>
+      <div className="modal-title">{t('delete_modal.title')}</div>
       <div className="modal-subtitle">
         <div className="item-name">{name}</div>
       </div>
@@ -55,9 +57,9 @@ function DeleteItemModal () {
           <div className="icon-container -delete">
             <IconDelete />
           </div>
-          <span>Delete</span>
+          <span>{t('global.actions.delete')}</span>
         </UIButton>
-        <UIButton size="small" theme="ghost" onClick={() => closeModal(id)}>Cancel</UIButton>
+        <UIButton size="small" theme="ghost" onClick={() => closeModal(id)}>{t('global.actions.cancel')}</UIButton>
       </div>
     </ModalWrapper>
   )
