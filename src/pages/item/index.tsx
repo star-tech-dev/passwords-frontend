@@ -99,7 +99,7 @@ function ItemPage () {
   }, [data])
 
   return (
-    <div className="page -profile">
+    <div className="page -item">
       { data
         ? <div className="intro">
           <section className="actions">

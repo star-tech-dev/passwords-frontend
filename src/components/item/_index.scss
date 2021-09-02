@@ -10,18 +10,28 @@
   transition: $transition-default;
 
   .image {
+    flex-shrink: 0;
     margin-right: 12px;
     transition: $transition-default;
     filter: grayscale(1);
+
+    .letter {
+      font-size: 15px;
+    }
   }
 
   .content {
     margin-top: 1px;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .title {
     font-size: 15px;
     line-height: 18px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .subtitle {

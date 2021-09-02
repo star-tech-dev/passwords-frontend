@@ -1,6 +1,6 @@
 @import "src/assets/scss/variables";
 
-.page.-profile {
+.page.-item {
   section {
     &.actions {
       margin-bottom: 40px;
@@ -56,7 +56,7 @@
     }
   }
 
-  .intro {
+  & > .intro {
     & > * {
       &:not(.fields) {
         padding-left: 20px;

@@ -9,7 +9,7 @@ export const lock = LockerDomain.createEffect<void, void>().use(() => {
   })
 })
 
-export const unlock = LockerDomain.createEffect<SecurityCode, void>().use((securityCode: SecurityCode) => {
+export const unlock = LockerDomain.createEffect<SecurityCode, void>().use((securityCode) => {
   return sendRequest({
     method: 'post',
     url: '/unlock',

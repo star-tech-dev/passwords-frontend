@@ -49,7 +49,7 @@ function Index ({ data }: ItemProps) {
 
         <div className="content">
           <div className="title">{data.name}</div>
-          <div className="subtitle">{subtitle}</div>
+          {subtitle && <div className="subtitle">{subtitle}</div>}
         </div>
       </div>
     </div>

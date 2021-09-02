@@ -81,7 +81,7 @@ function ItemPageHead (props: ItemPageHeadProps) {
 
   return (
     <section className="component -item-page-head flex a-center">
-      <div className="flex a-center grow">
+      <div className="intro flex a-center grow">
         <div className="image" style={{ backgroundColor: localColor || randomColor }}>
           <ItemImage
             id="item_image"
@@ -92,7 +92,7 @@ function ItemPageHead (props: ItemPageHeadProps) {
             onImageLoad={onImageLoad}
             onImageError={onImageError} />
         </div>
-        <div>{props.children}</div>
+        <div className="name-parent">{props.children}</div>
       </div>
 
       {props.favouritesButtonId && <div
