@@ -85,6 +85,7 @@
     "nav": {
       "profile": "profile & logout",
       "general": "General settings",
+      "security": "Security settings",
       "about": "About and contacts"
     },
 

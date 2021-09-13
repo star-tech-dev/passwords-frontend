@@ -133,7 +133,7 @@ function ItemPage () {
           <div className="separator"/>
 
           <section className="fields">
-            {data.name && <ItemField value={data.name}>
+            {data.name && <ItemField value={data.name} autocomplete="off">
               <div>{t('item.fields.name')}</div>
             </ItemField>}
 
@@ -149,12 +149,13 @@ function ItemPage () {
               <div>{t('item.fields.password')}</div>
             </ItemField>}
 
-            {data.note && <div>
+            {data.note && <>
               <div className="separator"/>
-              <ItemField value={data.note} textarea={true} interactive={false}>
-                <div>{t('item.fields.note')}</div>
-              </ItemField>
-            </div>}
+              <div className="note-section">
+                <div className="label">{t('item.fields.note')}</div>
+                <div>{data.note}</div>
+              </div>
+            </>}
           </section>
         </div>
         : null }

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.3.1 (2021-09-13)
+* Security settings page added.
+* Backend doesn't fail anymore when receives a request with invalid cypher key.
+* Some minor UI updates included.
+
+
 ### 1.3.0 (2021-08-21)
 * i18n core added.
 * Russian language support added.

@@ -5,10 +5,15 @@ import './_index.scss'
 function NotFoundPage () {
   return (
     <div className="page -not-found">
-      <div>404</div>
-      <div>
-        <a href="/">home page</a>
-      </div>
+      <h1>404</h1>
+
+      <section>
+        <div>not found</div>
+        <div><br/></div>
+        <div>
+          <a href="/">go to home page</a>
+        </div>
+      </section>
     </div>
   )
 }

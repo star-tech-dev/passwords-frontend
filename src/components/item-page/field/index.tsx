@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import tippy from 'tippy.js'
 
 import UIInput from '../../ui/input'
+import UITextarea from '../../ui/textarea'
 import IconCopy from '../../icons/copy'
 import IconEye from '../../icons/eye'
 import IconEyeCrossed from '../../icons/eye-crossed'
@@ -67,7 +68,9 @@ function ItemField (props: ItemFieldProps) {
       <div className="intro" onClick={onClick}>
         <div className="grow">
           <div className="label">{props.children}</div>
-          <UIInput theme="clean" {...fieldProps()} type={fieldType} readOnly={true} />
+          {props.textarea
+            ? <UITextarea theme="clean" {...fieldProps()} type={fieldType} readOnly={true} />
+            : <UIInput theme="clean" {...fieldProps()} type={fieldType} readOnly={true} />}
         </div>
       </div>
 

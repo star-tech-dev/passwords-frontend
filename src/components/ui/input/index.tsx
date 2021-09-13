@@ -29,6 +29,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     const obj = { ...props }
     delete obj.beforeInput
     delete obj.children
+    delete obj.theme
     delete obj.boxShadow
     return obj
   }

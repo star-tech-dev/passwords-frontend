@@ -16,4 +16,14 @@
       margin-top: 10px;
     }
   }
+
+  &.-loading {
+    height: 100%;
+    padding-bottom: 40px;
+
+    .loader-parent {
+      position: relative;
+      height: 100%;
+    }
+  }
 }

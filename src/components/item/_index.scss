@@ -2,9 +2,9 @@
 
 .component.-item {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: $color-content-bg;
+  margin-bottom: 10px;
+  padding: 16px 16px;
+  //background: $color-content-bg;
   border-radius: $border-radius-default;
   cursor: pointer;
   transition: $transition-default;
@@ -38,6 +38,8 @@
     margin-top: 2px;
     font-size: 12px;
     line-height: 14px;
+    max-height: 14px;
+    overflow: hidden;
   }
 
   .fields {
@@ -52,7 +54,8 @@
 
   &:hover {
     box-shadow: $box-shadow-default;
-    background: $color-content-bg-highlight;
+    //background: $color-content-bg-highlight;
+    background: $color-content-bg;
 
     .image {
       filter: grayscale(0);

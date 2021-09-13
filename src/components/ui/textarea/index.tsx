@@ -59,6 +59,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
     const obj = { ...props }
     delete obj.beforeInput
     delete obj.children
+    delete obj.theme
     setInputProps(obj)
   }
 
@@ -102,7 +103,7 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
           : null}
       </div>
       <textarea
-        rows={3}
+        rows={5}
         {...inputProps}
         ref={innerRef}
         id={props.id || localId}

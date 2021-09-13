@@ -53,6 +53,11 @@ export default [
     private: true
   },
   {
+    name: 'settings.security',
+    path: '/security',
+    private: true
+  },
+  {
     name: 'settings.about',
     path: '/about',
     private: true

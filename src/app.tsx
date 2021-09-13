@@ -20,8 +20,9 @@ import ItemEditPage from './pages/item/edit'
 import SettingsPage from './pages/settings'
 import SettingsProfilePage from './pages/settings/profile'
 import SettingsGeneralPage from './pages/settings/general'
+import SettingsSecurityPage from './pages/settings/security'
 import SettingsAboutPage from './pages/settings/about'
-import Index from './pages/not-found'
+import NotFound from './pages/not-found'
 
 // Layout components
 import Loader from './components/loader/page-loader'
@@ -76,10 +77,12 @@ function App () {
         return <SettingsProfilePage />
       case 'settings.general':
         return <SettingsGeneralPage />
+      case 'settings.security':
+        return <SettingsSecurityPage />
       case 'settings.about':
         return <SettingsAboutPage />
       default:
-        return <Index />
+        return <NotFound />
     }
   }
 

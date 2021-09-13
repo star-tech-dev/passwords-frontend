@@ -48,9 +48,11 @@ function Items (props: ItemsProps) {
   }, [])
 
   return (
-    <div className={`component -item-list ${!items.length ? '-empty' : ''}`}>
+    <div className={`component -item-list ${!items.length && !isLoading ? '-empty' : ''} ${isLoading ? '-loading' : ''}`}>
       {isLoading
-        ? <LoaderRound />
+        ? <div className="loader-parent">
+          <LoaderRound />
+        </div>
         : items.length
           ? <div>
             {list()}

@@ -7,6 +7,7 @@ import { $auth as authStore } from '../../../../store/auth/store'
 import IconUser from '../../../icons/user'
 import IconSettings from '../../../icons/settings'
 import IconAbout from '../../../icons/about'
+import IconShield from '../../../icons/shield_rounded'
 
 import './_index.scss'
 
@@ -38,6 +39,13 @@ function SubAsideProfileMenu () {
           <IconSettings />
         </span>
           <span>{t('settings.nav.general')}</span>
+        </Link>
+
+        <Link className="item" routeName="settings.security">
+        <span className="icon-container -settings">
+          <IconShield />
+        </span>
+          <span>{t('settings.nav.security')}</span>
         </Link>
 
         <Link className="item" routeName="settings.about">

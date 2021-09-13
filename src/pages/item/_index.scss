@@ -61,11 +61,24 @@
       &:not(.fields) {
         padding-left: 20px;
         padding-right: 20px;
-
-        &.separator {
-          width: calc(100% - 40px);
-        }
       }
+    }
+  }
+
+  .separator {
+    width: calc(100% - 40px);
+  }
+
+  .note-section {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .label {
+      margin-bottom: 10px;
+      font-size: 13px;
+      line-height: 16px;
+      color: $color-text-faded;
     }
   }
 }
