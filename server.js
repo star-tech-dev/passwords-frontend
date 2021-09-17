@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: process.env.NODE_ENV === 'development' ? '.env.development' : '.env'
+  path: process.env.NODE_ENV === 'development' ? '.env.local' : '.env.production'
 })
 
 const express = require('express')

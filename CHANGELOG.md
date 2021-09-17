@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.3.2 (2021-09-17)
+* Favicons added.
+* robots.txt updated.
+* manifest.json updated.
+
+
 ### 1.3.1 (2021-09-13)
 * Security settings page added.
 * Backend doesn't fail anymore when receives a request with invalid cypher key.
