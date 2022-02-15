@@ -12,6 +12,7 @@ import DefaultLayout from './layouts/default'
 import SimpleLayout from './layouts/simple'
 
 // App pages
+import LandingPage from './pages/landing'
 import HomePage from './pages/home'
 import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
@@ -31,7 +32,7 @@ import NotFound from './pages/not-found'
 import Loader from './components/loader/page-loader'
 import ModalController from './components/modals/controller'
 
-const SIMPLE_LAYOUT_PAGES = ['auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
+const SIMPLE_LAYOUT_PAGES = ['landing', 'auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
 
 function App () {
   const { i18n } = useTranslation()
@@ -74,28 +75,26 @@ function App () {
 
   function PageSwitcher () {
     switch (route.name) {
+      case 'landing':
+        return <LandingPage />
+      case 'auth':
+        return <AuthPage />
       case 'home':
         return <HomePage />
       case 'favourites':
         return <HomePage />
-
       case 'group':
         return <GroupPage />
       case 'group.edit':
         return <GroupEditPage />
-
       case 'item':
         return <ItemPage />
       case 'item.edit':
         return <ItemEditPage />
       case 'add':
         return <AddItemPage />
-
-      case 'auth':
-        return <AuthPage />
       case 'unlock':
         return <UnlockPage />
-
       case 'settings':
         return <SettingsPage />
       case 'settings.profile':
