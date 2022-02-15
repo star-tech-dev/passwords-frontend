@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 // layouts
 import DefaultLayout from './layouts/default'
 import SimpleLayout from './layouts/simple'
+import CleanLayout from './layouts/clean'
 
 // App pages
 import LandingPage from './pages/landing'
@@ -32,7 +33,8 @@ import NotFound from './pages/not-found'
 import Loader from './components/loader/page-loader'
 import ModalController from './components/modals/controller'
 
-const SIMPLE_LAYOUT_PAGES = ['landing', 'auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
+const CLEAN_LAYOUT_PAGES = ['landing']
+const SIMPLE_LAYOUT_PAGES = ['auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
 
 function App () {
   const { i18n } = useTranslation()
@@ -124,11 +126,15 @@ function App () {
 
           {SIMPLE_LAYOUT_PAGES.includes(route.name)
             ? <SimpleLayout>
-            <PageSwitcher/>
-          </SimpleLayout>
-            : <DefaultLayout>
-            <PageSwitcher/>
-          </DefaultLayout>}
+                <PageSwitcher/>
+              </SimpleLayout>
+            : CLEAN_LAYOUT_PAGES.includes(route.name)
+              ? <CleanLayout>
+                <PageSwitcher/>
+              </CleanLayout>
+              : <DefaultLayout>
+                <PageSwitcher/>
+              </DefaultLayout> }
         </div>
         : <Loader /> }
     </div>

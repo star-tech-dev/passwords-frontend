@@ -13,4 +13,16 @@
       padding: 40px 60px;
     }
   }
+
+  .page {
+    width: 480px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    & > section {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
