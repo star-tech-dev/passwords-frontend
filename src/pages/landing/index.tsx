@@ -19,11 +19,11 @@ function LandingPage () {
             <nav>
               <a href="#">Features</a>
               <a href="#">Security</a>
-              <a href="#">GitHub</a>
-              <a href="#">More projects</a>
+              <a href="https://github.com/star-tech-dev/passwords-frontend" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://star-tech.dev" target="_blank" rel="noreferrer">More projects</a>
             </nav>
             <div>
-              <UIButton>Sign in</UIButton>
+              <UIButton>Get started</UIButton>
             </div>
           </div>
         </div>
@@ -54,6 +54,21 @@ function LandingPage () {
       <section>
         <div className="container -wide">
           <div>section</div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container -wide flex column center">
+          <h2>Wanna see a demo?</h2>
+          <div>
+            <UIButton>Sign in as guest</UIButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="copyright">
+        <div className="container -wide">
+          <div>Passwords app, 2021 &copy; Designed with coffee by STAR-tech</div>
         </div>
       </section>
     </div>
