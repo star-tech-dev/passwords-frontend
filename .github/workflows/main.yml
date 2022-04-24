@@ -14,39 +14,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Fetching repository
-      uses: actions/checkout@v2
+      - name: Fetching repository
+        uses: actions/checkout@v2
 
-    - name: Copying files via ssh
-      uses: appleboy/scp-action@master
-      env:
-        HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
-        USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
-        KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
-        PASSPHRASE: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
-      with:
-        host: ${{ secrets.DIGITAL_OCEAN_HOST }}
-        username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        port: ${{ secrets.DIGITAL_OCEAN_PORT }}
-        key: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
-        passphrase: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
-        source: "."
-        target: "/var/www/star-tech-dev/passwords-frontend"
-        overwrite: true
+      - name: Copying files via ssh
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
+          KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          port: ${{ secrets.DIGITAL_OCEAN_PORT }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+          source: "."
+          target: "/var/www/star-tech-dev/passwords-frontend"
+          overwrite: true
 
-    - name: Executing remote ssh command
-      uses: appleboy/ssh-action@master
-      env:
-        HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
-        USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
-        KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
-        PASSPHRASE: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
-      with:
-        host: ${{ secrets.DIGITAL_OCEAN_HOST }}
-        username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        port: ${{ secrets.DIGITAL_OCEAN_PORT }}
-        key: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
-        passphrase: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
-        script: "sh /var/www/star-tech-dev/passwords-frontend/deploy.sh"
+      - name: Executing remote ssh command
+        uses: appleboy/ssh-action@master
+        env:
+          HOST: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          USERNAME: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          PORT: ${{ secrets.DIGITAL_OCEAN_PORT }}
+          KEY: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+          PASSPHRASE: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+          port: ${{ secrets.DIGITAL_OCEAN_PORT }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSHKEY }}
+          passphrase: ${{ secrets.DIGITAL_OCEAN_PASSPHRASE }}
+          script: "sh /var/www/star-tech-dev/passwords-frontend/deploy.sh"
