@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useRoute } from 'react-router5'
 import { useStore } from 'effector-react'
 import { setMounted } from './store/app/events'
-import { checkUserSecurityCode } from './store/auth/events'
+import { checkUserSecurityCode, ping } from './store/auth/events'
 import { $locker } from './store/locker/store'
 import { checkIsAppLocked } from './store/locker/events'
 
@@ -41,6 +41,12 @@ function App () {
          * app mounted after loader
          */
         checkUserSecurityCode()
+
+        // pinging server every time when browser tab focused
+        // checking decryption key cookie
+        window.onfocus = () => {
+          ping()
+        }
       }
     })
     return () => {

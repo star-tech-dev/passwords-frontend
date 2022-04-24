@@ -136,7 +136,7 @@
     "heading": "App is locked!",
     "description": "Enter your security code to unlock the app:",
     "field_placeholder": "your_security_code",
-    "signed_as": "You are signed as"
+    "signed_as": "You are signed in as"
   },
 
   "generator": {

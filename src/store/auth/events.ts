@@ -45,6 +45,12 @@ export const checkAuth = AuthDomain.effect<void, AuthCheckResponse>().use(() => 
   }).catch(() => ({ user: null }))
 })
 
+export const ping = AuthDomain.effect<void, void>().use(() => {
+  return sendRequest({
+    url: '/ping'
+  }).catch(err => err.response.data)
+})
+
 export const checkUserSecurityCode = AuthDomain.event()
 
 export const onSuccessSetSecurityCode = AuthDomain.event()

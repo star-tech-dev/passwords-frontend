@@ -91,7 +91,6 @@ function UnlockPage () {
           <div className="name">{user?.username}</div>
           <div>.&nbsp;</div>
           <a href="#" onClick={logout}>{t('global.actions.logout')}</a>
-          <div>.</div>
         </div>
       </div>
     </div>
