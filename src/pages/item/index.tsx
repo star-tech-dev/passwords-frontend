@@ -133,7 +133,7 @@ function ItemPage () {
           <div className="separator"/>
 
           <section className="fields">
-            {data.name && <ItemField value={data.name} autocomplete="off">
+            {data.name && <ItemField value={data.name} autoComplete="off">
               <div>{t('item.fields.name')}</div>
             </ItemField>}
 
@@ -153,7 +153,7 @@ function ItemPage () {
               <div className="separator"/>
               <div className="note-section">
                 <div className="label">{t('item.fields.note')}</div>
-                <div>{data.note}</div>
+                <div className="content">{data.note}</div>
               </div>
             </>}
           </section>

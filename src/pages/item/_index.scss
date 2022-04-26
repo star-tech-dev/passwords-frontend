@@ -80,5 +80,9 @@
       line-height: 16px;
       color: $color-text-faded;
     }
+
+    .content {
+      word-break: break-word;
+    }
   }
 }

@@ -28,8 +28,8 @@ function Items (props: ItemsProps) {
 
     if (props.searchQuery) {
       arr = items.filter(item => {
-        const str = `${item.name} ${item.url} ${item.username} ${item.note}`
-        return str.includes(props.searchQuery as string)
+        const str = `${item.name} ${item.url} ${item.username} ${item.note}`.toLowerCase()
+        return str.includes(props.searchQuery?.toLowerCase() as string)
       })
     }
     return arr.map(item => {
