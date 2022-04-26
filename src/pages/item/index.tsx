@@ -133,10 +133,6 @@ function ItemPage () {
           <div className="separator"/>
 
           <section className="fields">
-            {data.name && <ItemField value={data.name} autoComplete="off">
-              <div>{t('item.fields.name')}</div>
-            </ItemField>}
-
             {data.url && <ItemField type="url" value={data.url}>
               <div>{t('item.fields.website')}</div>
             </ItemField>}
