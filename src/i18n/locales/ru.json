@@ -5,9 +5,11 @@
     "copied": "Скопировано",
     "or": "или",
     "updated": "обновлено",
+    "folder": "Группа",
 
     "actions": {
       "back": "Назад",
+      "add": "Добавить",
       "create": "Создать",
       "save": "Сохранить",
       "change": "Изменить",
@@ -48,6 +50,9 @@
         "title": "Фичи",
         "password_generator": "Генератор паролей",
         "app_locker": "Заблокировать экран"
+      },
+      "folders": {
+        "title": "Группы"
       },
       "account": {
         "subtitle": "аккаунт и настройки"
@@ -153,5 +158,9 @@
 
   "delete_modal": {
     "title": "Удалить запись?"
+  },
+  "add_folder_modal": {
+    "title": "Создание новой группы",
+    "placeholder": "Название"
   }
 }

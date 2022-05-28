@@ -1,0 +1,73 @@
+@import "src/assets/scss/variables";
+
+.component.-nav-item {
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: $border-radius-default;
+    color: $color-text-regular;
+    text-decoration: none;
+    transition: $transition-default;
+
+    svg {
+      color: $color-text-faded;
+      transition: $transition-default;
+    }
+
+    &:hover {
+      background: darken($color-page-bg-highlight, 1%);
+    }
+
+    &.active {
+      text-decoration: none;
+      background: $color-primary;
+      color: $color-text-white;
+
+      svg {
+        color: $color-text-white !important;
+      }
+    }
+
+    &.-all {
+      svg {
+        color: $color-success;
+      }
+    }
+
+    &.-favourites {
+      svg {
+        color: $color-warning;
+      }
+    }
+  }
+
+  .icon-container {
+    margin-right: 15px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &.-new {
+    input {
+      min-width: auto;
+    }
+  }
+
+  &.-active {
+    .icon-container {
+      color: $color-text-white;
+    }
+
+    a {
+      background: $color-primary;
+
+      svg {
+        color: $color-text-white;
+      }
+    }
+  }
+}

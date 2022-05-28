@@ -8,5 +8,5 @@ $transition-button: background .2s ease, color .2s ease, border .2s ease;
 $transition-link: color .15s $transition-default-function;
 $transition-item: box-shadow .15s $transition-default-function;
 $transition-icon: color .15s $transition-default-function;
-
 $transition-modal: all .2s $transition-default-function;
+$transition-aside-item: all $transition-default-time $transition-default-function .5s;

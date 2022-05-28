@@ -4,25 +4,55 @@
   position: relative;
   width: 22%;
   height: 100%;
-  padding: 40px 0 104px;
+  padding: 0 0 84px;
   background: $color-page-bg-highlight;
   border-right: 1px solid $color-dark;
   overflow: auto;
+
+  .spacer {
+    display: block;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 0 !important;
+
+    &.-large {
+      height: 40px;
+    }
+  }
 
   .scroll-parent {
     padding: 0 20px;
   }
 
-  section {
-    &:not(:last-child) {
-      margin-bottom: 40px;
+  .sections {
+    section {
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
     }
+  }
 
-    .title {
+  section {
+    header {
       margin-bottom: 12px;
       font-size: 13px;
       line-height: 16px;
       color: $color-text-faded;
+    }
+
+    .on-hover {
+      transition: $transition-aside-item;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover,
+    &.-empty {
+      .on-hover {
+        transition: none;
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 
@@ -46,56 +76,5 @@
         margin-right: 15px;
       }
     }
-  }
-}
-
-.component.-nav-item {
-  a {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 16px;
-    border-radius: $border-radius-default;
-    color: $color-text-regular;
-    text-decoration: none;
-    transition: $transition-default;
-
-    svg {
-      color: $color-text-faded;
-    }
-
-    &:hover {
-      background: darken($color-page-bg-highlight, 1%);
-    }
-
-    &.active {
-      text-decoration: none;
-      background: $color-primary;
-      color: $color-text-white;
-
-      svg {
-        color: $color-text-white !important;
-      }
-    }
-
-    &.-all {
-      svg {
-        color: $color-success;
-      }
-    }
-
-    &.-favourites {
-      svg {
-        color: $color-warning;
-      }
-    }
-  }
-
-  .icon-container {
-    margin-right: 15px;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 5px;
   }
 }

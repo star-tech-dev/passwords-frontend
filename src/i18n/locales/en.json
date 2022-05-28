@@ -5,9 +5,11 @@
     "copied": "Copied",
     "or": "or",
     "updated": "updated",
+    "folder": "Folder",
 
     "actions": {
       "back": "Back",
+      "add": "Add",
       "create": "Create",
       "save": "Save",
       "change": "Change",
@@ -47,6 +49,9 @@
         "title": "Features",
         "password_generator": "Password generator",
         "app_locker": "Lock the app"
+      },
+      "folders": {
+        "title": "Folders"
       },
       "account": {
         "subtitle": "account & settings"
@@ -152,5 +157,9 @@
 
   "delete_modal": {
     "title": "Delete the record?"
+  },
+  "add_folder_modal": {
+    "title": "New folder creation",
+    "placeholder": "Folder name"
   }
 }

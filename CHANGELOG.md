@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.4.0 (2022-05-29)
+* Folders feature in progress.
+
+
 ### 1.3.2 (2021-09-17)
 * Favicons added.
 * robots.txt updated.

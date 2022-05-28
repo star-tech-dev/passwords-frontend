@@ -15,6 +15,7 @@ import HomePage from './pages/home'
 import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/item/add'
+import GroupPage from './pages/group'
 import ItemPage from './pages/item'
 import ItemEditPage from './pages/item/edit'
 import SettingsPage from './pages/settings'
@@ -64,6 +65,9 @@ function App () {
         return <HomePage />
       case 'favourites':
         return <HomePage />
+
+      case 'group':
+        return <GroupPage />
 
       case 'item':
         return <ItemPage />
