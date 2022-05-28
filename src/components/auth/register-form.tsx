@@ -35,6 +35,7 @@ function RegisterForm ({ onLoginShow }: RegisterFormOptions) {
       .catch((err: Api.Error) => {
         (usernameField.current as any).focus();
         (usernameField.current as any).select()
+        // @ts-ignore
         const errorText = err.response?.data.message || 'server'
         setUsernameError(t(`errors.${errorText}`))
         return false
