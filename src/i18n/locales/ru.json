@@ -5,7 +5,7 @@
     "copied": "Скопировано",
     "or": "или",
     "updated": "обновлено",
-    "folder": "Группа",
+    "not_chosen": "Не выбрано",
 
     "actions": {
       "back": "Назад",
@@ -67,6 +67,7 @@
   "item": {
     "fields": {
       "name": "Название",
+      "group": "Группа",
       "website": "URL",
       "username": "Имя пользователя",
       "password": "Пароль",

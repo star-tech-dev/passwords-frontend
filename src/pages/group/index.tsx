@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import type { Group } from '../../store/groups/types'
 import { useRoute } from 'react-router5'
 import { useTranslation } from 'react-i18next'
 import { getGroup } from '../../store/groups/events'
-import { Item } from '../../store/items/types'
 import { openModal } from '../../store/modals/events'
 import { setItemToDelete } from '../../store/app/events'
 
@@ -17,7 +17,7 @@ import ItemPageHead from '../../components/item-page/head'
 function GroupPage () {
   const { t } = useTranslation()
   // @ts-ignore (null as initial value)
-  const [data, setData] = useState<Item>(null)
+  const [data, setData] = useState<Group>(null)
   const { route, router } = useRoute()
 
   const onEditClick = () => {
@@ -63,10 +63,7 @@ function GroupPage () {
           </section>
 
           <ItemPageHead
-            imageSrc={data.image}
             itemName={data.name}
-            color={data.color}
-            isFavourite={data.isFavourite}
           >
             <div className="name">{data.name}</div>
             <div className="type">{t('global.folder')}</div>
@@ -74,27 +71,9 @@ function GroupPage () {
 
           <div className="separator"/>
 
-          <section className="fields">
-            {data.url && <ItemField type="url" value={data.url}>
-              <div>{t('item.fields.website')}</div>
-            </ItemField>}
-
-            {data.username && <ItemField value={data.username}>
-              <div>{t('item.fields.username')}</div>
-            </ItemField>}
-
-            {data.password && <ItemField type="password" value={data.password}>
-              <div>{t('item.fields.password')}</div>
-            </ItemField>}
-
-            {data.note && <>
-              <div className="separator"/>
-              <div className="note-section">
-                <div className="label">{t('item.fields.note')}</div>
-                <div className="content">{data.note}</div>
-              </div>
-            </>}
-          </section>
+          <div>
+            items
+          </div>
         </div>
         : null }
     </div>

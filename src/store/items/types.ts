@@ -1,5 +1,7 @@
 export type ItemId = string
 
+export type ItemGroupType = string
+
 export enum ItemType {
   account = 'account'
 }
@@ -7,6 +9,7 @@ export enum ItemType {
 export interface Item {
   _id: ItemId,
   type?: ItemType,
+  group?: ItemGroupType | null,
 
   name: string,
   url?: string,

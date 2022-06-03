@@ -5,7 +5,7 @@
     "copied": "Copied",
     "or": "or",
     "updated": "updated",
-    "folder": "Folder",
+    "not_chosen": "Not chosen",
 
     "actions": {
       "back": "Back",
@@ -66,6 +66,7 @@
   "item": {
     "fields": {
       "name": "Name",
+      "group": "Folder",
       "website": "Website",
       "username": "Username",
       "password": "Password",

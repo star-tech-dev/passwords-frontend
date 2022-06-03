@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import type { GroupID } from '../../../store/groups/types'
+import { useStore } from 'effector-react'
 import { useRoute } from 'react-router5'
 import { useTranslation } from 'react-i18next'
 import { createItem } from '../../../store/items/events'
+import { $groups } from '../../../store/groups/store'
 
 import UIButton from '../../../components/ui/button'
 import UIInput from '../../../components/ui/input'
+import UISelect from '../../../components/ui/select'
 import UITextarea from '../../../components/ui/textarea'
 import ItemPageHead from '../../../components/item-page/head'
 import PasswordField from '../../../components/ui/password-field'
@@ -20,6 +24,8 @@ function AddItemPage () {
   const [image, setImage] = useState('')
   const [color, setColor] = useState('')
   const [randomColor, setRandomColor] = useState('')
+  const [group, setGroup] = useState<GroupID | null>(null)
+  const groupList = useStore($groups)
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')
   const [username, setUsername] = useState('')
@@ -30,13 +36,18 @@ function AddItemPage () {
 
   const nameField = React.useRef() as React.RefObject<HTMLInputElement>
 
+  const groupOptions = groupList.map(i => ({
+    value: i._id,
+    text: i.name
+  }))
+
   const create = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
     const item = {
-      group: null,
       type: 'account', // TODO: изменить после добавления других типов
+      group,
 
       name,
       url,
@@ -102,6 +113,13 @@ function AddItemPage () {
       <div className="separator"/>
 
       <section className="fields">
+        <UISelect
+          value={group}
+          options={groupOptions}
+          onChange={(value: any) => setGroup(value)}
+        >
+          <div>{t('item.fields.group')}</div>
+        </UISelect>
         <UIInput
           ref={nameField}
           error={nameError}
