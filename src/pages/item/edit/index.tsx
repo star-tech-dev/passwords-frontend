@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import type { GroupID } from '../../../store/groups/types'
 import { useRoute } from 'react-router5'
 import { useTranslation } from 'react-i18next'
 import { useStore } from 'effector-react'
 import { updateItem, getItem } from '../../../store/items/events'
 import { Item } from '../../../store/items/types'
 import { $items } from '../../../store/items/store'
+import { $groups } from '../../../store/groups/store'
 
 import ItemPageHead from '../../../components/item-page/head'
 import LoaderRound from '../../../components/loader/round'
 import UIButton from '../../../components/ui/button'
+import UISelect from '../../../components/ui/select'
 import UIInput from '../../../components/ui/input'
 import UITextarea from '../../../components/ui/textarea'
 import PasswordField from '../../../components/ui/password-field'
@@ -28,6 +31,8 @@ function EditItemPage () {
     name: ''
   })
 
+  const groupList = useStore($groups)
+  const [group, setGroup] = useState<GroupID | null>(null)
   const [color, setColor] = useState('')
   const [image, setImage] = useState('')
   const [name, setName] = useState('')
@@ -35,10 +40,13 @@ function EditItemPage () {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [note, setNote] = useState('')
-
   const [nameError, setNameError] = useState('')
-
   const nameField = React.useRef() as React.RefObject<HTMLInputElement>
+
+  const groupOptions = groupList.map(i => ({
+    value: i._id,
+    text: i.name
+  }))
 
   const save = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,15 +54,13 @@ function EditItemPage () {
 
     const item = {
       _id: router.getState().params.id,
-      group: null,
       type: 'account', // TODO: изменить после добавления других типов
-
+      group,
       name,
       url,
       username,
       password,
       note,
-
       color,
       image
     }
@@ -86,6 +92,7 @@ function EditItemPage () {
   }
 
   const syncFieldsWithData = () => {
+    data.group && setGroup(data.group)
     data.color && setColor(data.color)
     data.image && setImage(data.image)
     data.name && setName(data.name)
@@ -150,6 +157,15 @@ function EditItemPage () {
         <div className="separator"/>
 
         <section className="fields">
+          <UISelect
+            value={group}
+            options={groupOptions}
+            disabled={!groupOptions.length}
+            emptyText={groupOptions.length ? t('folder.no_folder') : t('folder.no_folders_yet')}
+            onChange={(value: any) => setGroup(value)}
+          >
+            <div>{t('item.fields.group')}</div>
+          </UISelect>
           <UIInput
             ref={nameField}
             error={nameError}

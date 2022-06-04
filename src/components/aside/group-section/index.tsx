@@ -44,7 +44,7 @@ function GroupSection () {
   const createGroup = async (e?: any) => {
     e && e.preventDefault()
     const item = await sendCreationRequest({ name: newItemName })
-    setList([item, ...list])
+    // setList([item, ...list])
     reset()
     router.navigate('group', { id: item._id })
   }

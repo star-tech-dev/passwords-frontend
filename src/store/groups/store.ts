@@ -11,7 +11,7 @@ export const $groups = createStore(initialState)
   })
   .on(createGroup.done, (state, { result }) => {
     if (result) {
-      state.push(result)
+      state.unshift(result)
     }
     return state
   })

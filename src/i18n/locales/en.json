@@ -85,6 +85,12 @@
     "remove_from_favourites": "Remove from favourites"
   },
 
+  "folder": {
+    "no_folder": "No folder",
+    "no_folders_yet": "No created folders yet",
+    "folder_name_string": "{{name}} folder"
+  },
+
   "settings": {
     "page_placeholder_text": "Select a menu item to see details",
 
@@ -159,6 +165,7 @@
   "delete_modal": {
     "title": "Delete the record?"
   },
+
   "add_folder_modal": {
     "title": "New folder creation",
     "placeholder": "Folder name"

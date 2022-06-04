@@ -116,6 +116,8 @@ function AddItemPage () {
         <UISelect
           value={group}
           options={groupOptions}
+          disabled={!groupOptions.length}
+          emptyText={groupOptions.length ? t('folder.no_folder') : t('folder.no_folders_yet')}
           onChange={(value: any) => setGroup(value)}
         >
           <div>{t('item.fields.group')}</div>

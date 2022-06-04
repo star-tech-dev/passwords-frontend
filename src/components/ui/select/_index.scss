@@ -35,6 +35,11 @@
 
     .option {
       padding: 15px 21px;
+      transition: $transition-default;
+
+      &:hover {
+        background: $color-content-bg-highlight;
+      }
     }
 
     .icons {
@@ -77,5 +82,10 @@
         transform: rotate(90deg);
       }
     }
+  }
+
+  &.-disabled {
+    opacity: .3;
+    pointer-events: none;
   }
 }

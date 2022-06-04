@@ -7,7 +7,6 @@ import { openModal } from '../../store/modals/events'
 import { setItemToDelete } from '../../store/app/events'
 
 import UIButton from '../../components/ui/button'
-import ItemField from '../../components/item-page/field'
 import IconEdit from '../../components/icons/edit'
 import IconDelete from '../../components/icons/delete'
 
@@ -66,7 +65,7 @@ function GroupPage () {
             itemName={data.name}
           >
             <div className="name">{data.name}</div>
-            <div className="type">{t('global.folder')}</div>
+            <div className="type">{t('item.fields.group')}</div>
           </ItemPageHead>
 
           <div className="separator"/>

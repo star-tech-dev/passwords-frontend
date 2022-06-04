@@ -20,7 +20,8 @@ export interface SelectOptions {
   boxShadow?: boolean,
   emptyText?: string,
   onChange?: Function,
-  children?: any
+  children?: any,
+  disabled?: boolean
 }
 
 const Select = forwardRef((props: SelectOptions, ref: any) => {
@@ -32,7 +33,7 @@ const Select = forwardRef((props: SelectOptions, ref: any) => {
   const localId = props.id || Math.random().toFixed(10).slice(2)
   const [localValue, setLocalValue] = useState<any>(null)
   const selectBox = useRef(null)
-  const classList = `select -component -theme-${props.theme || 'default'} ${props.boxShadow === false ? '-no-box-shadow' : ''}`
+  const classList = `select -component -theme-${props.theme || 'default'} ${props.boxShadow === false ? '-no-box-shadow' : ''} ${props.disabled ? '-disabled' : ''}`
   const [isOpened, setIsOpened] = useState(false)
 
   const emptyValue = null

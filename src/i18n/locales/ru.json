@@ -86,6 +86,12 @@
     "remove_from_favourites": "Убрать из избранного"
   },
 
+  "folder": {
+    "no_folder": "Без группы",
+    "no_folders_yet": "Еще не создано ни одной группы",
+    "folder_name_string": "Группа \"{{name}}\""
+  },
+
   "settings": {
     "page_placeholder_text": "Выберите пункт меню слева",
 
@@ -160,6 +166,7 @@
   "delete_modal": {
     "title": "Удалить запись?"
   },
+
   "add_folder_modal": {
     "title": "Создание новой группы",
     "placeholder": "Название"
