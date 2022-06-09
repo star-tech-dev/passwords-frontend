@@ -16,3 +16,8 @@ export interface Group {
 }
 
 export type State = Group[]
+
+export interface DeleteGroupPayload {
+  id: GroupID | null,
+  withItems: boolean
+}

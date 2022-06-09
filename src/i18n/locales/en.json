@@ -163,7 +163,12 @@
   },
 
   "delete_modal": {
-    "title": "Delete the record?"
+    "title": "Delete this item?"
+  },
+
+  "delete_group_modal": {
+    "title": "Delete this group?",
+    "delete_all": "Also delete all items in the group"
   },
 
   "add_folder_modal": {

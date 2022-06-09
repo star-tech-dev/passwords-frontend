@@ -3,6 +3,8 @@ import { Group, GroupID } from '../../../store/groups/types'
 import { useRouter } from 'react-router5'
 import { useTranslation } from 'react-i18next'
 import { getGroups, createGroup as sendCreationRequest } from '../../../store/groups/events'
+import { useStore } from 'effector-react'
+import { $groups } from '../../../store/groups/store'
 
 import UIInput from '../../../components/ui/input'
 import IconFolder from '../../icons/folder'
@@ -16,13 +18,12 @@ function GroupSection () {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
   const [showCreationItem, setShowCreationItem] = useState(false)
-  const [list, setList] = useState<any[]>([])
+  const list = useStore($groups)
   const [newItemName, setNewItemName] = useState('')
   const [openedGroup, setOpenedGroup] = useState<GroupID | null>(null)
 
   const getList = async () => {
-    const groups = await getGroups()
-    setList(groups)
+    await getGroups()
     setIsLoading(false)
   }
 
@@ -44,7 +45,6 @@ function GroupSection () {
   const createGroup = async (e?: any) => {
     e && e.preventDefault()
     const item = await sendCreationRequest({ name: newItemName })
-    // setList([item, ...list])
     reset()
     router.navigate('group', { id: item._id })
   }

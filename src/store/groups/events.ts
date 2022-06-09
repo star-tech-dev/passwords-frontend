@@ -1,6 +1,7 @@
 import { GroupsDomain } from './domain'
 import { sendRequest } from '../../api'
-import { Group, GroupID, GroupProps } from './types'
+import { DeleteGroupPayload, Group, GroupID, GroupProps } from './types'
+import { ItemsDomain } from '../items/domain'
 
 export const getGroups = GroupsDomain.createEffect<void, Group[]>().use(() => {
   return sendRequest({
@@ -21,4 +22,12 @@ export const createGroup = GroupsDomain.createEffect<GroupProps, Group>().use(pa
     url: '/groups',
     data: payload
   }).catch(() => null)
+})
+
+export const deleteGroup = ItemsDomain.createEffect<DeleteGroupPayload, void>().use(payload => {
+  return sendRequest({
+    method: 'delete',
+    data: payload,
+    url: '/groups'
+  })
 })

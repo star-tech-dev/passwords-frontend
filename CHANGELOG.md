@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.4.2 (2022-06-10)
+* Delete folder functionality added.
+
+
 ### 1.4.1 (2022-06-03)
 * UI Select component added.
 * Outside click helper added.

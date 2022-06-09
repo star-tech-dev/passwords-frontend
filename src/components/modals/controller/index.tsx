@@ -4,6 +4,7 @@ import { $modals } from '../../../store/modals/store'
 import SetSecurityCodeModal from '../set-security-code'
 import PasswordGeneratorModal from '../password-generator'
 import DeleteItemModal from '../delete-item'
+import DeleteGroupModal from '../delete-group'
 
 import './_index.scss'
 
@@ -24,6 +25,7 @@ function ModalController () {
       <SetSecurityCodeModal />
       <PasswordGeneratorModal />
       <DeleteItemModal />
+      <DeleteGroupModal />
     </div>
   )
 }

@@ -42,7 +42,11 @@ const Select = forwardRef((props: SelectOptions, ref: any) => {
   }
 
   const selectedValue = () => {
-    return localValue ? props.options.find(i => i.value === localValue).text : emptyText()
+    const option = props.options.find(i => i.value === localValue)
+    if (localValue && !option) {
+      return localValue
+    }
+    return option ? option.text : emptyText()
   }
 
   const toggle = (e: React.MouseEvent<HTMLElement>) => {

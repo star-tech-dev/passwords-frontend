@@ -25,7 +25,7 @@ function GroupPage () {
 
   const onDeleteClick = () => {
     setItemToDelete(data._id)
-    openModal('delete_item')
+    openModal('delete_group')
   }
 
   const onMounted = () => {

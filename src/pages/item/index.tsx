@@ -27,7 +27,9 @@ function ItemPage () {
   const favouritesButtonId = 'favourites_button'
 
   const itemSubHeading = () => {
-    return t('folder.folder_name_string', { name: groupName }) || t(`item.types.${data.type}`)
+    return groupName
+      ? t('folder.folder_name_string', { name: groupName })
+      : t(`item.types.${data.type}`)
   }
 
   const getTooltip = (): TooltipInstance | null => {

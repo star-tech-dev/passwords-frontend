@@ -1,6 +1,7 @@
+import type { State } from './types'
 import { createStore } from 'effector'
-import { getGroups, createGroup } from './events'
-import { State } from './types'
+import { getGroups, createGroup, deleteGroup } from './events'
+import { onGroupDelete } from '../items/events'
 
 const initialState: State = []
 
@@ -13,6 +14,11 @@ export const $groups = createStore(initialState)
     if (result) {
       state.unshift(result)
     }
+    return state
+  })
+  .on(deleteGroup.done, (state, { params }) => {
+    onGroupDelete(params.id as string)
+    state = state.filter(i => i._id !== params.id)
     return state
   })
 
