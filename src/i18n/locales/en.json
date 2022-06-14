@@ -59,7 +59,8 @@
     },
 
     "sub": {
-      "search_placeholder": "Quick search (Esc to focus)"
+      "search_placeholder": "Quick search (Esc to focus)",
+      "all_items": "all items"
     }
   },
 
@@ -174,5 +175,14 @@
   "add_folder_modal": {
     "title": "New folder creation",
     "placeholder": "Folder name"
+  },
+
+  "group_page": {
+    "items_amount_zero": "items",
+    "items_amount_one": "item",
+    "items_amount_two": "items",
+    "items_amount_few": "items",
+    "items_amount_many": "items",
+    "items_amount_other": "items"
   }
 }

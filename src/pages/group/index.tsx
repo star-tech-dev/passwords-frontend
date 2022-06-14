@@ -19,6 +19,8 @@ function GroupPage () {
   const [data, setData] = useState<Group>(null)
   const { route, router } = useRoute()
 
+  const itemsAmount = () => data.items.length
+
   const onEditClick = () => {
     router.navigate('item.edit', { id: data._id })
   }
@@ -71,7 +73,7 @@ function GroupPage () {
           <div className="separator"/>
 
           <div>
-            items
+            {itemsAmount()} {t('group_page.items_amount', { count: itemsAmount() })}
           </div>
         </div>
         : null }

@@ -60,7 +60,8 @@
     },
 
     "sub": {
-      "search_placeholder": "Поиск по списку (Esc)"
+      "search_placeholder": "Поиск по списку (Esc)",
+      "all_items": "все записи"
     }
   },
 
@@ -175,5 +176,14 @@
   "add_folder_modal": {
     "title": "Создание новой группы",
     "placeholder": "Название"
+  },
+
+  "group_page": {
+    "items_amount_zero": "записей",
+    "items_amount_one": "запись",
+    "items_amount_two": "записи",
+    "items_amount_few": "записи",
+    "items_amount_many": "записей",
+    "items_amount_other": "записей"
   }
 }

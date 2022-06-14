@@ -19,6 +19,9 @@ function SubAsideItemList () {
   const searchField = React.createRef()
 
   const checkRoute = (route: RouterState) => {
+    // clear search
+    setSearchQuery('')
+
     // TODO: route has old value here
     const _mode = $app.getState().itemsMode
     setMode(_mode)

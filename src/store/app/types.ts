@@ -5,7 +5,8 @@ export type MountedState = boolean
 /* eslint-disable */
 export enum ItemsMode {
   default = 'default',
-  favourites = 'favourites'
+  favourites = 'favourites',
+  group = 'group'
 }
 export enum GeneratorMode {
   default = 'default',
