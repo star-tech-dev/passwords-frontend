@@ -1,6 +1,9 @@
 Changelog
 =========
 
+### 1.4.3 (2022-06-22)
+* Update folder functionality added.
+
 ### 1.4.2 (2022-06-10)
 * Delete folder functionality added.
 
