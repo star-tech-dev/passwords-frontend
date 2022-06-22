@@ -58,4 +58,6 @@ const Button = forwardRef((props: ButtonOptions, ref) => {
   )
 })
 
+Button.displayName = 'UIButton'
+
 export default Button

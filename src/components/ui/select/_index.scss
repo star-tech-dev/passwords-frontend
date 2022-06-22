@@ -1,0 +1,91 @@
+@import "src/assets/scss/variables";
+
+.select.-component {
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: $color-text-faded;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .select-box {
+    position: relative;
+    cursor: pointer;
+
+    .intro {
+      background: $color-content-bg;
+      padding: 15px 21px;
+      border-radius: $border-radius-default;
+    }
+
+    .options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      background: $color-content-bg;
+      border-radius: $border-radius-default;
+      box-shadow: $box-shadow-default-highlight;
+      border-top: 1px solid $color-page-bg;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .option {
+      padding: 15px 21px;
+      transition: $transition-default;
+
+      &:hover {
+        background: $color-content-bg-highlight;
+      }
+    }
+
+    .icons {
+      color: $color-text-faded;
+
+      & > * {
+        svg {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        &:not(:last-child) {
+          margin-right: 16px;
+        }
+      }
+    }
+
+    .clear {
+      width: 11px;
+      height: 11px;
+    }
+
+    .angle {
+      transform: rotate(-90deg);
+      transition: $transition-default;
+    }
+
+    &.-opened {
+      .intro {
+        border-radius: $border-radius-default $border-radius-default 0 0;
+      }
+
+      .options {
+        border-radius: 0 0 $border-radius-default $border-radius-default;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .angle {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &.-disabled {
+    opacity: .3;
+    pointer-events: none;
+  }
+}

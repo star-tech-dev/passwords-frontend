@@ -20,9 +20,14 @@ function SubAsideWrapper () {
 
     if (route.name === 'favourites') {
       setItemsMode(ItemsMode.favourites)
+      return
     }
     if (route.name === 'home') {
       setItemsMode(ItemsMode.default)
+      return
+    }
+    if (route.name.includes('group')) {
+      setItemsMode(ItemsMode.group)
     }
   }
 

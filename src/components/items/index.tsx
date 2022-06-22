@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import type { Item as ItemInterface } from '../../store/items/types'
 import { useStore } from 'effector-react'
+import { useTranslation } from 'react-i18next'
+import { Link, useRouter } from 'react-router5'
 import { $items } from '../../store/items/store'
 import { getItems } from '../../store/items/events'
 import { ItemsMode } from '../../store/app/types'
@@ -17,13 +20,29 @@ interface ItemsProps {
 
 function Items (props: ItemsProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const storedItems = useStore($items)
   const items = useStore($items)
+  const router = useRouter()
+  const { t } = useTranslation()
 
   const list = () => {
     let arr = items
 
     if (props.mode === ItemsMode.favourites) {
       arr = items.filter(item => item.isFavourite)
+    }
+
+    if (props.mode === ItemsMode.group) {
+      const route = router.getState()
+      let id = ''
+      if (route.name === 'item' || route.name === 'item.edit') {
+        const itemID = route.params.id
+        const storedItem = storedItems.find(i => i._id === itemID) as ItemInterface
+        id = storedItem.group as string
+      } else {
+        id = route.params.id
+      }
+      arr = items.filter(item => item.group === id)
     }
 
     if (props.searchQuery) {
@@ -36,6 +55,8 @@ function Items (props: ItemsProps) {
       return <Item data={item} key={item._id} />
     })
   }
+
+  const showNav = () => props.mode === ItemsMode.group
 
   const onMounted = async () => {
     setIsLoading(true)
@@ -55,7 +76,14 @@ function Items (props: ItemsProps) {
         </div>
         : items.length
           ? <div>
-            {list()}
+            {showNav()
+              ? <nav className="flex column a-start">
+                  <Link routeName="home" className="nav-item">← {t('aside.sub.all_items')}</Link>
+                </nav>
+              : null}
+            <div>
+              {list()}
+            </div>
           </div>
           : <div className="flex column center">
             <div>You have no items yet</div>

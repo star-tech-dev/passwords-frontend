@@ -13,7 +13,7 @@ interface InputOptions extends React.InputHTMLAttributes<any> {
   beforeInput?: Function
 }
 
-const Input = forwardRef((props: InputOptions, ref: any) => {
+const Textarea = forwardRef((props: InputOptions, ref: any) => {
   if (!ref) {
     ref = useRef()
   }
@@ -112,4 +112,6 @@ const Input = forwardRef((props: InputOptions, ref: any) => {
   )
 })
 
-export default Input
+Textarea.displayName = 'UITextarea'
+
+export default Textarea

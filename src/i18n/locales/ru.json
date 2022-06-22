@@ -5,9 +5,11 @@
     "copied": "Скопировано",
     "or": "или",
     "updated": "обновлено",
+    "not_chosen": "Не выбрано",
 
     "actions": {
       "back": "Назад",
+      "add": "Добавить",
       "create": "Создать",
       "save": "Сохранить",
       "change": "Изменить",
@@ -49,19 +51,24 @@
         "password_generator": "Генератор паролей",
         "app_locker": "Заблокировать экран"
       },
+      "folders": {
+        "title": "Группы"
+      },
       "account": {
         "subtitle": "аккаунт и настройки"
       }
     },
 
     "sub": {
-      "search_placeholder": "Поиск по списку (Esc)"
+      "search_placeholder": "Поиск по списку (Esc)",
+      "all_items": "все записи"
     }
   },
 
   "item": {
     "fields": {
       "name": "Название",
+      "group": "Группа",
       "website": "URL",
       "username": "Имя пользователя",
       "password": "Пароль",
@@ -78,6 +85,12 @@
 
     "add_to_favourites": "Добавить в избранное",
     "remove_from_favourites": "Убрать из избранного"
+  },
+
+  "folder": {
+    "no_folder": "Без группы",
+    "no_folders_yet": "Еще не создано ни одной группы",
+    "folder_name_string": "Группа \"{{name}}\""
   },
 
   "settings": {
@@ -152,6 +165,25 @@
   },
 
   "delete_modal": {
-    "title": "Удалить запись?"
+    "title": "Удалить эту запись?"
+  },
+
+  "delete_group_modal": {
+    "title": "Удалить эту группу?",
+    "delete_all": "Также удалить все записи в группе"
+  },
+
+  "add_folder_modal": {
+    "title": "Создание новой группы",
+    "placeholder": "Название"
+  },
+
+  "group_page": {
+    "items_amount_zero": "записей",
+    "items_amount_one": "запись",
+    "items_amount_two": "записи",
+    "items_amount_few": "записи",
+    "items_amount_many": "записей",
+    "items_amount_other": "записей"
   }
 }

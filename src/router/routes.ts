@@ -38,6 +38,17 @@ export default [
   },
 
   {
+    name: 'group',
+    path: '/group/:id',
+    private: true
+  },
+  {
+    name: 'group.edit',
+    path: '/edit',
+    private: true
+  },
+
+  {
     name: 'settings',
     path: '/settings',
     private: true

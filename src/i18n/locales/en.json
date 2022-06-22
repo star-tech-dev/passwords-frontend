@@ -5,9 +5,11 @@
     "copied": "Copied",
     "or": "or",
     "updated": "updated",
+    "not_chosen": "Not chosen",
 
     "actions": {
       "back": "Back",
+      "add": "Add",
       "create": "Create",
       "save": "Save",
       "change": "Change",
@@ -48,19 +50,24 @@
         "password_generator": "Password generator",
         "app_locker": "Lock the app"
       },
+      "folders": {
+        "title": "Folders"
+      },
       "account": {
         "subtitle": "account & settings"
       }
     },
 
     "sub": {
-      "search_placeholder": "Quick search (Esc to focus)"
+      "search_placeholder": "Quick search (Esc to focus)",
+      "all_items": "all items"
     }
   },
 
   "item": {
     "fields": {
       "name": "Name",
+      "group": "Folder",
       "website": "Website",
       "username": "Username",
       "password": "Password",
@@ -77,6 +84,12 @@
 
     "add_to_favourites": "Add to favourites",
     "remove_from_favourites": "Remove from favourites"
+  },
+
+  "folder": {
+    "no_folder": "No folder",
+    "no_folders_yet": "No created folders yet",
+    "folder_name_string": "{{name}} folder"
   },
 
   "settings": {
@@ -151,6 +164,25 @@
   },
 
   "delete_modal": {
-    "title": "Delete the record?"
+    "title": "Delete this item?"
+  },
+
+  "delete_group_modal": {
+    "title": "Delete this group?",
+    "delete_all": "Also delete all items in the group"
+  },
+
+  "add_folder_modal": {
+    "title": "New folder creation",
+    "placeholder": "Folder name"
+  },
+
+  "group_page": {
+    "items_amount_zero": "items",
+    "items_amount_one": "item",
+    "items_amount_two": "items",
+    "items_amount_few": "items",
+    "items_amount_many": "items",
+    "items_amount_other": "items"
   }
 }

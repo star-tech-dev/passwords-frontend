@@ -1,6 +1,7 @@
 import { ItemsDomain } from './domain'
 import { sendRequest } from '../../api'
 import { ItemId, Item, ItemPayload, ItemFavouriteStatusProps, DeleteItemPayload } from './types'
+import { GroupID } from '../groups/types'
 
 export const getItems = ItemsDomain.createEffect<void, Array<Item>>().use(() => {
   return sendRequest({
@@ -46,3 +47,5 @@ export const deleteItem = ItemsDomain.createEffect<DeleteItemPayload, void>().us
     url: '/items'
   })
 })
+
+export const onGroupDelete = ItemsDomain.createEvent<GroupID>()

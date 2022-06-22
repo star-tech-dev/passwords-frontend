@@ -1,5 +1,5 @@
 import { createStore } from 'effector'
-import { createItem, updateItem, deleteItem, getItems, toggleItemFavouriteStatus } from './events'
+import { createItem, updateItem, deleteItem, getItems, toggleItemFavouriteStatus, onGroupDelete } from './events'
 import { State } from './types'
 
 const initialState: State = []
@@ -33,6 +33,9 @@ export const $items = createStore(initialState)
   })
   .on(deleteItem.done, (state, { params }) => {
     return state.filter(i => i._id !== params.id)
+  })
+  .on(onGroupDelete, (state, groupID) => {
+    return state.filter(i => i.group !== groupID)
   })
 
 export default $items

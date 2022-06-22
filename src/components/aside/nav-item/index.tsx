@@ -1,6 +1,8 @@
 import React, { ComponentProps } from 'react'
 import { Link } from 'react-router5'
 
+import './_index.scss'
+
 interface NavItemProps extends ComponentProps<any> {
   children?: any,
   routeName?: string,
@@ -14,7 +16,7 @@ function NavItem (props: NavItemProps) {
   }
 
   return (
-    <div className="component -nav-item">
+    <div className={`component -nav-item ${props.className}`}>
       {props.routeName
         ? <Link {...props}>
         {props.children}

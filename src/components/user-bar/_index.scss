@@ -49,4 +49,16 @@
       }
     }
   }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 20px;
+    background-image: linear-gradient(180deg, rgba($color-content-bg, 0%), $color-content-bg 100%);
+  }
 }

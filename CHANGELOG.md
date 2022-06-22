@@ -1,6 +1,22 @@
 Changelog
 =========
 
+### 1.4.3 (2022-06-22)
+* Update folder functionality added.
+
+### 1.4.2 (2022-06-10)
+* Delete folder functionality added.
+
+
+### 1.4.1 (2022-06-03)
+* UI Select component added.
+* Outside click helper added.
+
+
+### 1.4.0 (2022-05-29)
+* Folders feature in progress.
+
+
 ### 1.3.2 (2021-09-17)
 * Favicons added.
 * robots.txt updated.

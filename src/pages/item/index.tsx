@@ -16,13 +16,21 @@ import IconDelete from '../../components/icons/delete'
 
 import './_index.scss'
 import ItemPageHead from '../../components/item-page/head'
+import $groups from '../../store/groups/store'
 
 function ItemPage () {
   const { t } = useTranslation()
   // @ts-ignore (null as initial value)
   const [data, setData] = useState<Item>(null)
+  const [groupName, setGroupName] = useState<string | null>(null)
   const { route, router } = useRoute()
   const favouritesButtonId = 'favourites_button'
+
+  const itemSubHeading = () => {
+    return groupName
+      ? t('folder.folder_name_string', { name: groupName })
+      : t(`item.types.${data.type}`)
+  }
 
   const getTooltip = (): TooltipInstance | null => {
     const tooltip = document.getElementById(favouritesButtonId)
@@ -82,6 +90,10 @@ function ItemPage () {
 
     getItem(route.params.id).then(res => {
       setData(res)
+      if (res.group) {
+        const name = $groups.getState().find(i => i._id === res.group)?.name || null
+        setGroupName(name)
+      }
     }).catch(() => router.navigate('home'))
   }
 
@@ -127,7 +139,7 @@ function ItemPage () {
             favouritesButtonId={favouritesButtonId}
             toggleFavourites={toggleFavourites}>
             <div className="name">{getItemName(data)}</div>
-            <div className="type">{t(`item.types.${data.type}`)}</div> { /* TODO: обновить после реализации типов */}
+            <div className="type">{itemSubHeading()}</div> { /* TODO: обновить после реализации типов */}
           </ItemPageHead>
 
           <div className="separator"/>
