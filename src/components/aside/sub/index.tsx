@@ -28,6 +28,10 @@ function SubAsideWrapper () {
     }
     if (route.name.includes('group')) {
       setItemsMode(ItemsMode.group)
+      return
+    }
+    if (route.name === 'add') {
+      setItemsMode(ItemsMode.default)
     }
   }
 

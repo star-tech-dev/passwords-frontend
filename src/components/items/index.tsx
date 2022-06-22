@@ -38,7 +38,7 @@ function Items (props: ItemsProps) {
       if (route.name === 'item' || route.name === 'item.edit') {
         const itemID = route.params.id
         const storedItem = storedItems.find(i => i._id === itemID) as ItemInterface
-        id = storedItem.group as string
+        id = storedItem?.group as string
       } else {
         id = route.params.id
       }
@@ -51,9 +51,11 @@ function Items (props: ItemsProps) {
         return str.includes(props.searchQuery?.toLowerCase() as string)
       })
     }
-    return arr.map(item => {
-      return <Item data={item} key={item._id} />
-    })
+    return arr.length
+      ? arr.map(item => {
+        return <Item data={item} key={item._id} />
+      })
+      : null
   }
 
   const showNav = () => props.mode === ItemsMode.group
@@ -69,7 +71,7 @@ function Items (props: ItemsProps) {
   }, [])
 
   return (
-    <div className={`component -item-list ${!items.length && !isLoading ? '-empty' : ''} ${isLoading ? '-loading' : ''}`}>
+    <div className={`component -item-list ${(!items.length || !list()) && !isLoading ? '-empty' : ''} ${isLoading ? '-loading' : ''}`}>
       {isLoading
         ? <div className="loader-parent">
           <LoaderRound />
@@ -81,14 +83,16 @@ function Items (props: ItemsProps) {
                   <Link routeName="home" className="nav-item">← {t('aside.sub.all_items')}</Link>
                 </nav>
               : null}
-            <div>
-              {list()}
-            </div>
+            {list()
+              ? list()
+              : <div className="sub-empty flex column center">
+                <div>{t('aside.sub.no_folder_items')}</div>
+              </div>}
           </div>
           : <div className="flex column center">
-            <div>You have no items yet</div>
+            <div>{t('aside.sub.no_items_yet')}</div>
             <div className="button-parent">
-              <UIButton routeName="add" theme="ghost">Create one</UIButton>
+              <UIButton routeName="add" theme="ghost">{t('aside.sub.create_one')}</UIButton>
             </div>
         </div>}
     </div>

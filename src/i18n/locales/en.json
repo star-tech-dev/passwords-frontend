@@ -60,7 +60,10 @@
 
     "sub": {
       "search_placeholder": "Quick search (Esc to focus)",
-      "all_items": "all items"
+      "all_items": "all items",
+      "no_items_yet": "You have no items yet",
+      "no_folder_items": "This folder is empty yet",
+      "create_one": "Create one"
     }
   },
 
