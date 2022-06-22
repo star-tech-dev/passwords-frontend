@@ -35,7 +35,7 @@ function Items (props: ItemsProps) {
     if (props.mode === ItemsMode.group) {
       const route = router.getState()
       let id = ''
-      if (route.name === 'item') {
+      if (route.name === 'item' || route.name === 'item.edit') {
         const itemID = route.params.id
         const storedItem = storedItems.find(i => i._id === itemID) as ItemInterface
         id = storedItem.group as string

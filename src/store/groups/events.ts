@@ -24,6 +24,14 @@ export const createGroup = GroupsDomain.createEffect<GroupProps, Group>().use(pa
   }).catch(() => null)
 })
 
+export const updateGroup = GroupsDomain.createEffect<GroupProps, Group>().use(payload => {
+  return sendRequest({
+    method: 'put',
+    data: payload,
+    url: '/groups'
+  })
+})
+
 export const deleteGroup = ItemsDomain.createEffect<DeleteGroupPayload, void>().use(payload => {
   return sendRequest({
     method: 'delete',

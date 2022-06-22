@@ -5,11 +5,14 @@ import { useTranslation } from 'react-i18next'
 import { getGroups, createGroup as sendCreationRequest } from '../../../store/groups/events'
 import { useStore } from 'effector-react'
 import { $groups } from '../../../store/groups/store'
+import { $app } from '../../../store/app/store'
+import { State as RouterState, Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
+import { Item as ItemInterface } from '../../../store/items/types'
+import { $items } from '../../../store/items/store'
 
 import UIInput from '../../../components/ui/input'
 import IconFolder from '../../icons/folder'
 import NavItem from '../nav-item'
-import { State as RouterState, Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
 
 import './_index.scss'
 
@@ -51,7 +54,16 @@ function GroupSection () {
 
   const checkRoute = (route: RouterState) => {
     // Если мы на странице item с тем же id, то делаем компонент активным
-    setOpenedGroup(route.name === 'group' ? route.params.id : null)
+    setOpenedGroup(route.name === 'group' || route.name === 'group.edit' ? route.params.id : null)
+
+    const itemsMode = $app.getState().itemsMode
+    if (itemsMode === 'group' && (route.name === 'item' || route.name === 'item.edit')) {
+      const itemID = route.params.id
+      const storedItems = $items.getState()
+      const storedItem = storedItems.find(i => i._id === itemID) as ItemInterface
+      const groupId = storedItem.group as string
+      groupId && setOpenedGroup(groupId)
+    }
   }
 
   const onAddClick = (e: any) => {

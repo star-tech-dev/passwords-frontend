@@ -42,6 +42,11 @@ export default [
     path: '/group/:id',
     private: true
   },
+  {
+    name: 'group.edit',
+    path: '/edit',
+    private: true
+  },
 
   {
     name: 'settings',

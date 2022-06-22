@@ -24,7 +24,7 @@ function Index ({ data }: ItemProps) {
 
   const checkRoute = (route: RouterState) => {
     // Если мы на странице item с тем же id, то делаем компонент активным
-    const isActive = route.name === 'item' && route.params.id === data._id
+    const isActive = (route.name === 'item' || route.name === 'item.edit') && route.params.id === data._id
     setLocalActive(isActive)
   }
 

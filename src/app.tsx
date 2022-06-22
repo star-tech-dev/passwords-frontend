@@ -16,6 +16,7 @@ import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
 import AddItemPage from './pages/item/add'
 import GroupPage from './pages/group'
+import GroupEditPage from './pages/group/edit'
 import ItemPage from './pages/item'
 import ItemEditPage from './pages/item/edit'
 import SettingsPage from './pages/settings'
@@ -68,6 +69,8 @@ function App () {
 
       case 'group':
         return <GroupPage />
+      case 'group.edit':
+        return <GroupEditPage />
 
       case 'item':
         return <ItemPage />

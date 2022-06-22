@@ -22,7 +22,7 @@ function GroupPage () {
   const itemsAmount = () => data.items.length
 
   const onEditClick = () => {
-    router.navigate('item.edit', { id: data._id })
+    router.navigate('group.edit', { id: data._id })
   }
 
   const onDeleteClick = () => {
@@ -65,6 +65,7 @@ function GroupPage () {
 
           <ItemPageHead
             itemName={data.name}
+            mode="folder"
           >
             <div className="name">{data.name}</div>
             <div className="type">{t('item.fields.group')}</div>

@@ -38,6 +38,16 @@
         animation: scale-image .3s ease;
       }
     }
+
+    &.-folder {
+      background: transparent;
+      color: $color-text-faded;
+
+      svg {
+        height: auto;
+        width: 48px;
+      }
+    }
   }
 
   .name-parent {

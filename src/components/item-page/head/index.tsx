@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getImageRGB, rgbToHex, getRandomColor, getImageBase64 } from '../../../helpers/image'
 
+import ItemImage from '../../item/image'
 import IconStar from '../../icons/star'
+import IconFolder from '../../icons/folder'
 
 import './_index.scss'
-import ItemImage from '../../item/image'
 
 interface ItemPageHeadProps extends React.ComponentProps<any> {
   itemUrl?: string,
@@ -13,6 +14,7 @@ interface ItemPageHeadProps extends React.ComponentProps<any> {
   color?: string,
   isFavourite?: boolean,
   favouritesButtonId?: string,
+  mode?: 'default' | 'folder'
   toggleFavourites?: Function,
   onImageChange?: Function,
   onColorChange?: Function
@@ -82,16 +84,20 @@ function ItemPageHead (props: ItemPageHeadProps) {
   return (
     <section className="component -item-page-head flex a-center">
       <div className="intro flex a-center grow">
-        <div className="image" style={{ backgroundColor: localColor || randomColor }}>
-          <ItemImage
-            id="item_image"
-            image={localSrc}
-            color={localColor || randomColor}
-            itemName={props.itemName}
-            isLoading={isLoading}
-            onImageLoad={onImageLoad}
-            onImageError={onImageError} />
-        </div>
+        {props.mode === 'folder'
+          ? <div className="image -folder">
+            <IconFolder/>
+          </div>
+          : <div className="image" style={{ backgroundColor: localColor || randomColor }}>
+            <ItemImage
+              id="item_image"
+              image={localSrc}
+              color={localColor || randomColor}
+              itemName={props.itemName}
+              isLoading={isLoading}
+              onImageLoad={onImageLoad}
+              onImageError={onImageError} />
+          </div>}
         <div className="name-parent">{props.children}</div>
       </div>
 
