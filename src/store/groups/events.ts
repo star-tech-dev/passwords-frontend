@@ -13,7 +13,7 @@ export const getGroup = GroupsDomain.createEffect<GroupID, Group>().use((id) => 
   return sendRequest({
     url: '/group',
     data: { id }
-  }).catch(() => [])
+  }).catch(() => null)
 })
 
 export const createGroup = GroupsDomain.createEffect<GroupProps, Group>().use(payload => {

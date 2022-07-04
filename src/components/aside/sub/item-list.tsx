@@ -18,9 +18,16 @@ function SubAsideItemList () {
   const router = useRouter()
   const searchField = React.createRef()
 
+  const isConditionToClearQuery = (route: RouterState) => {
+    const routes = ['item', 'item.edit', 'group', 'group.edit']
+    return !routes.includes(route.name)
+  }
+
   const checkRoute = (route: RouterState) => {
-    // clear search
-    setSearchQuery('')
+    if (isConditionToClearQuery(route)) {
+      // clear search
+      setSearchQuery('')
+    }
 
     // TODO: route has old value here
     const _mode = $app.getState().itemsMode
@@ -43,7 +50,7 @@ function SubAsideItemList () {
     <div className="component -sub-aside-item-list flex column">
       {items.length
         ? <div className="aside-head flex a-center j-between">
-        <SearchBar ref={searchField} onChange={(query: string) => setSearchQuery(query)}/>
+        <SearchBar ref={searchField} value={searchQuery} onChange={(query: string) => setSearchQuery(query)}/>
         <UIButton routeName="add" size="square">
           <div className="icon-container -add">
             <IconAdd />

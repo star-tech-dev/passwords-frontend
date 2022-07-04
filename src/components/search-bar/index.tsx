@@ -15,6 +15,7 @@ interface onKeyUpEvent extends Event {
 }
 
 interface SearchBarOptions {
+  value?: any,
   onChange?: Function
 }
 
@@ -96,6 +97,10 @@ const SearchBar = forwardRef((props: SearchBarOptions, ref: any) => {
       field.removeEventListener('keyup', onFieldKeyUp)
     }
   }, [])
+
+  useEffect(() => {
+    setQuery(props.value)
+  }, [props.value])
 
   return (
     <div className="component -search-bar">

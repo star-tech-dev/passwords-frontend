@@ -19,7 +19,7 @@ function GroupPage () {
   const [data, setData] = useState<Group>(null)
   const { route, router } = useRoute()
 
-  const itemsAmount = () => data.items.length
+  const itemsAmount = () => data.items ? data.items.length : 0
 
   const onEditClick = () => {
     router.navigate('group.edit', { id: data._id })
@@ -30,10 +30,11 @@ function GroupPage () {
     openModal('delete_group')
   }
 
-  const onMounted = () => {
-    getGroup(route.params.id).then(res => {
-      setData(res)
-    }).catch(() => router.navigate('home'))
+  const onMounted = async () => {
+    const response = await getGroup(route.params.id).catch(() => null)
+    response
+      ? setData(response)
+      : router.navigate('home')
   }
 
   useEffect(() => {
