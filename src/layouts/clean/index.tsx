@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './_index.scss'
 
-const CleanLayout: React.FC = ({ children }) => {
+const CleanLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="layout -clean">
       <main>
