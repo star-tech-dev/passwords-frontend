@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### 1.5.0 (2022-07-05)
+* Landing page added.
+* Global route refactoring done.
+
+
 ### 1.4.4 (2022-07-04)
 * Search bar logic was fixed.
 

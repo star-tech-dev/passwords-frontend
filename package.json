@@ -1,6 +1,6 @@
 {
   "name": "passwords-frontend",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "description": "frontend app for star-passwords",
   "private": true,
   "author": "George Shinkarev <gkshi@ya.ru>",

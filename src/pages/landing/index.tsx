@@ -1,5 +1,7 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
+import LanguageSelect from '../../components/settings/language-select'
 import IconLogo from '../../components/icons/logo-tech'
 import UIButton from '../../components/ui/button'
 
@@ -10,23 +12,27 @@ import './_index.scss'
 
 function LandingPage () {
   const year = new Date().getFullYear()
+  const { t } = useTranslation()
 
   return (
     <div className="page -landing">
       <header>
         <div className="container -wide flex a-center j-between">
-          <div className="logo">
-            <IconLogo />
+          <div className="flex a-center">
+            <div className="logo">
+              <IconLogo />
+            </div>
+            <LanguageSelect/>
           </div>
           <div className="flex a-center">
             <nav>
               {/* <a href="#">Features</a> */}
               {/* <a href="#">Security</a> */}
               <a href="https://github.com/star-tech-dev/passwords-frontend" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://star-tech.dev" target="_blank" rel="noreferrer">More projects</a>
+              <a href="https://star-tech.dev" target="_blank" rel="noreferrer">{t('landing_page.nav.more_projects')}</a>
             </nav>
             <div>
-              <UIButton routeName="home">Get started</UIButton>
+              <UIButton routeName="home">{t('landing_page.get_started')}</UIButton>
             </div>
           </div>
         </div>
@@ -35,16 +41,10 @@ function LandingPage () {
       <section className="first flex column center">
         <div className="container -wide flex center">
           <div className="info">
-            <h1>
-              Personal secured <br/>
-              password manager
-            </h1>
-            <div className="text">
-              Use our secured personal password manager
-              with 256-bit AES encryption. It&apos;s completely free. You can set advanced passphrase, lock the app without sign out and generate passwords there.
-            </div>
+            <h1 dangerouslySetInnerHTML={{ __html: t('landing_page.first_section.heading') }}></h1>
+            <div className="text" dangerouslySetInnerHTML={{ __html: t('landing_page.first_section.description') }}></div>
             <div className="buttons">
-              <UIButton routeName="home">Get started</UIButton>
+              <UIButton routeName="home">{t('landing_page.get_started')}</UIButton>
               {/* <UIButton theme="ghost">See demo</UIButton> */}
             </div>
           </div>
@@ -75,7 +75,7 @@ function LandingPage () {
 
       <section className="copyright">
         <div className="container -wide">
-          <span>Passwords app, 2021-{year} &copy; Designed with coffee by </span>
+          <span>Passwords app, 2021-{year} &copy; {t('landing_page.copyright')} </span>
           <a href="https://star-tech.dev" target="_blank" rel="noreferrer">STAR-tech</a>
         </div>
       </section>
