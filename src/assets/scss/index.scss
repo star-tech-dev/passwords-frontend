@@ -48,18 +48,6 @@ a {
   height: 100vh;
 }
 
-.page {
-  width: 480px;
-  max-width: 100%;
-  margin: 0 auto;
-
-  & > section {
-    &:not(:last-child) {
-      margin-bottom: 30px;
-    }
-  }
-}
-
 .container {
   width: 680px;
   max-width: 100%;
@@ -67,5 +55,9 @@ a {
 
   &.-narrow {
     width: 330px;
+  }
+
+  &.-wide {
+    width: 1200px;
   }
 }

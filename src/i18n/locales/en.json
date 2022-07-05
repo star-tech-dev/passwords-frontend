@@ -188,5 +188,19 @@
     "items_amount_few": "items",
     "items_amount_many": "items",
     "items_amount_other": "items"
+  },
+
+  "landing_page": {
+    "get_started": "Get started",
+    "copyright": "Designed with coffee by",
+
+    "nav": {
+      "more_projects": "More projects"
+    },
+
+    "first_section": {
+      "heading": "Personal secured <br/>password manager",
+      "description": "Use our secured personal password manager with 256-bit AES encryption. It&apos;s completely free. You can set advanced passphrase, lock the app without sign out and generate passwords there."
+    }
   }
 }

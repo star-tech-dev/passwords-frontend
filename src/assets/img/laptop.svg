@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="689px" height="400px" viewBox="0 0 689 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>macbook pro retina</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#151515" offset="0%"></stop>
+            <stop stop-color="#2C2C2C" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#96979B" offset="0%"></stop>
+            <stop stop-color="#2A2B2D" offset="100%"></stop>
+        </linearGradient>
+        <path d="M5.33603624e-13,13.025775 C5.33603624e-13,13.025775 7.09225283,20.2635885 27.1771183,22.1750221 L652.263731,22.1750221 C652.263731,22.1750221 668.927717,20.8945713 679.736787,13.3412663 L15.749729,13.3412663 L5.33603624e-13,13.025775 Z" id="path-3"></path>
+        <filter x="-1.0%" y="-54.6%" width="102.1%" height="253.0%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-5">
+            <stop stop-color="#808185" offset="0%"></stop>
+            <stop stop-color="#CFD0D2" offset="0.797475782%"></stop>
+            <stop stop-color="#949599" offset="2.10447825%"></stop>
+            <stop stop-color="#A7A8AC" offset="3.73190757%"></stop>
+            <stop stop-color="#B6B7BB" offset="4.23426959%"></stop>
+            <stop stop-color="#CFD0D4" offset="0.212489602%"></stop>
+            <stop stop-color="#D8D8D8" offset="9.64049628%"></stop>
+            <stop stop-color="#DDDEE0" offset="90.9095999%"></stop>
+            <stop stop-color="#B1B2B4" offset="95.6196111%"></stop>
+            <stop stop-color="#C2C3C7" offset="98.2552801%"></stop>
+            <stop stop-color="#F1F3F2" offset="99.12764%"></stop>
+            <stop stop-color="#E9EBEA" offset="99.3572084%"></stop>
+            <stop stop-color="#D4D5D7" offset="99.730501%"></stop>
+            <stop stop-color="#7A7B7F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="37.2336119%" x2="0%" y2="37.2336116%" id="linearGradient-6">
+            <stop stop-color="#949599" offset="0%"></stop>
+            <stop stop-color="#9E9FA3" offset="3.58222603%"></stop>
+            <stop stop-color="#B9BABC" offset="5.16614898%"></stop>
+            <stop stop-color="#E0E1E3" offset="8.56026958%"></stop>
+            <stop stop-color="#D8D9DB" offset="91.8293618%"></stop>
+            <stop stop-color="#C2C3C5" offset="94.5446582%"></stop>
+            <stop stop-color="#8D8E90" offset="100%"></stop>
+        </linearGradient>
+        <path d="M291.911321,0.442959448 C291.911321,0.442959448 291.988372,5.9813623 297.4149,8.62707013 L381.802236,8.62707013 C381.802236,8.62707013 386.444588,6.90537497 387.477806,0.442959443 L293.27922,0.442959443" id="path-7"></path>
+        <filter x="-0.5%" y="-6.1%" width="101.0%" height="112.2%" filterUnits="objectBoundingBox" id="filter-8">
+            <feGaussianBlur stdDeviation="0.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.301441866 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-657.000000, -205.000000)">
+            <g id="macbook-pro-retina" transform="translate(661.558583, 205.000000)">
+                <g id="monitor" transform="translate(62.309338, 0.000000)">
+                    <path d="M22.9978456,0.93603198 C10.2964862,0.93603198 0,11.2367024 0,23.9305448 L0,371.604696 L554.715471,371.604696 L554.715471,23.9305448 C554.715471,11.231026 544.418396,0.93603198 531.717625,0.93603198 L22.9978456,0.93603198 Z" id="screen-border" fill="#121212"></path>
+                    <path d="M531.717625,1 C537.791952,1 543.291468,3.46224741 547.272376,7.44314011 C551.25319,11.4239385 553.715471,16.9233167 553.715471,22.9977583 L553.715471,22.9977583 L553.715471,377.15692 L1,377.15692 L1,22.9977583 C1,16.9240138 3.46242695,11.4243783 7.44354696,7.44327344 C11.4243286,3.46250696 16.923568,1 22.9978456,1 L22.9978456,1 Z" stroke="#C5C5C5" stroke-width="2"></path>
+                </g>
+                <g id="camera" transform="translate(335.729760, 10.976732)">
+                    <circle id="Oval-5" fill="url(#linearGradient-1)" cx="3.99153901" cy="3.99153901" r="3.99153901"></circle>
+                    <circle id="Oval-6" fill="#103470" cx="3.99153901" cy="3.99153901" r="1.99576951"></circle>
+                </g>
+                <g id="bottom" transform="translate(0.000000, 371.213128)">
+                    <g id="lower-bottom">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        <use fill="url(#linearGradient-2)" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    </g>
+                    <rect id="upper-bottom" fill="url(#linearGradient-5)" x="0.378716078" y="0" width="679.621284" height="13.3882871"></rect>
+                    <g id="indent">
+                        <use fill="url(#linearGradient-6)" fill-rule="evenodd" xlink:href="#path-7"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

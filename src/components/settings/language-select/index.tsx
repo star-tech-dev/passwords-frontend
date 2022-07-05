@@ -18,7 +18,6 @@ function LanguageSelectComponent () {
 
   return (
     <div className="component -language-select">
-      <div>{t('settings.general.language.title')}</div>
       <select value={i18n.language} onChange={onLanguageChange}>
         {options()}
       </select>

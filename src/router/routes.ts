@@ -1,39 +1,44 @@
 export default [
   {
-    name: 'home',
-    path: '/',
-    private: true
-  },
-  {
-    name: 'favourites',
-    path: '/favourites',
-    private: true
-  },
-
-  {
     name: 'auth',
     path: '/auth',
     forGuests: true
   },
+
+  {
+    name: 'landing',
+    path: '/'
+  },
+
+  {
+    name: 'home',
+    path: '/app',
+    private: true
+  },
+  {
+    name: 'favourites',
+    path: '/app/favourites',
+    private: true
+  },
   {
     name: 'unlock',
-    path: '/unlock',
+    path: '/app/unlock',
     private: true
   },
 
   {
     name: 'item',
-    path: '/item/:id',
+    path: '/app/item/:id',
     private: true
   },
   {
     name: 'item.edit',
-    path: '/edit',
+    path: '/app/edit',
     private: true
   },
   {
     name: 'add',
-    path: '/add',
+    path: '/app/add',
     private: true
   },
 
@@ -50,7 +55,7 @@ export default [
 
   {
     name: 'settings',
-    path: '/settings',
+    path: '/app/settings',
     private: true
   },
   {

@@ -10,8 +10,10 @@ import { useTranslation } from 'react-i18next'
 // layouts
 import DefaultLayout from './layouts/default'
 import SimpleLayout from './layouts/simple'
+import CleanLayout from './layouts/clean'
 
 // App pages
+import LandingPage from './pages/landing'
 import HomePage from './pages/home'
 import AuthPage from './pages/auth'
 import UnlockPage from './pages/unlock'
@@ -31,6 +33,7 @@ import NotFound from './pages/not-found'
 import Loader from './components/loader/page-loader'
 import ModalController from './components/modals/controller'
 
+const CLEAN_LAYOUT_PAGES = ['landing']
 const SIMPLE_LAYOUT_PAGES = ['auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
 
 function App () {
@@ -74,28 +77,26 @@ function App () {
 
   function PageSwitcher () {
     switch (route.name) {
+      case 'landing':
+        return <LandingPage />
+      case 'auth':
+        return <AuthPage />
       case 'home':
         return <HomePage />
       case 'favourites':
         return <HomePage />
-
       case 'group':
         return <GroupPage />
       case 'group.edit':
         return <GroupEditPage />
-
       case 'item':
         return <ItemPage />
       case 'item.edit':
         return <ItemEditPage />
       case 'add':
         return <AddItemPage />
-
-      case 'auth':
-        return <AuthPage />
       case 'unlock':
         return <UnlockPage />
-
       case 'settings':
         return <SettingsPage />
       case 'settings.profile':
@@ -125,11 +126,15 @@ function App () {
 
           {SIMPLE_LAYOUT_PAGES.includes(route.name)
             ? <SimpleLayout>
-            <PageSwitcher/>
-          </SimpleLayout>
-            : <DefaultLayout>
-            <PageSwitcher/>
-          </DefaultLayout>}
+                <PageSwitcher/>
+              </SimpleLayout>
+            : CLEAN_LAYOUT_PAGES.includes(route.name)
+              ? <CleanLayout>
+                <PageSwitcher/>
+              </CleanLayout>
+              : <DefaultLayout>
+                <PageSwitcher/>
+              </DefaultLayout> }
         </div>
         : <Loader /> }
     </div>

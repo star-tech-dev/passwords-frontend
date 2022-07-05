@@ -28,6 +28,7 @@ function SettingsGeneralPage () {
       </section>
 
       <section>
+        <div>{t('settings.general.language.title')}</div>
         <LanguageSelect />
       </section>
     </div>
