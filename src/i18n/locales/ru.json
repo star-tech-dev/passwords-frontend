@@ -64,7 +64,8 @@
       "all_items": "все записи",
       "no_items_yet": "Вы еще не создали ни одной записи",
       "no_folder_items": "В этой группе еще нет записей",
-      "create_one": "Создать"
+      "create_one": "Создать",
+      "plus_button_tooltip": "Создать запись"
     }
   },
 

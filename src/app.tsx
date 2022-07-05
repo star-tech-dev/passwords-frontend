@@ -5,6 +5,7 @@ import { setMounted } from './store/app/events'
 import { checkUserSecurityCode, ping } from './store/auth/events'
 import { $locker } from './store/locker/store'
 import { checkIsAppLocked } from './store/locker/events'
+import { useTranslation } from 'react-i18next'
 
 // layouts
 import DefaultLayout from './layouts/default'
@@ -33,15 +34,22 @@ import ModalController from './components/modals/controller'
 const SIMPLE_LAYOUT_PAGES = ['auth', 'unlock', '@@router5/UNKNOWN_ROUTE']
 
 function App () {
+  const { i18n } = useTranslation()
   const { route } = useRoute()
   const locker = useStore($locker)
 
+  const setLocaleIntoHTML = () => {
+    const html = document.querySelector('html')
+    html && html.setAttribute('lang', i18n.language)
+  }
+
   useEffect(() => {
+    setLocaleIntoHTML()
     const unwatchMounted = setMounted.watch(mounted => {
+      /**
+       * app mounted after loader
+       */
       if (mounted) {
-        /**
-         * app mounted after loader
-         */
         checkUserSecurityCode()
 
         // pinging server every time when browser tab focused
@@ -55,6 +63,10 @@ function App () {
       unwatchMounted()
     }
   }, [])
+
+  useEffect(() => {
+    setLocaleIntoHTML()
+  }, [i18n.language])
 
   useEffect(() => {
     checkIsAppLocked()

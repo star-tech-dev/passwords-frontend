@@ -65,6 +65,10 @@
   &.-active {
     background: $color-dark;
     color: $color-text-regular;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    bottom: 20px;
 
     .image {
       filter: grayscale(0);

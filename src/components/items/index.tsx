@@ -29,7 +29,7 @@ function Items (props: ItemsProps) {
     let arr = items
 
     if (props.mode === ItemsMode.favourites) {
-      arr = items.filter(item => item.isFavourite)
+      arr = arr.filter(item => item.isFavourite)
     }
 
     if (props.mode === ItemsMode.group) {
@@ -42,15 +42,16 @@ function Items (props: ItemsProps) {
       } else {
         id = route.params.id
       }
-      arr = items.filter(item => item.group === id)
+      arr = arr.filter(item => item.group === id)
     }
 
     if (props.searchQuery) {
-      arr = items.filter(item => {
+      arr = arr.filter(item => {
         const str = `${item.name} ${item.url} ${item.username} ${item.note}`.toLowerCase()
         return str.includes(props.searchQuery?.toLowerCase() as string)
       })
     }
+
     return arr.length
       ? arr.map(item => {
         return <Item data={item} key={item._id} />

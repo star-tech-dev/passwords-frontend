@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import tippy from 'tippy.js'
 import { State as RouterState, Unsubscribe as UnsubscribeRouter } from 'router5/dist/types/base'
+import { useTranslation } from 'react-i18next'
+import { nextTick } from '../../../helpers/next-tick'
 import { useRouter } from 'react-router5'
 import { useStore } from 'effector-react'
 import { $items } from '../../../store/items/store'
@@ -12,6 +15,7 @@ import IconAdd from '../../icons/add'
 import UIButton from '../../ui/button'
 
 function SubAsideItemList () {
+  const { t } = useTranslation()
   const [mode, setMode] = useState<ItemsMode>(ItemsMode.default)
   const [searchQuery, setSearchQuery] = useState('')
   const items = useStore($items)
@@ -19,7 +23,7 @@ function SubAsideItemList () {
   const searchField = React.createRef()
 
   const isConditionToClearQuery = (route: RouterState) => {
-    const routes = ['item', 'item.edit', 'group', 'group.edit']
+    const routes = ['item', 'item.edit', 'group.edit']
     return !routes.includes(route.name)
   }
 
@@ -34,8 +38,21 @@ function SubAsideItemList () {
     setMode(_mode)
   }
 
+  const initTooltip = () => {
+    nextTick(() => {
+      tippy('#main_button_add_item', {
+        trigger: 'mouseenter focus',
+        content: t('aside.sub.plus_button_tooltip'),
+        placement: 'bottom',
+        animation: 'perspective-subtle',
+        theme: 'small'
+      })
+    }, 200)
+  }
+
   useEffect(() => {
     checkRoute(router.getState())
+    initTooltip()
 
     const unsubscribe = router.subscribe(({ route }) => {
       checkRoute(route)
@@ -51,7 +68,7 @@ function SubAsideItemList () {
       {items.length
         ? <div className="aside-head flex a-center j-between">
         <SearchBar ref={searchField} value={searchQuery} onChange={(query: string) => setSearchQuery(query)}/>
-        <UIButton routeName="add" size="square">
+        <UIButton id="main_button_add_item" routeName="add" size="square">
           <div className="icon-container -add">
             <IconAdd />
           </div>
