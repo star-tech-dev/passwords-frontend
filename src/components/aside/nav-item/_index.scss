@@ -45,10 +45,62 @@
 
   .icon-container {
     margin-right: 15px;
+
+    &.-folder {
+      &:after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
   }
 
   &:not(:last-child) {
     margin-bottom: 5px;
+  }
+
+  &.-color {
+    &-red {
+      .icon-container.-folder {
+        svg {
+          color: $color-folder-red;
+        }
+      }
+    }
+    &-blue {
+      .icon-container.-folder {
+        svg {
+          color: $color-folder-blue;
+        }
+      }
+    }
+    &-orange {
+      .icon-container.-folder {
+        svg {
+          color: $color-folder-orange;
+        }
+      }
+    }
+    &-violet {
+      .icon-container.-folder {
+        svg {
+          color: $color-folder-violet;
+        }
+      }
+    }
+    &-green {
+      .icon-container.-folder {
+        svg {
+          color: $color-folder-green;
+        }
+      }
+    }
   }
 
   &.-new {
@@ -60,6 +112,12 @@
   &.-active {
     .icon-container {
       color: $color-text-white;
+
+      &.-folder {
+        svg {
+          color: $color-text-white;
+        }
+      }
     }
 
     a {

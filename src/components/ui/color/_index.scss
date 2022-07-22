@@ -1,0 +1,46 @@
+@import "src/assets/scss/variables";
+
+.component.-color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $color-content-bg;
+  color: $color-text-white;
+  border: 4px solid $color-content-bg-highlight;
+  cursor: pointer;
+
+  & > svg {
+    width: 10px;
+  }
+
+  &.-active {
+    border-color: lighten($color-content-bg-highlight, 8%);
+  }
+
+  &[data-color="null"] {
+    color: rgba($color-text-faded, .3);
+
+    & > svg {
+      width: 8px;
+    }
+
+    &.-active {
+      color: $color-text-light;
+    }
+  }
+  &[data-color="red"] {
+    background: $color-folder-red;
+  }
+  &[data-color="blue"] {
+    background: $color-folder-blue;
+  }
+  &[data-color="orange"] {
+    background: $color-folder-orange;
+  }
+  &[data-color="violet"] {
+    background: $color-folder-violet;
+  }
+  &[data-color="green"] {
+    background: $color-folder-green;
+  }
+}

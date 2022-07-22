@@ -30,14 +30,21 @@ function GroupSection () {
     setIsLoading(false)
   }
 
+  const onItemClick = (data: Group) => {
+    router.navigate('group', { id: data._id })
+  }
+
   const groupList = () => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    return list.map(item => <NavItem className={`-new ${item._id === openedGroup ? '-active' : ''}`} key={item._id} onClick={() => onItemClick(item)}>
-      <div className="icon-container -folder">
-        <IconFolder/>
-      </div>
-      <span>{item.name}</span>
-    </NavItem>)
+    return list.map(item =>
+      <NavItem
+        className={`-new -color-${item.color} ${item._id === openedGroup ? '-active' : ''}`}
+        key={item._id}
+        onClick={() => onItemClick(item)}>
+        <div className="icon-container -folder">
+          <IconFolder/>
+        </div>
+        <span>{item.name}</span>
+      </NavItem>)
   }
 
   const reset = () => {
@@ -69,10 +76,6 @@ function GroupSection () {
   const onAddClick = (e: any) => {
     e.preventDefault()
     setShowCreationItem(true)
-  }
-
-  const onItemClick = (data: Group) => {
-    router.navigate('group', { id: data._id })
   }
 
   const onNewItemBlur = () => {

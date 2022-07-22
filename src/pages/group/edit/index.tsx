@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { GroupProps, GroupID, Group } from '../../../store/groups/types'
+import type { GroupProps, Group, GroupColor } from '../../../store/groups/types'
 import { useRoute } from 'react-router5'
 import { useTranslation } from 'react-i18next'
 import { useStore } from 'effector-react'
@@ -9,10 +9,8 @@ import { $groups } from '../../../store/groups/store'
 import ItemPageHead from '../../../components/item-page/head'
 import LoaderRound from '../../../components/loader/round'
 import UIButton from '../../../components/ui/button'
-import UISelect from '../../../components/ui/select'
 import UIInput from '../../../components/ui/input'
-import UITextarea from '../../../components/ui/textarea'
-import PasswordField from '../../../components/ui/password-field'
+import ColorPicker from '../../../components/ui/color-picker'
 import IconCheck from '../../../components/icons/check'
 import IconCross from '../../../components/icons/cross'
 
@@ -26,11 +24,12 @@ function EditGroupPage () {
   const [isInitLoading, setIsInitLoading] = useState(false)
   const [data, setData] = useState<GroupProps>({
     _id: '',
-    name: ''
+    name: '',
+    color: null
   })
 
-  const [group, setGroup] = useState<GroupID | null>(null)
   const [name, setName] = useState('')
+  const [color, setColor] = useState<GroupColor | null>(null)
   const [nameError, setNameError] = useState('')
   const nameField = React.useRef() as React.RefObject<HTMLInputElement>
 
@@ -40,7 +39,8 @@ function EditGroupPage () {
 
     const group = {
       _id: router.getState().params.id,
-      name
+      name,
+      color
     }
 
     if (!group.name) {
@@ -71,6 +71,7 @@ function EditGroupPage () {
 
   const syncFieldsWithData = () => {
     data.name && setName(data.name)
+    data.color && setColor(data.color)
   }
 
   const onCancelClick = () => {
@@ -129,6 +130,10 @@ function EditGroupPage () {
             onBlur={e => !e.target.value.length ? setNameError('') : null }>
             <div>{t('item.fields.name')}</div>
           </UIInput>
+
+          <div>
+            <ColorPicker value={color} onChange={(e: GroupColor) => setColor(e)}>Color</ColorPicker>
+          </div>
         </section>
       </div>}
     </div>
