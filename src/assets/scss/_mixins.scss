@@ -8,3 +8,25 @@
     url("#{$path}.svg##{$svg-id}") format("svg");
   }
 }
+
+$desktop: 1440px;
+$main: 1280px;
+$tablet: 1180px;
+
+@mixin desktop {
+  @media (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin main {
+  @media (max-width: $main) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}

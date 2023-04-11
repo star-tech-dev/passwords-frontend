@@ -1,11 +1,13 @@
 @import "src/assets/scss/variables";
+@import "src/assets/scss/mixins";
 
 .component {
   &.-sub-aside {
     width: 28%;
     height: 100%;
-    padding: 40px 0 0;
+    padding: 40px 0 60px; // 60px mobile-bar
     border-right: 1px solid $color-dark;
+    flex-shrink: 0;
 
     & > * {
       height: 100%;
@@ -21,7 +23,9 @@
     }
   }
 
-  &.-sub-aside-item-list {}
+  &.-sub-aside-item-list {
+    //
+  }
 
   &.-sub-aside-profile-menu {
     padding: 0 20px;
@@ -34,6 +38,4 @@
       }
     }
   }
-
-  &.-sub-aside {}
 }
