@@ -1,3 +1,5 @@
+@import "src/assets/scss/mixins";
+
 .layout.-default {
   height: 100vh;
   overflow: hidden;
@@ -7,10 +9,20 @@
   }
 
   main {
+    display: block;
+    max-width: 100%;
     flex-grow: 1;
 
     & > .scroll-parent {
       padding: 40px 60px;
+    }
+
+    @include tablet {
+      padding-bottom: 60px;
+
+      & > .scroll-parent {
+        padding: 40px 20px;
+      }
     }
   }
 
@@ -24,5 +36,35 @@
         margin-bottom: 30px;
       }
     }
+
+    @include tablet {
+      //width:
+    }
+  }
+}
+
+body.-hide-sub-aside {
+  @include tablet {
+    .component.-sub-aside {
+      display: none;
+    }
+  }
+}
+
+body.-hide-main {
+  @include tablet {
+    .component.-sub-aside {
+      width: 100%;
+    }
+
+    main {
+      display: none;
+    }
+  }
+}
+
+body.-show-menu {
+  .component.-main-aside {
+    display: block;
   }
 }

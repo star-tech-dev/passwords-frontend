@@ -1,4 +1,5 @@
 @import "src/assets/scss/variables";
+@import "src/assets/scss/mixins";
 
 .component.-modal.-password_generator {
   section {
@@ -44,6 +45,10 @@
           &:not(:last-child) {
             margin-right: 20px;
           }
+        }
+
+        @include tablet {
+          font-size: 12px;
         }
       }
     }
